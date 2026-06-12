@@ -1,28 +1,21 @@
 /* 06-effects.css — motion and interactions */
 
+/*
+  IMPORTANTE:
+  A versão V1 escondia .mask-reveal, .reveal e .split-lines por padrão.
+  Se algum arquivo JS não carregasse no GitHub Pages, as imagens ficavam invisíveis.
+  Nesta V2, tudo fica visível por padrão.
+  As animações só escondem elementos quando o JavaScript adiciona a classe .js no <html>.
+*/
+
 .reveal,
 .mask-reveal,
 .text-reveal {
-  opacity: 0;
-}
-
-.reveal.is-visible {
   opacity: 1;
-  animation: fade-slide-in 820ms var(--ease-premium) both;
-}
-
-.text-reveal.is-visible {
-  opacity: 1;
-  animation: text-soft-in 740ms var(--ease-premium) both;
 }
 
 .mask-reveal {
-  clip-path: inset(0 0 100% 0 round 24px);
-}
-
-.mask-reveal.is-visible {
-  opacity: 1;
-  animation: mask-open 960ms var(--ease-premium) both;
+  clip-path: none;
 }
 
 .split-lines {
@@ -31,11 +24,43 @@
 
 .split-lines > span {
   display: block;
+  opacity: 1;
+  transform: none;
+}
+
+/* Motion only when JS is alive */
+.js .reveal,
+.js .mask-reveal,
+.js .text-reveal {
+  opacity: 0;
+}
+
+.js .mask-reveal {
+  clip-path: inset(0 0 100% 0 round 24px);
+}
+
+.js .split-lines > span {
+  display: block;
   transform: translateY(110%);
   opacity: 0;
 }
 
-.split-lines.is-visible > span {
+.js .reveal.is-visible {
+  opacity: 1;
+  animation: fade-slide-in 820ms var(--ease-premium) both;
+}
+
+.js .text-reveal.is-visible {
+  opacity: 1;
+  animation: text-soft-in 740ms var(--ease-premium) both;
+}
+
+.js .mask-reveal.is-visible {
+  opacity: 1;
+  animation: mask-open 960ms var(--ease-premium) both;
+}
+
+.js .split-lines.is-visible > span {
   animation: line-up 860ms var(--ease-premium) both;
   animation-delay: calc(var(--i, 0) * 95ms);
 }
