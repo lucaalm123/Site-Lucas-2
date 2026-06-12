@@ -57,13 +57,13 @@
   }
 
   function findCase(id) {
-    return window.SITE_DATA.cases.find(function (item) {
+    return ((window.SITE_DATA && window.SITE_DATA.cases) ? window.SITE_DATA.cases : []).find(function (item) {
       return item.id === id;
     });
   }
 
   function renderCases() {
-    var cases = window.SITE_DATA.cases;
+    var cases = (window.SITE_DATA && window.SITE_DATA.cases) ? window.SITE_DATA.cases : [];
     var casesList = $("#cases-list");
     var workA = $("#work-row-a");
     var workB = $("#work-row-b");
@@ -83,11 +83,11 @@
     }
 
     if (services) {
-      services.innerHTML = window.SITE_DATA.services.map(serviceTemplate).join("");
+      services.innerHTML = ((window.SITE_DATA && window.SITE_DATA.services) ? window.SITE_DATA.services : []).map(serviceTemplate).join("");
     }
 
     if (process) {
-      process.innerHTML = window.SITE_DATA.process.map(processTemplate).join("");
+      process.innerHTML = ((window.SITE_DATA && window.SITE_DATA.process) ? window.SITE_DATA.process : []).map(processTemplate).join("");
     }
   }
 
