@@ -892,3 +892,77 @@
     font-size: 16px;
   }
 }
+
+
+/* ===================== V6 HERO CLEAN + REVEAL FAILSAFE =====================
+   Ajustes pedidos:
+   1. remover moldura/borda da primeira imagem do hero;
+   2. deixar só os documentos como protagonistas;
+   3. reduzir aparência de caixa atrás das miniaturas;
+   4. garantir leitura visual mais limpa.
+========================================================================== */
+
+.hero-visual-frame {
+  display: none !important;
+}
+
+.hero-visual {
+  min-height: min(70svh, 720px);
+}
+
+.hero-mockup {
+  width: min(680px, 100%);
+  margin-top: 0;
+  transform: rotate(-5deg);
+}
+
+.hero-mockup img {
+  max-height: 72svh;
+  background: transparent !important;
+  filter:
+    drop-shadow(0 48px 90px rgba(0,0,0,.52))
+    drop-shadow(0 8px 22px rgba(242,180,93,.10));
+}
+
+.hero-mini-card {
+  background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.025)) !important;
+  border: 1px solid rgba(246,239,228,.12);
+  box-shadow: 0 24px 62px rgba(0,0,0,.30);
+  backdrop-filter: blur(14px);
+}
+
+.hero-mini-card img {
+  background: transparent !important;
+  filter:
+    drop-shadow(0 22px 54px rgba(0,0,0,.34));
+}
+
+/* Garantir que imagens sempre apareçam limpas */
+.hero-mockup img,
+.hero-mini-card img,
+.work-tile img,
+.case-media img,
+.drawer-media img,
+.lightbox-figure img {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Contato continua visível mesmo com motion */
+.contact-form {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Mobile hero mais limpo */
+@media (max-width: 720px) {
+  .hero-mockup {
+    width: min(92vw, 420px);
+    transform: rotate(-4deg);
+  }
+
+  .hero-mini-card {
+    width: 96px;
+    border-radius: 22px;
+  }
+}
