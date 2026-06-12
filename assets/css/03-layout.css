@@ -1,0 +1,54 @@
+/* 03-layout.css — containers, grids and rhythm */
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.section {
+  position: relative;
+  padding: clamp(86px, 11vw, 164px) var(--pad);
+}
+
+.container {
+  width: min(100%, var(--container));
+  margin-inline: auto;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 112px);
+  align-items: start;
+  margin-bottom: clamp(46px, 6vw, 92px);
+}
+
+.section-heading h2 {
+  max-width: 1040px;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(40px, 8vw, 132px);
+  align-items: center;
+}
+
+.stack-lg {
+  display: grid;
+  gap: clamp(24px, 3vw, 42px);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(14px, 1.8vw, 24px);
+}
+
+.divider-top {
+  border-top: 1px solid var(--line-soft);
+}
+
+.bleed {
+  margin-inline: calc(var(--pad) * -1);
+}

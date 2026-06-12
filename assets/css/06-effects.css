@@ -1,0 +1,159 @@
+/* 06-effects.css — motion and interactions */
+
+.reveal,
+.mask-reveal,
+.text-reveal {
+  opacity: 0;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  animation: fade-slide-in 820ms var(--ease-premium) both;
+}
+
+.text-reveal.is-visible {
+  opacity: 1;
+  animation: text-soft-in 740ms var(--ease-premium) both;
+}
+
+.mask-reveal {
+  clip-path: inset(0 0 100% 0 round 24px);
+}
+
+.mask-reveal.is-visible {
+  opacity: 1;
+  animation: mask-open 960ms var(--ease-premium) both;
+}
+
+.split-lines {
+  overflow: hidden;
+}
+
+.split-lines > span {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+.split-lines.is-visible > span {
+  animation: line-up 860ms var(--ease-premium) both;
+  animation-delay: calc(var(--i, 0) * 95ms);
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.parallax {
+  will-change: transform;
+}
+
+.project-hover {
+  cursor: none;
+}
+
+@keyframes fade-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes text-soft-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes mask-open {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0 round 24px);
+    transform: translateY(46px);
+  }
+
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0 round 24px);
+    transform: translateY(0);
+  }
+}
+
+@keyframes line-up {
+  from {
+    opacity: 0;
+    transform: translateY(110%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes wall-forward {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes wall-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cursor-label {
+    display: none;
+  }
+
+  .project-hover {
+    cursor: pointer;
+  }
+
+  .reveal,
+  .mask-reveal,
+  .text-reveal,
+  .split-lines > span {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
