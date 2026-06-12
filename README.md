@@ -118,3 +118,8 @@ A V2 corrige isso:
 ## V4 Motion OK
 
 Esta versão corrige o pipeline de animações. Use `CHECK_ANIMACOES.html` para verificar JS, reveal, mask reveal, cursor, hover 3D e parallax.
+
+
+## V5 Visual Readability Fix
+
+Corrige fundos dos documentos, títulos cortados e formulário de contato ilegível. As animações da V4 foram preservadas.
