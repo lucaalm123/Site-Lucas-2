@@ -968,65 +968,18 @@
 }
 
 
-/* ===================== V8 PATCH — REMOVER QUADRADOS DOS MOCKUPS MENORES =====================
-   Objetivo:
-   - remover as caixas/molduras em volta dos documentos menores do Hero;
-   - deixar apenas as folhas/mockups soltos, com sombra;
-   - preservar clique, hover, animações e cursor "VER CASE".
-========================================================================================== */
+/* ===================== V9 PATCH DEFINITIVO — SEM QUADRADOS NOS DOCUMENTOS MENORES =====================
+   Esta correção muda a classe dos mockups menores no HTML:
+   de .hero-mini-card para .hero-floating-doc.
+   Assim, eles deixam de herdar as regras antigas de card/glass.
+===================================================================================================== */
 
-.hero-mini-card,
-.hero-mini-card.is-left,
-.hero-mini-card.is-right {
-  width: clamp(112px, 12vw, 190px) !important;
-  aspect-ratio: auto !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  overflow: visible !important;
-}
-
-.hero-mini-card::before,
-.hero-mini-card::after {
-  display: none !important;
-  content: none !important;
-}
-
-.hero-mini-card img {
-  width: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
-  object-fit: contain !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  filter:
-    drop-shadow(0 30px 54px rgba(0, 0, 0, .46))
-    drop-shadow(0 8px 18px rgba(242, 180, 93, .10)) !important;
-}
-
-/* Reposicionamento sutil para os documentos menores ficarem como peças soltas */
-.hero-mini-card.is-left {
-  left: 2%;
-  bottom: 14%;
-  transform: rotate(-9deg) !important;
-}
-
-.hero-mini-card.is-right {
-  right: 4%;
-  top: 8%;
-  transform: rotate(9deg) !important;
-}
-
-/* Mantém o documento principal sem moldura */
+/* Remove qualquer palco/moldura grande do hero */
 .hero-visual-frame {
   display: none !important;
 }
 
+/* Documento principal solto */
 .hero-mockup,
 .hero-mockup.tilt-card {
   border: 0 !important;
@@ -1034,21 +987,102 @@
   box-shadow: none !important;
 }
 
+.hero-mockup img {
+  background: transparent !important;
+  filter:
+    drop-shadow(0 48px 90px rgba(0,0,0,.52))
+    drop-shadow(0 8px 22px rgba(242,180,93,.10)) !important;
+}
+
+/* Desativa totalmente o visual antigo caso ainda exista em cache */
+.hero-mini-card,
+.hero-mini-card.is-left,
+.hero-mini-card.is-right {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Nova classe sem caixa, sem borda, sem glass */
+.hero-floating-doc {
+  position: absolute;
+  z-index: 5;
+  display: block !important;
+  width: clamp(118px, 12vw, 190px);
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  overflow: visible !important;
+  appearance: none;
+  cursor: none;
+}
+
+.hero-floating-doc::before,
+.hero-floating-doc::after {
+  display: none !important;
+  content: none !important;
+}
+
+.hero-floating-doc img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  filter:
+    drop-shadow(0 28px 52px rgba(0,0,0,.48))
+    drop-shadow(0 7px 16px rgba(242,180,93,.10)) !important;
+}
+
+/* Posição dos documentos menores */
+.hero-floating-doc-left {
+  left: 6%;
+  bottom: 15%;
+  transform: rotate(-9deg);
+}
+
+.hero-floating-doc-right {
+  right: 6%;
+  top: 9%;
+  transform: rotate(9deg);
+}
+
+/* Se o JS de tilt adicionar transform inline, mantém o visual sem caixa.
+   A posição continua via top/left/right/bottom. */
+.hero-floating-doc.tilt-card {
+  background: transparent !important;
+}
+
 /* Mobile */
 @media (max-width: 720px) {
-  .hero-mini-card,
-  .hero-mini-card.is-left,
-  .hero-mini-card.is-right {
-    width: 92px !important;
+  .hero-floating-doc {
+    width: 88px;
+    cursor: pointer;
   }
 
-  .hero-mini-card.is-left {
-    left: 0;
+  .hero-floating-doc-left {
+    left: 1%;
     bottom: 8%;
   }
 
-  .hero-mini-card.is-right {
-    right: 0;
-    top: 4%;
+  .hero-floating-doc-right {
+    right: 1%;
+    top: 5%;
   }
 }
