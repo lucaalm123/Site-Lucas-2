@@ -113,3 +113,8 @@ A V2 corrige isso:
 - animação só ativa quando o JavaScript carrega;
 - se o JS falhar, o site continua visível;
 - foi adicionado `CHECK_IMAGENS.html` para testar as imagens diretamente.
+
+
+## V4 Motion OK
+
+Esta versão corrige o pipeline de animações. Use `CHECK_ANIMACOES.html` para verificar JS, reveal, mask reveal, cursor, hover 3D e parallax.

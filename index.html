@@ -7,6 +7,19 @@
     <meta name="description" content="Visual Law, Legal Design e design da informação jurídica para documentos, apresentações e materiais jurídicos.">
     <meta name="theme-color" content="#070707">
 
+    <script>
+      (function () {
+        document.documentElement.classList.remove("no-js");
+        document.documentElement.classList.add("js-enabled");
+        window.__motionWatchdog = window.setTimeout(function () {
+          if (!document.documentElement.classList.contains("motion-ok")) {
+            document.documentElement.classList.add("motion-failed");
+            console.error("[Visual Law Studio] Motion não inicializou. Verifique assets/js/effects.js e o console do navegador.");
+          }
+        }, 4500);
+      })();
+    </script>
+
     <meta property="og:title" content="Lucas Coimbra — Visual Law Studio">
     <meta property="og:description" content="Direito com mais clareza visual.">
     <meta property="og:type" content="website">
