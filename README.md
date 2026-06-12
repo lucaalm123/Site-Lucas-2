@@ -100,3 +100,16 @@ Troque `SEU_ID_AQUI` pelo ID real do Formspree.
 Basta abrir o `index.html` no navegador.
 
 Para testar de forma mais próxima ao GitHub Pages, use uma extensão como Live Server no VS Code.
+
+
+## Correção V2 — imagens invisíveis
+
+A V1 escondia elementos `.mask-reveal`, `.reveal` e `.split-lines` por padrão, esperando o JavaScript ativar a animação.
+
+Se algum arquivo JS não carregasse no GitHub Pages, as imagens existiam no caminho certo, mas ficavam invisíveis.
+
+A V2 corrige isso:
+- elementos ficam visíveis por padrão;
+- animação só ativa quando o JavaScript carrega;
+- se o JS falhar, o site continua visível;
+- foi adicionado `CHECK_IMAGENS.html` para testar as imagens diretamente.

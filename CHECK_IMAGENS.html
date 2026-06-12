@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teste de imagens — Visual Law Studio</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 32px;
+      background: #070707;
+      color: #f6efe4;
+      font-family: Arial, sans-serif;
+    }
+    h1 { margin-top: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.05);
+    }
+    img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background: rgba(255,255,255,.06);
+      border-radius: 14px;
+    }
+    code {
+      display: block;
+      margin-top: 12px;
+      color: #f2b45d;
+      word-break: break-all;
+    }
+    .ok { color: #7ee787; font-weight: 700; }
+    .erro { color: #ff7b72; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h1>Teste de imagens do portfólio</h1>
+  <p>Se as imagens aparecem aqui, o caminho está correto. Se não aparecem no site principal, o problema era CSS/JS escondendo os elementos.</p>
+
+  <div class="grid">
+    <div class="card"><img src="assets/portfolio/contratos.png" alt="contratos"><code>assets/portfolio/contratos.png</code><p class="status">Testando...</p></div>
+    <div class="card"><img src="assets/portfolio/impugnacao.png" alt="impugnacao"><code>assets/portfolio/impugnacao.png</code><p class="status">Testando...</p></div>
+    <div class="card"><img src="assets/portfolio/obramax.png" alt="obramax"><code>assets/portfolio/obramax.png</code><p class="status">Testando...</p></div>
+    <div class="card"><img src="assets/portfolio/procon.png" alt="procon"><code>assets/portfolio/procon.png</code><p class="status">Testando...</p></div>
+    <div class="card"><img src="assets/portfolio/ticket.png" alt="ticket"><code>assets/portfolio/ticket.png</code><p class="status">Testando...</p></div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".card").forEach((card) => {
+      const img = card.querySelector("img");
+      const status = card.querySelector(".status");
+      if (img.complete && img.naturalWidth > 0) {
+        status.textContent = "OK — imagem carregada";
+        status.className = "status ok";
+      }
+      img.addEventListener("load", () => {
+        status.textContent = "OK — imagem carregada";
+        status.className = "status ok";
+      });
+      img.addEventListener("error", () => {
+        status.textContent = "ERRO — caminho ou arquivo não encontrado";
+        status.className = "status erro";
+      });
+    });
+  </script>
+</body>
+</html>
