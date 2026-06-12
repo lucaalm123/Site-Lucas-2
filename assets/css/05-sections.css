@@ -968,18 +968,47 @@
 }
 
 
-/* ===================== V9 PATCH DEFINITIVO — SEM QUADRADOS NOS DOCUMENTOS MENORES =====================
-   Esta correção muda a classe dos mockups menores no HTML:
-   de .hero-mini-card para .hero-floating-doc.
-   Assim, eles deixam de herdar as regras antigas de card/glass.
-===================================================================================================== */
+/* ===================== V10 DRAW-INSPIRED STRATEGIC UPDATE =====================
+   Inspiração conceitual: site Draw the Law.
+   Sem cópia visual direta. A melhoria é de arquitetura, narrativa e clareza:
+   Atuação → Estratégia → Entregas → Cases → Contato.
+============================================================================= */
 
-/* Remove qualquer palco/moldura grande do hero */
+/* Header mais institucional, menos portfólio pessoal */
+.header-nav {
+  gap: clamp(18px, 2.6vw, 36px);
+}
+
+.header-nav a {
+  color: rgba(246,239,228,.76);
+}
+
+/* Hero mais estratégico */
+.hero {
+  min-height: 100svh;
+  padding-top: 116px;
+}
+
+.hero-copy {
+  max-width: 760px;
+}
+
+.hero-copy .display-title {
+  margin-top: 22px;
+  margin-bottom: 28px;
+}
+
+.hero-copy .lead {
+  max-width: 720px;
+  font-size: clamp(18px, 1.42vw, 24px);
+  color: rgba(246,239,228,.80);
+}
+
+/* Hero: sem quadrados no documento principal e nos menores */
 .hero-visual-frame {
   display: none !important;
 }
 
-/* Documento principal solto */
 .hero-mockup,
 .hero-mockup.tilt-card {
   border: 0 !important;
@@ -990,22 +1019,11 @@
 .hero-mockup img {
   background: transparent !important;
   filter:
-    drop-shadow(0 48px 90px rgba(0,0,0,.52))
+    drop-shadow(0 48px 92px rgba(0,0,0,.54))
     drop-shadow(0 8px 22px rgba(242,180,93,.10)) !important;
 }
 
-/* Desativa totalmente o visual antigo caso ainda exista em cache */
-.hero-mini-card,
-.hero-mini-card.is-left,
-.hero-mini-card.is-right {
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-}
-
-/* Nova classe sem caixa, sem borda, sem glass */
+/* Nova classe dos documentos menores */
 .hero-floating-doc {
   position: absolute;
   z-index: 5;
@@ -1050,7 +1068,6 @@
     drop-shadow(0 7px 16px rgba(242,180,93,.10)) !important;
 }
 
-/* Posição dos documentos menores */
 .hero-floating-doc-left {
   left: 6%;
   bottom: 15%;
@@ -1063,10 +1080,111 @@
   transform: rotate(9deg);
 }
 
-/* Se o JS de tilt adicionar transform inline, mantém o visual sem caixa.
-   A posição continua via top/left/right/bottom. */
-.hero-floating-doc.tilt-card {
-  background: transparent !important;
+/* Atuação: seção editorial inspirada em comunicação estratégica */
+.manifesto {
+  min-height: 82svh;
+  display: grid;
+  align-items: center;
+  background:
+    radial-gradient(circle at 80% 12%, rgba(242,180,93,.12), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,.026), rgba(255,255,255,.010));
+}
+
+.manifesto .container {
+  display: grid;
+  gap: clamp(28px, 5vw, 58px);
+}
+
+.manifesto-copy {
+  max-width: 920px;
+  margin: 0;
+  color: rgba(246,239,228,.76);
+  font-size: clamp(20px, 2.2vw, 34px);
+  line-height: 1.36;
+  letter-spacing: -0.03em;
+}
+
+/* Entregas: mantém impacto, mas com mais sofisticação e menos cara de “galeria solta” */
+.work-wall {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(242,180,93,.18), transparent 34%),
+    linear-gradient(180deg, #f4e7ce 0%, #ead9b9 100%);
+}
+
+.work-wall .section-title {
+  max-width: 1180px;
+}
+
+.work-tile {
+  background:
+    radial-gradient(circle at 52% 42%, rgba(255,255,255,.45), transparent 42%),
+    linear-gradient(135deg, rgba(255,255,255,.22), rgba(255,255,255,.05)) !important;
+}
+
+/* Estratégia */
+.process {
+  background:
+    radial-gradient(circle at 18% 12%, rgba(231,32,78,.10), transparent 34%),
+    rgba(255,255,255,.018);
+}
+
+.process-card {
+  min-height: 360px;
+}
+
+.process-card h3 {
+  margin-top: 72px;
+}
+
+/* Produto/serviços com linguagem de oferta clara */
+.services-layout {
+  align-items: start;
+}
+
+.service-item h3 {
+  max-width: 940px;
+}
+
+/* Cases mais estratégicos */
+.case-row {
+  min-height: 82svh;
+}
+
+.case-category {
+  color: rgba(246,239,228,.48);
+}
+
+.case-content .body-copy {
+  color: rgba(246,239,228,.76);
+}
+
+/* Contato: mais parecido com briefing estratégico, legível e sério */
+.contact {
+  background:
+    radial-gradient(circle at 16% 12%, rgba(231,32,78,.13), transparent 32%),
+    radial-gradient(circle at 86% 82%, rgba(242,180,93,.11), transparent 34%),
+    #090808;
+}
+
+.contact-form {
+  padding: clamp(24px, 3.6vw, 46px);
+  border: 1px solid rgba(246,239,228,.18);
+  border-radius: 30px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.082), rgba(255,255,255,.028)),
+    rgba(7,7,7,.60) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 34px 100px rgba(0,0,0,.38);
+}
+
+/* Garantir que blocos animados não sumam intercalados */
+.motion-ok .reveal,
+.motion-ok .mask-reveal,
+.motion-ok .text-reveal,
+.motion-ok .split-lines,
+.motion-ok .split-lines > span {
+  visibility: visible;
 }
 
 /* Mobile */
@@ -1084,5 +1202,13 @@
   .hero-floating-doc-right {
     right: 1%;
     top: 5%;
+  }
+
+  .manifesto {
+    min-height: auto;
+  }
+
+  .manifesto-copy {
+    font-size: 20px;
   }
 }
