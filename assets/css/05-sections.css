@@ -966,3 +966,89 @@
     border-radius: 22px;
   }
 }
+
+
+/* ===================== V8 PATCH — REMOVER QUADRADOS DOS MOCKUPS MENORES =====================
+   Objetivo:
+   - remover as caixas/molduras em volta dos documentos menores do Hero;
+   - deixar apenas as folhas/mockups soltos, com sombra;
+   - preservar clique, hover, animações e cursor "VER CASE".
+========================================================================================== */
+
+.hero-mini-card,
+.hero-mini-card.is-left,
+.hero-mini-card.is-right {
+  width: clamp(112px, 12vw, 190px) !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  overflow: visible !important;
+}
+
+.hero-mini-card::before,
+.hero-mini-card::after {
+  display: none !important;
+  content: none !important;
+}
+
+.hero-mini-card img {
+  width: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter:
+    drop-shadow(0 30px 54px rgba(0, 0, 0, .46))
+    drop-shadow(0 8px 18px rgba(242, 180, 93, .10)) !important;
+}
+
+/* Reposicionamento sutil para os documentos menores ficarem como peças soltas */
+.hero-mini-card.is-left {
+  left: 2%;
+  bottom: 14%;
+  transform: rotate(-9deg) !important;
+}
+
+.hero-mini-card.is-right {
+  right: 4%;
+  top: 8%;
+  transform: rotate(9deg) !important;
+}
+
+/* Mantém o documento principal sem moldura */
+.hero-visual-frame {
+  display: none !important;
+}
+
+.hero-mockup,
+.hero-mockup.tilt-card {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .hero-mini-card,
+  .hero-mini-card.is-left,
+  .hero-mini-card.is-right {
+    width: 92px !important;
+  }
+
+  .hero-mini-card.is-left {
+    left: 0;
+    bottom: 8%;
+  }
+
+  .hero-mini-card.is-right {
+    right: 0;
+    top: 4%;
+  }
+}
