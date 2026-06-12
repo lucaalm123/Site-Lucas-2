@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lucas Coimbra — Visual Law Studio</title>
+    <meta name="description" content="Visual Law, Legal Design e design da informação jurídica para documentos, apresentações e materiais jurídicos.">
+    <meta name="theme-color" content="#070707">
+
+    <meta property="og:title" content="Lucas Coimbra — Visual Law Studio">
+    <meta property="og:description" content="Direito com mais clareza visual.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="assets/css/01-tokens.css">
+    <link rel="stylesheet" href="assets/css/02-base.css">
+    <link rel="stylesheet" href="assets/css/03-layout.css">
+    <link rel="stylesheet" href="assets/css/04-components.css">
+    <link rel="stylesheet" href="assets/css/05-sections.css">
+    <link rel="stylesheet" href="assets/css/06-effects.css">
+    <link rel="stylesheet" href="assets/css/07-responsive.css">
+  </head>
+
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <div class="site-shell">
+      <div class="site-grid" aria-hidden="true"></div>
+      <div class="site-spotlight" aria-hidden="true"></div>
+      <div class="site-noise" aria-hidden="true"></div>
+      <div class="cursor-label requires-js" aria-hidden="true">Ver case</div>
+
+      <header class="site-header" aria-label="Cabeçalho">
+        <a class="brand" href="#inicio" aria-label="Voltar ao início">
+          <strong>@LucasCoimbra/™</strong>
+          <span>Visual Law Studio</span>
+        </a>
+
+        <nav class="header-nav" aria-label="Navegação principal">
+          <a href="#trabalhos">Trabalhos</a>
+          <a href="#cases">Cases</a>
+          <a href="#processo">Processo</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
+          <span class="menu-toggle-text">Menu</span>
+          <span class="menu-toggle-line" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <aside class="full-menu" id="menu" aria-hidden="true" aria-label="Menu principal">
+        <div class="menu-head">
+          <a class="brand" href="#inicio">
+            <strong>@LucasCoimbra/™</strong>
+            <span>Visual Law Studio</span>
+          </a>
+          <button class="menu-close" type="button">Fechar</button>
+        </div>
+
+        <div class="menu-panel">
+          <nav class="menu-list" aria-label="Links do menu">
+            <a class="menu-link" href="#inicio" style="--delay: 0ms"><span>01</span>Início</a>
+            <a class="menu-link" href="#trabalhos" style="--delay: 70ms"><span>02</span>Trabalhos</a>
+            <a class="menu-link" href="#cases" style="--delay: 140ms"><span>03</span>Cases</a>
+            <a class="menu-link" href="#processo" style="--delay: 210ms"><span>04</span>Processo</a>
+            <a class="menu-link" href="#servicos" style="--delay: 280ms"><span>05</span>Serviços</a>
+            <a class="menu-link" href="#contato" style="--delay: 350ms"><span>06</span>Contato</a>
+          </nav>
+
+          <div class="menu-side glass-card border-gradient">
+            <p>Uma camada de direção visual para documentos jurídicos que precisam ser compreendidos, apresentados e lembrados.</p>
+            <ul class="pill-list" aria-label="Áreas de atuação">
+              <li>Visual Law</li>
+              <li>Legal Design</li>
+              <li>Contratos</li>
+              <li>Manuais</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <main id="conteudo">
+        <section class="hero" id="inicio">
+          <div class="hero-inner">
+            <div class="hero-copy">
+              <p class="eyebrow text-reveal">Visual Law Studio / São Paulo</p>
+
+              <h1 class="display-title split-lines">
+                <span>Direito</span>
+                <span>com mais</span>
+                <span><em class="serif-accent">clareza</em> visual.</span>
+              </h1>
+
+              <p class="lead text-reveal">
+                Crio documentos, apresentações e materiais jurídicos que ajudam pessoas a entender, decidir e agir com mais segurança.
+              </p>
+
+              <ul class="pill-list hero-tags text-reveal">
+                <li>Visual Law</li>
+                <li>Legal Design</li>
+                <li>Design da informação jurídica</li>
+              </ul>
+
+              <div class="btn-row hero-actions text-reveal">
+                <a class="btn btn-primary" href="#trabalhos">Ver trabalhos</a>
+                <a class="btn" href="#contato">Solicitar projeto</a>
+              </div>
+            </div>
+
+            <div class="hero-visual mask-reveal parallax" data-speed="0.04">
+              <div class="hero-visual-frame" aria-hidden="true"></div>
+
+              <button class="hero-mockup project-hover tilt-card" id="hero-main-case" data-action="drawer" data-case-id="contratos" type="button" aria-label="Abrir case principal">
+                <img id="hero-main-image" src="assets/portfolio/contratos.png" alt="Manual de contratos">
+              </button>
+
+              <button class="hero-mini-card is-left project-hover tilt-card" data-case-id="procon" data-action="drawer" type="button" aria-label="Abrir case Manual do Livro do Procon">
+                <img src="assets/portfolio/procon.png" alt="Manual do Livro do Procon">
+              </button>
+
+              <button class="hero-mini-card is-right project-hover tilt-card" data-case-id="ticket" data-action="drawer" type="button" aria-label="Abrir case Guia visual de privacidade">
+                <img src="assets/portfolio/ticket.png" alt="Guia visual de privacidade">
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-marquee" aria-hidden="true">
+            <span>Problema jurídico → Transformação → Visual Law → Resultado → </span>
+            <span>Problema jurídico → Transformação → Visual Law → Resultado → </span>
+          </div>
+        </section>
+
+        <section class="section manifesto" id="manifesto">
+          <div class="container">
+            <p class="eyebrow text-reveal">Manifesto</p>
+            <h2 class="section-title split-lines">
+              <span>O documento jurídico</span>
+              <span>não precisa parecer difícil</span>
+              <span>para ser levado a sério.</span>
+            </h2>
+          </div>
+        </section>
+
+        <section class="section work-wall" id="trabalhos">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow text-reveal">Trabalhos</p>
+              <h2 class="section-title split-lines">
+                <span>Projetos reais</span>
+                <span>como campanhas visuais.</span>
+              </h2>
+            </div>
+
+            <div class="work-viewport mask-reveal" aria-label="Galeria de trabalhos">
+              <div class="work-row is-forward" id="work-row-a"></div>
+              <div class="work-row is-reverse" id="work-row-b"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section cases" id="cases">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow text-reveal">Cases</p>
+              <h2 class="section-title split-lines">
+                <span>O valor está no raciocínio</span>
+                <span>por trás da peça.</span>
+              </h2>
+            </div>
+
+            <div class="cases-list" id="cases-list"></div>
+          </div>
+        </section>
+
+        <section class="section process" id="processo">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow text-reveal">Processo</p>
+              <h2 class="section-title split-lines">
+                <span>Do problema jurídico</span>
+                <span>ao material que orienta ação.</span>
+              </h2>
+            </div>
+
+            <div class="process-grid" id="process-grid"></div>
+          </div>
+        </section>
+
+        <section class="section services" id="servicos">
+          <div class="container services-layout">
+            <div class="services-intro">
+              <p class="eyebrow text-reveal">Serviços</p>
+              <h2 class="section-title split-lines">
+                <span>Design jurídico</span>
+                <span>com função e presença.</span>
+              </h2>
+              <p class="body-copy text-reveal">
+                A entrega combina rigor jurídico, arquitetura da informação e direção visual para tornar materiais complexos mais úteis.
+              </p>
+            </div>
+
+            <div class="service-list" id="service-list"></div>
+          </div>
+        </section>
+
+        <section class="section contact divider-top" id="contato">
+          <div class="container contact-layout">
+            <div class="contact-copy">
+              <p class="eyebrow text-reveal">Contato</p>
+              <h2 class="section-title split-lines">
+                <span>Vamos redesenhar</span>
+                <span>seu próximo documento?</span>
+              </h2>
+              <p class="body-copy text-reveal">
+                Envie o tipo de material, objetivo e contexto. A partir disso, o projeto pode virar guia visual, manual, peça, apresentação ou política redesenhada.
+              </p>
+            </div>
+
+            <form class="contact-form glass-card border-gradient mask-reveal" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+              <input type="hidden" name="_subject" value="Novo contato pelo site Lucas Coimbra">
+
+              <label>
+                Nome
+                <input name="nome" type="text" placeholder="Seu nome" required>
+              </label>
+
+              <label>
+                E-mail
+                <input name="email" type="email" placeholder="seuemail@exemplo.com" required>
+              </label>
+
+              <label>
+                Empresa ou escritório
+                <input name="empresa" type="text" placeholder="Nome da empresa ou escritório">
+              </label>
+
+              <label>
+                Tipo de projeto
+                <select name="tipo" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="Visual Law">Visual Law</option>
+                  <option value="Legal Design">Legal Design</option>
+                  <option value="Redesign de documento jurídico">Redesign de documento jurídico</option>
+                  <option value="Apresentação institucional">Apresentação institucional</option>
+                  <option value="Material explicativo">Material explicativo</option>
+                </select>
+              </label>
+
+              <label>
+                Mensagem
+                <textarea name="mensagem" placeholder="Conte brevemente sobre o documento ou projeto..." required></textarea>
+              </label>
+
+              <button class="btn btn-primary" type="submit">Enviar mensagem</button>
+              <p class="form-note">Troque o endpoint do Formspree no atributo <strong>action</strong> do formulário.</p>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Lucas Coimbra © <span id="current-year"></span></p>
+        <p>Visual Law / Legal Design / Comunicação jurídica visual</p>
+      </footer>
+
+      <aside class="case-drawer" id="case-drawer" aria-hidden="true" aria-label="Detalhes do case">
+        <button class="overlay-backdrop" type="button" aria-label="Fechar detalhes"></button>
+        <section class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+          <button class="drawer-close" type="button">Fechar</button>
+
+          <div class="drawer-media">
+            <img id="drawer-image" src="assets/portfolio/contratos.png" alt="">
+          </div>
+
+          <div class="drawer-content">
+            <p class="eyebrow" id="drawer-eyebrow">Case</p>
+            <h2 id="drawer-title">Título do case</h2>
+            <p class="drawer-doc" id="drawer-doc"></p>
+
+            <div class="drawer-block">
+              <span>Problema jurídico</span>
+              <p id="drawer-problem"></p>
+            </div>
+
+            <div class="drawer-block">
+              <span>Solução aplicada</span>
+              <p id="drawer-solution"></p>
+            </div>
+
+            <div class="drawer-block">
+              <span>Recursos usados</span>
+              <ul class="pill-list" id="drawer-resources"></ul>
+            </div>
+
+            <div class="drawer-block">
+              <span>Resultado</span>
+              <p id="drawer-result"></p>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <aside class="lightbox" id="lightbox" aria-hidden="true" aria-label="Imagem ampliada">
+        <button class="overlay-backdrop" type="button" aria-label="Fechar imagem"></button>
+        <figure class="lightbox-figure">
+          <button class="lightbox-close" type="button">Fechar</button>
+          <img id="lightbox-image" src="assets/portfolio/contratos.png" alt="">
+          <figcaption id="lightbox-caption">Imagem ampliada</figcaption>
+        </figure>
+      </aside>
+    </div>
+
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/menu.js" defer></script>
+    <script src="assets/js/cases.js" defer></script>
+    <script src="assets/js/effects.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+  </body>
+</html>
