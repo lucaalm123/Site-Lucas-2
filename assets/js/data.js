@@ -75,17 +75,17 @@ window.SITE_DATA = {
   ],
 
   services: [
-    ["01", "Visual Law", "Peças visuais para explicar teses, políticas, contratos e temas complexos."],
-    ["02", "Legal Design", "Documentos e jornadas jurídicas com linguagem mais clara e leitura mais intuitiva."],
-    ["03", "Redesign de documentos", "Contratos, políticas, guias, manuais e peças com hierarquia e ritmo."],
-    ["04", "Apresentações institucionais", "Decks para escritórios, legal ops, projetos internos e comunicação com clientes."],
-    ["05", "Materiais explicativos", "Conteúdos jurídicos para equipes, consumidores, treinamentos e circulação institucional."]
+    ["01", "Visual Law", "Peças visuais para teses, políticas, contratos e documentos complexos."],
+    ["02", "Legal Design", "Jornadas, documentos e fluxos jurídicos com mais clareza, ordem e usabilidade."],
+    ["03", "Redesign de documentos", "Contratos, manuais, guias, políticas e peças reorganizadas para leitura rápida."],
+    ["04", "Apresentações estratégicas", "Decks para casos, projetos internos, comitês, clientes e comunicação institucional."],
+    ["05", "Materiais explicativos", "Conteúdos jurídicos para equipes, consumidores, treinamentos e tomada de decisão."]
   ],
 
   process: [
-    ["01", "Problema jurídico", "Identifico ruídos de leitura, público, contexto e objetivo do material."],
-    ["02", "Transformação", "Organizo informação em narrativa, módulos, prioridades e etapas de decisão."],
-    ["03", "Visual Law", "Aplico hierarquia, contraste, grid, recursos visuais e linguagem mais simples."],
-    ["04", "Resultado", "Entrego uma peça pronta para circular, orientar e apoiar decisões."]
+    ["01", "Leitura jurídica", "Entendo o mérito, o público, o risco, o contexto e o objetivo da comunicação."],
+    ["02", "Arquitetura narrativa", "Transformo o conteúdo em estrutura: tese central, blocos, sequência e prioridade."],
+    ["03", "Design da informação", "Aplico hierarquia, contraste, grid, ícones, fluxos e visualização de dados quando necessário."],
+    ["04", "Entrega estratégica", "O resultado é um material claro, visualmente consistente e pronto para apoiar decisão."]
   ]
 };
