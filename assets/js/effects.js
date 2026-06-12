@@ -175,6 +175,28 @@
     update();
   }
 
+
+  function forceRevealAll() {
+    $$(".reveal, .text-reveal, .mask-reveal, .split-lines").forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
+  function initFailsafeReveal() {
+    /*
+      Failsafe importante:
+      se algum IntersectionObserver ou timing falhar,
+      todos os blocos principais ficam visíveis após o load.
+    */
+    window.addEventListener("load", function () {
+      window.setTimeout(forceRevealAll, 320);
+    }, { once: true });
+
+    window.setTimeout(forceRevealAll, 1800);
+    window.setTimeout(forceRevealAll, 3200);
+  }
+
+
   function initMotionDebugFlag() {
     document.documentElement.setAttribute("data-motion", "ok");
 
@@ -188,6 +210,7 @@
     initSpotlight();
     initCursor();
     initReveal();
+    initFailsafeReveal();
     initTilt();
     initParallax();
     initMotionDebugFlag();
