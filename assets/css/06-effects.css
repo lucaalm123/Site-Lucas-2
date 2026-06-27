@@ -1,96 +1,67 @@
-/* 06-effects.css — motion and interactions */
-
-/*
-  V4 MOTION OK
-  O site agora usa uma arquitetura correta:
-  1. JavaScript inicial no <head> adiciona .js-enabled antes do CSS.
-  2. Elementos animáveis começam escondidos SOMENTE quando .js-enabled existe.
-  3. effects.js observa os elementos e adiciona .is-visible.
-  4. Quando tudo inicializa, <html> recebe .motion-ok.
-  5. Se algo falhar, o watchdog adiciona .motion-failed e revela o conteúdo para diagnóstico.
-*/
-
-.reveal,
-.mask-reveal,
-.text-reveal,
-.split-lines,
-.split-lines > span {
-  visibility: visible;
+/* Content remains visible without JS. JS enhances with motion. */
+.js-ready:not(.motion-failed) .motion:not(.inview) {
+  opacity: 0;
+  transform: translateY(32px);
+  filter: blur(10px);
 }
 
-.split-lines {
+.js-ready:not(.motion-failed) .motion-mask:not(.inview) {
+  opacity: 0;
+  clip-path: inset(0 0 100% 0 round 28px);
+  transform: translateY(34px);
+  filter: blur(10px);
+}
+
+.js-ready:not(.motion-failed) .split:not(.inview) > span {
+  opacity: 0;
+  transform: translateY(110%);
+  filter: blur(10px);
+}
+
+.split {
   overflow: hidden;
 }
 
-.split-lines > span {
+.split > span {
   display: block;
 }
 
-/* Estados iniciais: só existem quando JS foi detectado */
-.js-enabled:not(.motion-failed) .reveal:not(.is-visible),
-.js-enabled:not(.motion-failed) .text-reveal:not(.is-visible),
-.js-enabled:not(.motion-failed) .mask-reveal:not(.is-visible) {
-  opacity: 0;
-  filter: blur(12px);
-  transform: translateY(34px);
-}
-
-.js-enabled:not(.motion-failed) .mask-reveal:not(.is-visible) {
-  clip-path: inset(0 0 100% 0 round 24px);
-}
-
-.js-enabled:not(.motion-failed) .split-lines:not(.is-visible) > span {
-  opacity: 0;
-  filter: blur(10px);
-  transform: translateY(110%);
-}
-
-/* Estados visíveis com animação */
-.js-enabled .reveal.is-visible {
+.motion.inview,
+.motion-mask.inview {
   opacity: 1;
-  filter: blur(0);
   transform: translateY(0);
+  filter: blur(0);
   transition:
-    opacity 780ms var(--ease-premium),
-    filter 780ms var(--ease-premium),
-    transform 780ms var(--ease-premium);
+    opacity 760ms var(--ease),
+    transform 760ms var(--ease),
+    filter 760ms var(--ease),
+    clip-path 900ms var(--ease);
 }
 
-.js-enabled .text-reveal.is-visible {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-  transition:
-    opacity 720ms var(--ease-premium),
-    filter 720ms var(--ease-premium),
-    transform 720ms var(--ease-premium);
+.motion-mask.inview {
+  clip-path: inset(0 0 0 0 round 28px);
 }
 
-.js-enabled .mask-reveal.is-visible {
+.split.inview > span {
   opacity: 1;
-  filter: blur(0);
   transform: translateY(0);
-  clip-path: inset(0 0 0 0 round 24px);
-  transition:
-    opacity 880ms var(--ease-premium),
-    filter 880ms var(--ease-premium),
-    transform 880ms var(--ease-premium),
-    clip-path 980ms var(--ease-premium);
-}
-
-.js-enabled .split-lines.is-visible > span {
-  opacity: 1;
   filter: blur(0);
-  transform: translateY(0);
   transition:
-    opacity 820ms var(--ease-premium),
-    filter 820ms var(--ease-premium),
-    transform 820ms var(--ease-premium);
+    opacity 820ms var(--ease),
+    transform 820ms var(--ease),
+    filter 820ms var(--ease);
   transition-delay: calc(var(--i, 0) * 86ms);
 }
 
-/* Elementos interativos */
-.tilt-card {
+.float-slow {
+  animation: doc-float 5.8s var(--ease-soft) infinite alternate;
+}
+
+.float-slow.delay {
+  animation-delay: -2.2s;
+}
+
+.tilt {
   transform-style: preserve-3d;
   will-change: transform;
 }
@@ -99,55 +70,25 @@
   will-change: translate;
 }
 
-.project-hover {
+.case-hover {
   cursor: none;
 }
 
-/* Classe usada pelo CHECK_ANIMACOES.html */
-.motion-debug-card {
-  transition:
-    transform 420ms var(--ease-premium),
-    border-color 420ms var(--ease-premium),
-    background 420ms var(--ease-premium);
-}
-
-.motion-debug-card:hover {
-  transform: translateY(-8px) rotate(-1deg);
-  border-color: var(--color-gold);
-  background: var(--surface-glass-strong);
-}
-
-@keyframes marquee {
+@keyframes doc-float {
   to {
-    transform: translateX(-100%);
+    translate: 0 -16px;
   }
 }
 
-@keyframes wall-forward {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes wall-reverse {
-  from {
-    transform: translateX(-50%);
-  }
-
-  to {
-    transform: translateX(0);
-  }
-}
-
-/* Falha de motion: revela conteúdo e registra erro no console */
-.motion-failed .reveal,
-.motion-failed .mask-reveal,
-.motion-failed .text-reveal,
-.motion-failed .split-lines > span {
+.motion-failed .motion,
+.motion-failed .motion-mask,
+.motion-failed .split > span,
+.no-js .motion,
+.no-js .motion-mask,
+.no-js .split > span {
   opacity: 1 !important;
-  visibility: visible !important;
-  filter: none !important;
   transform: none !important;
+  filter: none !important;
   clip-path: none !important;
 }
 
@@ -155,28 +96,26 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.001ms !important;
+    animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+    transition-duration: .001ms !important;
     scroll-behavior: auto !important;
   }
 
-  .cursor-label {
+  .cursor {
     display: none;
   }
 
-  .project-hover {
+  .case-hover {
     cursor: pointer;
   }
 
-  .reveal,
-  .mask-reveal,
-  .text-reveal,
-  .split-lines > span {
+  .motion,
+  .motion-mask,
+  .split > span {
     opacity: 1 !important;
-    visibility: visible !important;
-    filter: none !important;
     transform: none !important;
+    filter: none !important;
     clip-path: none !important;
   }
 }
