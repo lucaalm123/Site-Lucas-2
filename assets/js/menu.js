@@ -1,5 +1,3 @@
-/* menu.js — fullscreen menu */
-
 (function () {
   function initMenu() {
     var body = document.body;
@@ -12,18 +10,17 @@
 
     function openMenu() {
       menu.classList.add("is-open");
-      toggle.setAttribute("aria-expanded", "true");
       menu.setAttribute("aria-hidden", "false");
+      toggle.setAttribute("aria-expanded", "true");
       body.classList.add("is-locked");
       close.focus({ preventScroll: true });
     }
 
     function closeMenu() {
       menu.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
       menu.setAttribute("aria-hidden", "true");
+      toggle.setAttribute("aria-expanded", "false");
       body.classList.remove("is-locked");
-      toggle.focus({ preventScroll: true });
     }
 
     toggle.addEventListener("click", function () {
