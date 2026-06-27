@@ -4,32 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lucas Coimbra — Visual Law Studio</title>
-    <meta name="description" content="Visual Law, Legal Design e design da informação jurídica para documentos, apresentações e materiais jurídicos.">
-    <meta name="theme-color" content="#070707">
+    <meta name="description" content="Visual Law, Legal Design e clareza visual para decisões jurídicas complexas.">
+    <meta name="theme-color" content="#070606">
 
     <script>
       (function () {
         document.documentElement.classList.remove("no-js");
-        document.documentElement.classList.add("js-enabled");
+        document.documentElement.classList.add("js-ready");
         window.__motionWatchdog = window.setTimeout(function () {
           if (!document.documentElement.classList.contains("motion-ok")) {
             document.documentElement.classList.add("motion-failed");
-            console.error("[Visual Law Studio] Motion não inicializou. Verifique assets/js/effects.js e o console do navegador.");
+            console.error("[Visual Law Studio] Motion não inicializou. Conteúdo revelado por segurança.");
           }
-        }, 4500);
+        }, 4200);
       })();
     </script>
 
     <meta property="og:title" content="Lucas Coimbra — Visual Law Studio">
-    <meta property="og:description" content="Direito com mais clareza visual.">
+    <meta property="og:description" content="Clareza visual para decisões jurídicas complexas.">
     <meta property="og:type" content="website">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/01-tokens.css">
     <link rel="stylesheet" href="assets/css/02-base.css">
@@ -43,12 +40,13 @@
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-    <div class="site-shell">
-      <div class="site-grid" aria-hidden="true"></div>
-      <div class="site-spotlight" aria-hidden="true"></div>
-      <div class="site-noise" aria-hidden="true"></div>
-      <div class="cursor-label requires-js" aria-hidden="true">Ver case</div>
+    <canvas class="ambient-canvas" id="ambient-canvas" aria-hidden="true"></canvas>
+    <div class="site-grid" aria-hidden="true"></div>
+    <div class="site-spotlight" aria-hidden="true"></div>
+    <div class="site-noise" aria-hidden="true"></div>
+    <div class="cursor" aria-hidden="true">Ver case</div>
 
+    <div class="site-shell">
       <header class="site-header" aria-label="Cabeçalho">
         <a class="brand" href="#inicio" aria-label="Voltar ao início">
           <strong>@LucasCoimbra/™</strong>
@@ -60,6 +58,7 @@
           <a href="#metodo">Método</a>
           <a href="#entregas">Entregas</a>
           <a href="#cases">Cases</a>
+          <a href="#impacto">Impacto</a>
           <a href="#contato">Contato</a>
         </nav>
 
@@ -80,21 +79,21 @@
 
         <div class="menu-panel">
           <nav class="menu-list" aria-label="Links do menu">
-            <a class="menu-link" href="#inicio" style="--delay: 0ms"><span>01</span>Início</a>
-            <a class="menu-link" href="#atuacao" style="--delay: 70ms"><span>02</span>Atuação</a>
-            <a class="menu-link" href="#metodo" style="--delay: 140ms"><span>03</span>Método</a>
-            <a class="menu-link" href="#entregas" style="--delay: 210ms"><span>04</span>Entregas</a>
-            <a class="menu-link" href="#cases" style="--delay: 280ms"><span>05</span>Cases</a>
-            <a class="menu-link" href="#contato" style="--delay: 350ms"><span>06</span>Contato</a>
+            <a class="menu-link" href="#inicio" style="--delay:0ms"><span>01</span>Início</a>
+            <a class="menu-link" href="#atuacao" style="--delay:70ms"><span>02</span>Atuação</a>
+            <a class="menu-link" href="#metodo" style="--delay:140ms"><span>03</span>Método</a>
+            <a class="menu-link" href="#entregas" style="--delay:210ms"><span>04</span>Entregas</a>
+            <a class="menu-link" href="#cases" style="--delay:280ms"><span>05</span>Cases</a>
+            <a class="menu-link" href="#contato" style="--delay:350ms"><span>06</span>Contato</a>
           </nav>
 
-          <div class="menu-side glass-card border-gradient">
+          <div class="menu-note glass gradient-line">
             <p>Visual Law e Legal Design para transformar informação jurídica densa em materiais claros, estratégicos e prontos para decisão.</p>
-            <ul class="pill-list" aria-label="Áreas de atuação">
+            <ul class="pills">
               <li>Visual Law</li>
               <li>Legal Design</li>
-              <li>Estratégia</li>
-              <li>Entregas visuais</li>
+              <li>Design da informação</li>
+              <li>Comunicação jurídica</li>
             </ul>
           </div>
         </div>
@@ -102,147 +101,369 @@
 
       <main id="conteudo">
         <section class="hero" id="inicio">
+          <div class="hero-orb one" aria-hidden="true"></div>
+          <div class="hero-orb two" aria-hidden="true"></div>
+          <div class="hero-orb three" aria-hidden="true"></div>
+
           <div class="hero-inner">
             <div class="hero-copy">
-              <p class="eyebrow text-reveal">Visual Law / Legal Design / São Paulo</p>
+              <p class="eyebrow motion">Visual Law / Legal Design / São Paulo</p>
 
-              <h1 class="display-title split-lines">
+              <h1 class="display split">
                 <span>Clareza visual</span>
                 <span>para decisões</span>
-                <span><em class="serif-accent">jurídicas</em> complexas.</span>
+                <span><em class="serif">jurídicas</em> complexas.</span>
               </h1>
 
-              <p class="lead text-reveal">
-                Transformo documentos, contratos, apresentações e materiais jurídicos em narrativas visuais claras, estruturadas e estratégicas — para que a informação certa chegue melhor a quem precisa decidir.
+              <p class="lead motion">
+                Transformo documentos, contratos, apresentações e materiais jurídicos densos em narrativas visuais claras, estratégicas e úteis.
               </p>
 
-              <ul class="pill-list hero-tags text-reveal">
+              <ul class="pills hero-tags motion">
                 <li>Visual Law</li>
                 <li>Legal Design</li>
                 <li>Estratégia visual</li>
               </ul>
 
-              <div class="btn-row hero-actions text-reveal">
+              <div class="btn-row hero-actions motion">
                 <a class="btn btn-primary" href="#cases">Ver cases</a>
                 <a class="btn" href="#contato">Enviar material</a>
               </div>
             </div>
 
-            <div class="hero-visual mask-reveal parallax" data-speed="0.04">
-              <div class="hero-visual-frame" aria-hidden="true"></div>
-
-              <button class="hero-mockup project-hover tilt-card" id="hero-main-case" data-action="drawer" data-case-id="contratos" type="button" aria-label="Abrir case principal">
-                <img id="hero-main-image" src="assets/portfolio/contratos.png" alt="Manual de contratos">
+            <div class="hero-visual motion-mask parallax" data-speed="0.035">
+              <button class="hero-doc-main case-hover tilt float-slow" data-case="contratos" data-action="drawer" type="button" aria-label="Abrir case Manual de contratos">
+                <img src="assets/portfolio/contratos.png" alt="Manual de contratos">
               </button>
 
-              <button class="hero-floating-doc hero-floating-doc-left project-hover tilt-card" data-case-id="procon" data-action="drawer" type="button" aria-label="Abrir case Manual do Livro do Procon">
+              <button class="hero-floating-doc left case-hover tilt float-slow delay" data-case="procon" data-action="drawer" type="button" aria-label="Abrir case Manual do Livro do Procon">
                 <img src="assets/portfolio/procon.png" alt="Manual do Livro do Procon">
               </button>
 
-              <button class="hero-floating-doc hero-floating-doc-right project-hover tilt-card" data-case-id="ticket" data-action="drawer" type="button" aria-label="Abrir case Guia visual de privacidade">
+              <button class="hero-floating-doc right case-hover tilt float-slow" data-case="ticket" data-action="drawer" type="button" aria-label="Abrir case Guia visual de privacidade">
                 <img src="assets/portfolio/ticket.png" alt="Guia visual de privacidade">
               </button>
+
+              <div class="hero-caption-card glass gradient-line motion">
+                <strong>Estratégia antes da estética</strong>
+                <p>O visual organiza a leitura, conduz raciocínio e ajuda a informação jurídica chegar melhor ao destinatário.</p>
+              </div>
             </div>
           </div>
 
           <div class="hero-marquee" aria-hidden="true">
-            <span>Problema jurídico → Transformação → Visual Law → Resultado → </span>
-            <span>Problema jurídico → Transformação → Visual Law → Resultado → </span>
+            <span>Diagnóstico jurídico → Arquitetura da informação → Tradução visual → Entrega estratégica → </span>
+            <span>Diagnóstico jurídico → Arquitetura da informação → Tradução visual → Entrega estratégica → </span>
           </div>
         </section>
 
-        <section class="section manifesto" id="atuacao">
+        <section class="section practice" id="atuacao">
           <div class="container">
-            <p class="eyebrow text-reveal">Atuação</p>
-            <h2 class="section-title split-lines">
+            <p class="eyebrow motion">Atuação</p>
+            <h2 class="h2 split">
               <span>Não é sobre enfeitar</span>
               <span>documentos. É sobre</span>
               <span>organizar entendimento.</span>
             </h2>
 
-            <p class="manifesto-copy text-reveal">
+            <p class="practice-copy motion">
               Atuo na intersecção entre Direito, design da informação e comunicação estratégica para reorganizar conteúdos densos em peças mais claras, úteis e compreensíveis — sem perder precisão técnica.
             </p>
+
+            <div class="practice-points">
+              <article class="practice-point glass gradient-line motion">
+                <span>01 / Clareza</span>
+                <p>Estruturo o conteúdo para que a mensagem essencial apareça antes do ruído.</p>
+              </article>
+              <article class="practice-point glass gradient-line motion">
+                <span>02 / Estratégia</span>
+                <p>O design parte do objetivo jurídico, do público e da decisão que o material precisa apoiar.</p>
+              </article>
+              <article class="practice-point glass gradient-line motion">
+                <span>03 / Precisão</span>
+                <p>A linguagem visual simplifica a leitura sem simplificar indevidamente o conteúdo técnico.</p>
+              </article>
+            </div>
           </div>
         </section>
 
-        <section class="section work-wall" id="entregas">
+        <section class="section method" id="metodo">
           <div class="container">
-            <div class="section-heading">
-              <p class="eyebrow text-reveal">Entregas</p>
-              <h2 class="section-title split-lines">
-                <span>Documentos jurídicos</span>
-                <span>mais claros, sem perder</span>
-                <span>profundidade técnica.</span>
+            <div class="section-head">
+              <p class="eyebrow motion">Método</p>
+              <h2 class="h2 split">
+                <span>Antes do visual,</span>
+                <span>vem a estratégia da informação.</span>
               </h2>
             </div>
 
-            <div class="work-viewport mask-reveal" aria-label="Galeria de trabalhos">
-              <div class="work-row is-forward" id="work-row-a"></div>
-              <div class="work-row is-reverse" id="work-row-b"></div>
+            <div class="method-grid">
+              <article class="method-card glass gradient-line motion">
+                <span>01</span>
+                <h3>Diagnóstico jurídico</h3>
+                <p>Leitura do material, objetivo, público, contexto de uso e pontos de fricção na compreensão.</p>
+              </article>
+              <article class="method-card glass gradient-line motion">
+                <span>02</span>
+                <h3>Arquitetura da informação</h3>
+                <p>Definição da tese central, mensagens-chave, hierarquia, sequência e nível de profundidade.</p>
+              </article>
+              <article class="method-card glass gradient-line motion">
+                <span>03</span>
+                <h3>Tradução visual</h3>
+                <p>Aplicação de layout, grid, contraste, fluxos, sínteses, ícones e recursos visuais com função.</p>
+              </article>
+              <article class="method-card glass gradient-line motion">
+                <span>04</span>
+                <h3>Entrega estratégica</h3>
+                <p>Material final pronto para apresentar, circular, treinar, explicar ou apoiar uma decisão.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section deliverables" id="entregas">
+          <div class="container">
+            <div class="section-head">
+              <p class="eyebrow motion">Entregas</p>
+              <h2 class="h2 split">
+                <span>Do documento</span>
+                <span>denso ao material</span>
+                <span>que orienta ação.</span>
+              </h2>
+            </div>
+
+            <div class="bleed">
+              <div class="deliverables-row motion-mask">
+              <article class="deliverable-card">
+                <span>01</span>
+                <h3>Visual Law</h3>
+                <p>Teses, políticas, contratos e documentos complexos transformados em materiais visuais claros.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>02</span>
+                <h3>Legal Design</h3>
+                <p>Documentos e jornadas jurídicas redesenhados com foco em compreensão, uso e destinatário.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>03</span>
+                <h3>Redesign de documentos</h3>
+                <p>Contratos, manuais, políticas e guias reestruturados para leitura mais objetiva.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>04</span>
+                <h3>Apresentações estratégicas</h3>
+                <p>Decks para casos, comitês, clientes, projetos internos e comunicação institucional.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>05</span>
+                <h3>Materiais explicativos</h3>
+                <p>Conteúdos jurídicos para equipes, consumidores, treinamentos e tomada de decisão.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>06</span>
+                <h3>Manuais e guias</h3>
+                <p>Materiais de consulta rápida para reduzir ruídos, retrabalho e dúvidas operacionais.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>01</span>
+                <h3>Visual Law</h3>
+                <p>Teses, políticas, contratos e documentos complexos transformados em materiais visuais claros.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>02</span>
+                <h3>Legal Design</h3>
+                <p>Documentos e jornadas jurídicas redesenhados com foco em compreensão, uso e destinatário.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>03</span>
+                <h3>Redesign de documentos</h3>
+                <p>Contratos, manuais, políticas e guias reestruturados para leitura mais objetiva.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>04</span>
+                <h3>Apresentações estratégicas</h3>
+                <p>Decks para casos, comitês, clientes, projetos internos e comunicação institucional.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>05</span>
+                <h3>Materiais explicativos</h3>
+                <p>Conteúdos jurídicos para equipes, consumidores, treinamentos e tomada de decisão.</p>
+              </article>
+              <article class="deliverable-card">
+                <span>06</span>
+                <h3>Manuais e guias</h3>
+                <p>Materiais de consulta rápida para reduzir ruídos, retrabalho e dúvidas operacionais.</p>
+              </article>
+              </div>
             </div>
           </div>
         </section>
 
         <section class="section cases" id="cases">
           <div class="container">
-            <div class="section-heading">
-              <p class="eyebrow text-reveal">Cases</p>
-              <h2 class="section-title split-lines">
+            <div class="section-head">
+              <p class="eyebrow motion">Cases</p>
+              <h2 class="h2 split">
                 <span>Forma, conteúdo</span>
                 <span>e estratégia trabalhando juntos.</span>
               </h2>
             </div>
 
-            <div class="cases-list" id="cases-list"></div>
+            <div class="cases-list">
+
+              <article class="case-row">
+                <button class="case-visual case-hover parallax motion-mask" data-speed="0.045" data-case="ticket" data-action="lightbox" type="button" aria-label="Ampliar Guia visual de privacidade">
+                  <img src="assets/portfolio/ticket.png" alt="Guia visual de privacidade">
+                </button>
+
+                <div class="case-text">
+                  <div class="case-meta motion">
+                    <span class="case-number">01</span>
+                    <span class="case-category">Visual Law / Privacidade</span>
+                  </div>
+                  <h3 class="h3 split"><span>Guia visual de privacidade</span></h3>
+                  <p class="copy motion">Informações de privacidade reorganizadas para leitura rápida, clara e mais próxima do usuário.</p>
+                  <div class="btn-row motion">
+                    <button class="btn btn-primary" data-case="ticket" data-action="drawer" type="button">Entender o projeto</button>
+                    <button class="btn" data-case="ticket" data-action="lightbox" type="button">Ampliar imagem</button>
+                  </div>
+                </div>
+              </article>
+
+
+              <article class="case-row">
+                <button class="case-visual case-hover parallax motion-mask" data-speed="0.045" data-case="obramax" data-action="lightbox" type="button" aria-label="Ampliar Governança de dados pessoais">
+                  <img src="assets/portfolio/obramax.png" alt="Governança de dados pessoais">
+                </button>
+
+                <div class="case-text">
+                  <div class="case-meta motion">
+                    <span class="case-number">02</span>
+                    <span class="case-category">Legal Design / LGPD</span>
+                  </div>
+                  <h3 class="h3 split"><span>Governança de dados pessoais</span></h3>
+                  <p class="copy motion">Um tema regulatório transformado em material visual para orientar cultura, responsabilidade e tomada de decisão.</p>
+                  <div class="btn-row motion">
+                    <button class="btn btn-primary" data-case="obramax" data-action="drawer" type="button">Entender o projeto</button>
+                    <button class="btn" data-case="obramax" data-action="lightbox" type="button">Ampliar imagem</button>
+                  </div>
+                </div>
+              </article>
+
+
+              <article class="case-row">
+                <button class="case-visual case-hover parallax motion-mask" data-speed="0.045" data-case="procon" data-action="lightbox" type="button" aria-label="Ampliar Manual do Livro do Procon">
+                  <img src="assets/portfolio/procon.png" alt="Manual do Livro do Procon">
+                </button>
+
+                <div class="case-text">
+                  <div class="case-meta motion">
+                    <span class="case-number">03</span>
+                    <span class="case-category">Manual operacional jurídico</span>
+                  </div>
+                  <h3 class="h3 split"><span>Manual do Livro do Procon</span></h3>
+                  <p class="copy motion">Procedimentos de loja redesenhados como manual visual de consulta rápida para reduzir dúvida operacional.</p>
+                  <div class="btn-row motion">
+                    <button class="btn btn-primary" data-case="procon" data-action="drawer" type="button">Entender o projeto</button>
+                    <button class="btn" data-case="procon" data-action="lightbox" type="button">Ampliar imagem</button>
+                  </div>
+                </div>
+              </article>
+
+
+              <article class="case-row">
+                <button class="case-visual case-hover parallax motion-mask" data-speed="0.045" data-case="contratos" data-action="lightbox" type="button" aria-label="Ampliar Manual de contratos">
+                  <img src="assets/portfolio/contratos.png" alt="Manual de contratos">
+                </button>
+
+                <div class="case-text">
+                  <div class="case-meta motion">
+                    <span class="case-number">04</span>
+                    <span class="case-category">Legal Operations / Contratos</span>
+                  </div>
+                  <h3 class="h3 split"><span>Manual de contratos</span></h3>
+                  <p class="copy motion">Gestão contratual apresentada como sistema visual de fluxo, governança e responsabilidades.</p>
+                  <div class="btn-row motion">
+                    <button class="btn btn-primary" data-case="contratos" data-action="drawer" type="button">Entender o projeto</button>
+                    <button class="btn" data-case="contratos" data-action="lightbox" type="button">Ampliar imagem</button>
+                  </div>
+                </div>
+              </article>
+
+
+              <article class="case-row">
+                <button class="case-visual case-hover parallax motion-mask" data-speed="0.045" data-case="impugnacao" data-action="lightbox" type="button" aria-label="Ampliar Impugnação administrativa">
+                  <img src="assets/portfolio/impugnacao.png" alt="Impugnação administrativa">
+                </button>
+
+                <div class="case-text">
+                  <div class="case-meta motion">
+                    <span class="case-number">05</span>
+                    <span class="case-category">Visual Law aplicado / Tributário</span>
+                  </div>
+                  <h3 class="h3 split"><span>Impugnação administrativa</span></h3>
+                  <p class="copy motion">Uma tese técnica reorganizada como narrativa visual para conduzir leitura, contexto e convencimento.</p>
+                  <div class="btn-row motion">
+                    <button class="btn btn-primary" data-case="impugnacao" data-action="drawer" type="button">Entender o projeto</button>
+                    <button class="btn" data-case="impugnacao" data-action="lightbox" type="button">Ampliar imagem</button>
+                  </div>
+                </div>
+              </article>
+
+            </div>
           </div>
         </section>
 
-        <section class="section process" id="metodo">
+        <section class="section impact" id="impacto">
           <div class="container">
-            <div class="section-heading">
-              <p class="eyebrow text-reveal">Método</p>
-              <h2 class="section-title split-lines">
-                <span>Antes do visual,</span>
-                <span>vem a estratégia da informação.</span>
+            <div class="section-head">
+              <p class="eyebrow motion">Experiência / Impacto</p>
+              <h2 class="h2 split">
+                <span>A transformação</span>
+                <span>não é estética. É cognitiva.</span>
               </h2>
             </div>
 
-            <div class="process-grid" id="process-grid"></div>
-          </div>
-        </section>
-
-        <section class="section services" id="servicos">
-          <div class="container services-layout">
-            <div class="services-intro">
-              <p class="eyebrow text-reveal">Como posso ajudar</p>
-              <h2 class="section-title split-lines">
-                <span>Do documento</span>
-                <span>ao entendimento.</span>
-              </h2>
-              <p class="body-copy text-reveal">
-                Cada projeto parte de uma pergunta simples: quem precisa entender esse conteúdo, em qual contexto e para tomar qual decisão? A partir disso, o material é redesenhado para cumprir uma função concreta.
-              </p>
+            <div class="impact-flow">
+              <article class="impact-step glass gradient-line motion">
+                <span>01</span>
+                <h3>Documento denso</h3>
+                <p>Informação acumulada, baixa hierarquia e alto esforço de leitura.</p>
+              </article>
+              <article class="impact-step glass gradient-line motion">
+                <span>02</span>
+                <h3>Reorganização</h3>
+                <p>Conteúdo dividido por função, prioridade, público e momento de uso.</p>
+              </article>
+              <article class="impact-step glass gradient-line motion">
+                <span>03</span>
+                <h3>Clareza</h3>
+                <p>Fluxos, destaques e linguagem visual orientam o caminho de leitura.</p>
+              </article>
+              <article class="impact-step glass gradient-line motion">
+                <span>04</span>
+                <h3>Decisão</h3>
+                <p>O destinatário entende melhor o problema, a orientação e o próximo passo.</p>
+              </article>
             </div>
-
-            <div class="service-list" id="service-list"></div>
           </div>
         </section>
 
-        <section class="section contact divider-top" id="contato">
+        <section class="section contact" id="contato">
           <div class="container contact-layout">
             <div class="contact-copy">
-              <p class="eyebrow text-reveal">Contato</p>
-              <h2 class="section-title split-lines">
+              <p class="eyebrow motion">Contato</p>
+              <h2 class="h2 split">
                 <span>Tem um material</span>
                 <span>difícil de explicar?</span>
               </h2>
-              <p class="body-copy text-reveal">
+              <p class="copy motion">
                 Envie o documento, objetivo e contexto. Eu analiso como transformar a informação jurídica em uma peça mais clara, visual e estratégica.
               </p>
             </div>
 
-            <form class="contact-form glass-card border-gradient mask-reveal" action="https://formspree.io/f/mgoboynl" method="POST">
+            <form class="contact-form glass gradient-line motion-mask" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
               <input type="hidden" name="_subject" value="Novo contato pelo site Lucas Coimbra">
 
               <label>
@@ -267,8 +488,8 @@
                   <option value="Visual Law">Visual Law</option>
                   <option value="Legal Design">Legal Design</option>
                   <option value="Redesign de documento jurídico">Redesign de documento jurídico</option>
-                  <option value="Apresentação institucional">Apresentação institucional</option>
-                  <option value="Material explicativo">Material explicativo</option>
+                  <option value="Apresentação estratégica">Apresentação estratégica</option>
+                  <option value="Manual ou guia visual">Manual ou guia visual</option>
                 </select>
               </label>
 
@@ -289,17 +510,17 @@
         <p>Visual Law / Legal Design / Clareza para documentos jurídicos</p>
       </footer>
 
-      <aside class="case-drawer" id="case-drawer" aria-hidden="true" aria-label="Detalhes do case">
-        <button class="overlay-backdrop" type="button" aria-label="Fechar detalhes"></button>
+      <aside class="drawer" id="case-drawer" aria-hidden="true" aria-label="Detalhes do case">
+        <button class="overlay-bg" data-close type="button" aria-label="Fechar detalhes"></button>
         <section class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
-          <button class="drawer-close" type="button">Fechar</button>
+          <button class="overlay-close" data-close type="button">Fechar</button>
 
           <div class="drawer-media">
             <img id="drawer-image" src="assets/portfolio/contratos.png" alt="">
           </div>
 
           <div class="drawer-content">
-            <p class="eyebrow" id="drawer-eyebrow">Case</p>
+            <p class="eyebrow" id="drawer-category">Case</p>
             <h2 id="drawer-title">Título do case</h2>
             <p class="drawer-doc" id="drawer-doc"></p>
 
@@ -315,7 +536,7 @@
 
             <div class="drawer-block">
               <span>Recursos usados</span>
-              <ul class="pill-list" id="drawer-resources"></ul>
+              <ul class="pills" id="drawer-resources"></ul>
             </div>
 
             <div class="drawer-block">
@@ -327,9 +548,9 @@
       </aside>
 
       <aside class="lightbox" id="lightbox" aria-hidden="true" aria-label="Imagem ampliada">
-        <button class="overlay-backdrop" type="button" aria-label="Fechar imagem"></button>
-        <figure class="lightbox-figure">
-          <button class="lightbox-close" type="button">Fechar</button>
+        <button class="overlay-bg" data-close type="button" aria-label="Fechar imagem"></button>
+        <figure>
+          <button class="overlay-close" data-close type="button">Fechar</button>
           <img id="lightbox-image" src="assets/portfolio/contratos.png" alt="">
           <figcaption id="lightbox-caption">Imagem ampliada</figcaption>
         </figure>
