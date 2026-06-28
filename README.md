@@ -25,3 +25,14 @@ Teste:
 - Partículas ficam visíveis.
 - Hero title ajustado para evitar corte.
 - Página `CHECK_MOTION_V14_1.html` para testar fumaça, olho, fill text e hover lime.
+
+## V15 — Refined Architecture
+
+Correções principais:
+- Fumaça reduzida e mais atmosférica.
+- Remoção de pulso branco estourado.
+- Redução de buracos entre seções.
+- Scroll stack compacto e com cards empilhados desde o começo.
+- Roda lateral substituída por símbolos curtos alinhados.
+- Tipografia do Hero ajustada para não cortar palavras.
+- Paleta mais controlada: lime principal, azul/magenta/âmbar apenas como atmosfera.
