@@ -285,16 +285,16 @@
 
     function addSmoke(x, y, speed) {
       var colors = ["223,255,47", "54,201,255", "255,42,114", "255,183,94"];
-      var amount = clamp(Math.round(speed / 28), 1, 5);
+      var amount = clamp(Math.round(speed / 20), 2, 8);
       for (var i = 0; i < amount; i++) {
         smokeParticles.push({
           x: x + (Math.random() - .5) * 14,
           y: y + (Math.random() - .5) * 14,
           vx: (Math.random() - .5) * 0.7,
           vy: (Math.random() - .5) * 0.7,
-          r: 28 + Math.random() * 52 + speed * .07,
+          r: 42 + Math.random() * 74 + speed * .10,
           life: 1,
-          decay: .010 + Math.random() * .018,
+          decay: .007 + Math.random() * .014,
           color: colors[Math.floor(Math.random() * colors.length)]
         });
       }
@@ -323,6 +323,13 @@
 
     resize();
     window.addEventListener("resize", resize);
+
+    // Initial visible pulse to confirm the smoke layer is active.
+    setTimeout(function () {
+      addSmoke(window.innerWidth * .52, window.innerHeight * .38, 70);
+      addSmoke(window.innerWidth * .58, window.innerHeight * .42, 90);
+    }, 450);
+
     draw();
   }
 
@@ -346,8 +353,8 @@
       }
 
       var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * .16) + ")");
-      grad.addColorStop(.38, "rgba(" + p.color + "," + (p.life * .075) + ")");
+      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * .28) + ")");
+      grad.addColorStop(.38, "rgba(" + p.color + "," + (p.life * .13) + ")");
       grad.addColorStop(1, "rgba(" + p.color + ",0)");
       ctx.fillStyle = grad;
       ctx.beginPath();
@@ -439,6 +446,13 @@
 
     resize();
     window.addEventListener("resize", resize);
+
+    // Initial visible pulse to confirm the smoke layer is active.
+    setTimeout(function () {
+      addSmoke(window.innerWidth * .52, window.innerHeight * .38, 70);
+      addSmoke(window.innerWidth * .58, window.innerHeight * .42, 90);
+    }, 450);
+
     draw();
   }
 
