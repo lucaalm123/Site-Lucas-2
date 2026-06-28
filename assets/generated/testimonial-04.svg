@@ -1,19 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220">
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
   <defs>
-    <radialGradient id="g" cx="35%" cy="28%" r="80%">
-      <stop offset="0" stop-color="#dfff2f"/>
-      <stop offset=".45" stop-color="#30352a"/>
-      <stop offset="1" stop-color="#11130f"/>
+    <radialGradient id="g" cx="42%" cy="36%" r="90%">
+      <stop offset="0" stop-color="#f7ffd1"/>
+      <stop offset=".22" stop-color="#dfff2f"/>
+      <stop offset=".58" stop-color="#1d2416"/>
+      <stop offset="1" stop-color="#070807"/>
     </radialGradient>
-    <filter id="n">
-      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3"/>
-      <feColorMatrix type="saturate" values=".2"/>
-      <feBlend in="SourceGraphic"/>
-    </filter>
+    <linearGradient id="rim" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#dfff2f"/>
+      <stop offset=".55" stop-color="#36c9ff"/>
+      <stop offset="1" stop-color="#ff2a72"/>
+    </linearGradient>
   </defs>
-  <rect width="220" height="220" rx="110" fill="url(#g)"/>
-  <circle cx="110" cy="110" r="90" fill="none" stroke="#dfff2f" stroke-width="9" opacity=".8"/>
-  <circle cx="110" cy="84" r="32" fill="#fffaf0" opacity=".86"/>
-  <path d="M54 184c10-42 102-42 112 0" fill="#fffaf0" opacity=".86"/>
-  <text x="110" y="124" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="#090a04">D</text>
+  <rect width="240" height="240" rx="120" fill="url(#g)"/>
+  <circle cx="120" cy="120" r="103" fill="none" stroke="url(#rim)" stroke-width="10"/>
+  <circle cx="120" cy="90" r="34" fill="#fffaf0" opacity=".88"/>
+  <path d="M56 196c9-48 119-48 128 0" fill="#fffaf0" opacity=".88"/>
+  <text x="120" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="#080a04">C4</text>
 </svg>

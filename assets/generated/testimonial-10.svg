@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
   <defs>
-    <radialGradient id="g" cx="54%" cy="44%" r="90%">
+    <radialGradient id="g" cx="60%" cy="48%" r="90%">
       <stop offset="0" stop-color="#f7ffd1"/>
       <stop offset=".22" stop-color="#dfff2f"/>
       <stop offset=".58" stop-color="#1d2416"/>
@@ -16,5 +16,5 @@
   <circle cx="120" cy="120" r="103" fill="none" stroke="url(#rim)" stroke-width="10"/>
   <circle cx="120" cy="90" r="34" fill="#fffaf0" opacity=".88"/>
   <path d="M56 196c9-48 119-48 128 0" fill="#fffaf0" opacity=".88"/>
-  <text x="120" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="#080a04">C8</text>
+  <text x="120" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" font-weight="900" fill="#080a04">C10</text>
 </svg>
