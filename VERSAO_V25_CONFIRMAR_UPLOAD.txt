@@ -1,0 +1,24 @@
+V25 — DREAMLAB B/W PROJECT SHOWCASE
+
+Nova direção:
+- estética DreamLab em preto/branco/cinza;
+- sem laranja como cor principal;
+- sem verde/lime como identidade principal;
+- cor fica no webgl-fluid do Nimo e em pequenos acentos ciano/magenta/violeta;
+- hero mais clean, sem palavras cortadas;
+- círculo girando com VISUAL LAW / LEGAL DESIGN;
+- portfólio no estilo DreamLab: lista textual + cubo rotativo + imagem no hover;
+- seção do método em cards tipo gaveta/accordion;
+- roda de percepções removida;
+- webgl-fluid global mantido.
+
+Arquivos:
+assets/css/v25.css
+assets/js/v25.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V25.html
+
+Console esperado:
+[V25] DreamLab B/W project showcase OK

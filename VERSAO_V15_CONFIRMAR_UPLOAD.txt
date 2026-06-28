@@ -1,0 +1,12 @@
+V15 — NIMO REFINED ARCHITECTURE
+
+Se este arquivo abrir no GitHub Pages, o upload V15 chegou.
+
+Principais correções:
+- fumaça mais sutil e atmosférica;
+- sem bolas brancas estouradas;
+- seções com menos buracos;
+- scroll stack mais compacto;
+- roda lateral com símbolos alinhados;
+- título do hero com clamp reduzido para evitar corte;
+- timeline e cards mantidos.

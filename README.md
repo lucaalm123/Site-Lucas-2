@@ -167,3 +167,16 @@ Direção:
 
 Teste:
 `CHECK_V24.html`
+
+
+## V25 — DreamLab B/W Project Showcase
+
+- Base visual DreamLab preto/branco.
+- Portfólio com lista minimalista, cubo rotativo e hover reveal.
+- Método em cards tipo gaveta.
+- Hero limpo e sem cortes de palavras.
+- Nimo webgl-fluid global mantido.
+- Sem roda de percepções.
+
+Teste:
+`CHECK_V25.html`
