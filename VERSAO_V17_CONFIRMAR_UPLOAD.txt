@@ -1,0 +1,12 @@
+V17 — AURORA SMOKE NIMO
+
+Correção principal:
+- fumaça/rastro antigo substituído por camada atmosférica de luz colorida;
+- usa canvas #aurora-smoke-canvas com classe mouse-aurora-field;
+- funções novas: initAuroraSmoke(), updateAuroraSmoke(), renderAuroraSmoke();
+- grandes gradientes borrados, sem bolinhas, sem branco estourado;
+- blobs seguem mouse com atraso/lerp;
+- seções continuam mais compactas e transparentes para a aurora aparecer.
+
+Teste:
+CHECK_V17_AURORA.html
