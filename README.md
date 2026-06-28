@@ -238,3 +238,17 @@ Teste:
 
 Teste:
 `CHECK_V32.html`
+
+
+## V33 — Nimo Balanced Global Smoke
+
+- Corrige o estouro de branco/cinza da V32.
+- Usa o `canvas.js` real do Nimo enviado no ZIP.
+- Multiplicador de cor moderado: 0.24 em vez de 0.72.
+- Bloom/sunrays desligados.
+- Canvas global fixo no site inteiro.
+- Fundo preto preservado.
+- Projetos com preview flutuante estilo DreamLab.
+
+Teste:
+`CHECK_V33.html`

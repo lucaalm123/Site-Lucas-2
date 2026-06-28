@@ -1,0 +1,25 @@
+V33 — NIMO BALANCED GLOBAL SMOKE
+
+Correção da V32:
+- V32 ficou estourada porque o multiplicador de cor foi alto demais e bloom/sunrays foram ativados.
+- V33 usa o canvas.js real do Nimo enviado no ZIP.
+- Fundo continua preto.
+- A fumaça é global no site inteiro.
+- Sem overlay fake, sem fundo cinza/branco, sem aurora artificial.
+- Cor do motor Nimo ajustada de 0.15 para 0.24: mais visível que o original, mas sem estourar.
+- Bloom e sunrays ficam desligados, como no Nimo.
+- CSS do canvas tem brilho/saturação moderados.
+- Há só um sweep inicial curto e suave; não há pulso forte permanente.
+- Projetos usam preview grande flutuante no hover, no estilo DreamLab.
+
+Arquivos:
+assets/css/v33.css
+assets/js/v33.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V33.html
+
+Console esperado:
+[V33] Nimo original canvas balanced global smoke loaded
+[V33] Balanced Nimo global smoke + DreamLab preview OK
