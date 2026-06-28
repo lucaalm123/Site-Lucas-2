@@ -17,9 +17,11 @@
     $("#drawer-result").textContent = item.result;
 
     var resources = $("#drawer-resources");
-    resources.innerHTML = (item.resources || []).map(function (r) {
-      return "<li>" + escapeHtml(r) + "</li>";
-    }).join("");
+    if (resources) {
+      resources.innerHTML = (item.resources || []).map(function (r) {
+        return "<li>" + escapeHtml(r) + "</li>";
+      }).join("");
+    }
 
     drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
@@ -62,13 +64,12 @@
 
       var item = getCase(trigger.getAttribute("data-case"));
       var action = trigger.getAttribute("data-action");
-
       if (action === "drawer") openDrawer(item);
       if (action === "lightbox") openLightbox(item);
     });
 
-    $$(".drawer [data-close], .lightbox [data-close], .overlay-bg").forEach(function (button) {
-      button.addEventListener("click", function () {
+    $$("[data-close]").forEach(function (el) {
+      el.addEventListener("click", function () {
         closeDrawer();
         closeLightbox();
       });

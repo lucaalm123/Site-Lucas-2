@@ -1,12 +1,12 @@
 (function () {
-  function safe(name, fn) {
+  function safeRun(name, fn) {
     try {
       if (typeof fn === "function") {
         fn();
-        console.info("[Visual Law Studio] " + name + " OK");
+        console.info("[Visual Law Motion] " + name + " OK");
       }
     } catch (error) {
-      console.error("[Visual Law Studio] Erro em " + name + ":", error);
+      console.error("[Visual Law Motion] Erro em " + name + ":", error);
       document.documentElement.classList.add("motion-failed");
     }
   }
@@ -18,9 +18,9 @@
 
   function boot() {
     setYear();
-    safe("menu", window.initMenu);
-    safe("cases", window.initCases);
-    safe("effects", window.initEffects);
+    safeRun("menu", window.initMenu);
+    safeRun("cases", window.initCases);
+    safeRun("effects", window.initEffects);
   }
 
   if (document.readyState === "loading") {

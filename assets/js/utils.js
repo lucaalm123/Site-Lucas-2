@@ -6,6 +6,10 @@ window.$$ = function $$(selector, context) {
   return Array.from((context || document).querySelectorAll(selector));
 };
 
+window.clamp = function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+};
+
 window.escapeHtml = function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
