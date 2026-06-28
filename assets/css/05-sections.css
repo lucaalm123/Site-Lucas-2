@@ -1355,3 +1355,168 @@ body::after {
     min-height: 520px;
   }
 }
+
+
+/* =========================================================
+   V16 BUGFIX — fumaça visível, cards sem sobreposição ruim,
+   menos buraco entre seções
+   ========================================================= */
+
+.mouse-smoke-field {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 8 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  opacity: .38 !important;
+  mix-blend-mode: screen !important;
+  filter: blur(10px) saturate(1.18) !important;
+}
+
+.nimo-particle-canvas {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  opacity: .26 !important;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.premium-nimo-header,
+.drawer,
+.lightbox,
+.cursor {
+  z-index: 120 !important;
+}
+
+.section-flow {
+  padding-top: clamp(72px, 7vw, 118px) !important;
+  padding-bottom: clamp(72px, 7vw, 118px) !important;
+}
+
+.section-transition-glow {
+  height: 18% !important;
+  opacity: .38 !important;
+}
+
+.stacked-card-group {
+  position: relative !important;
+  display: grid !important;
+  gap: 18px !important;
+  min-height: auto !important;
+  align-content: center !important;
+}
+
+.stacked-card {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  min-height: 172px !important;
+  padding: 28px !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.stacked-card-active {
+  transform: translateX(-10px) scale(1.015) !important;
+}
+
+.stacked-card.lime-hover-card:hover,
+.stacked-card.stacked-card-active {
+  z-index: 5 !important;
+}
+
+.scroll-stack-section {
+  height: 220vh !important;
+  min-height: 1120px !important;
+}
+
+.scroll-stack-track {
+  padding-top: clamp(72px, 7vw, 112px) !important;
+  padding-bottom: clamp(52px, 6vw, 88px) !important;
+}
+
+.scroll-stack-inner {
+  min-height: 500px !important;
+}
+
+.scroll-stack-cards {
+  height: 500px !important;
+}
+
+.scroll-stack-card {
+  min-height: 330px !important;
+  padding: 30px !important;
+}
+
+.scroll-stack-card h3 {
+  margin-top: 74px !important;
+}
+
+.timeline-item {
+  min-height: 220px !important;
+}
+
+.timeline-card {
+  min-height: 166px !important;
+}
+
+.display,
+.h2,
+.h3,
+.scroll-fill-text,
+.scroll-fill-line,
+.scroll-fill-word,
+.case-caption h3,
+.timeline-card h3,
+.why-card h3,
+.scroll-stack-card h3 {
+  overflow: visible !important;
+  text-wrap: balance;
+}
+
+.hero-copy .display {
+  max-width: 760px !important;
+  font-size: clamp(46px, 6.65vw, 104px) !important;
+  line-height: .99 !important;
+}
+
+@media (max-width: 1180px) {
+  .scroll-stack-section {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .scroll-stack-track,
+  .scroll-stack-inner,
+  .scroll-stack-cards,
+  .scroll-stack-card {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .stacked-card-active {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-copy .display {
+    font-size: clamp(40px, 11vw, 64px) !important;
+    line-height: 1.04 !important;
+  }
+
+  .section-flow {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+}
