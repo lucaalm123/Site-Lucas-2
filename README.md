@@ -182,24 +182,13 @@ Teste:
 `CHECK_V25.html`
 
 
-## V26 — Saturated Fluid + Color Accents
+## V28 — Restore Black + Real Nimo Smoke
 
-- Fumaça/webgl-fluid mais saturada e brilhante.
-- Acentos coloridos ciano/magenta/violeta em botões, palavras, hovers e cards.
-- Base DreamLab preto/branco preservada.
-- Sem laranja/verde como identidade principal.
-
-Teste:
-`CHECK_V26.html`
-
-
-## V27 — Visible Aurora Boost
-
-Correção:
-- A fumaça estava fraca porque ficava atrás de fundos pretos/opacos.
-- `#v27-aurora-boost` cria uma camada colorida visível acima do fundo e abaixo do conteúdo.
-- O Nimo webgl-fluid continua ativo.
-- Pressione `A` no `CHECK_V27.html` para comparar o modo ultra forte.
+- Remove overlay/aurora fake que coloria o fundo inteiro.
+- Fundo volta a ser preto.
+- Fumaça vem apenas do Nimo webgl-fluid.
+- Marquee usa palavras coloridas sem retângulos.
+- Botões/ring/hovers têm cor pontual.
 
 Teste:
-`CHECK_V27.html`
+`CHECK_V28.html`

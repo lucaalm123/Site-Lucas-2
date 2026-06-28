@@ -1,0 +1,22 @@
+V28 — RESTORE BLACK + REAL NIMO SMOKE
+
+Correção do erro da V27/V27.1:
+- removi a camada extra #v27-aurora-boost;
+- removi qualquer overlay fake que deixava o fundo azul/rosa;
+- o fundo voltou a ser preto;
+- a fumaça vem do canvas real do Nimo/webgl-fluid;
+- a faixa rodando agora usa palavras coloridas SEM retângulos/caixas;
+- mantive cor pontual em botões, ring e hovers;
+- base DreamLab preto/branco preservada.
+
+Arquivos:
+assets/css/v28.css
+assets/js/v28.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V28.html
+
+Console esperado:
+[V28] Restore black + real Nimo smoke OK
+[V28] Nimo native fluid boosted, no fake overlay OK
