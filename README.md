@@ -50,3 +50,38 @@ Principais correções:
 - scroll stack mais compacto;
 - redução de buraco entre seções;
 - proteção contra títulos/palavras cortadas.
+
+
+## V17 — Aurora Smoke Nimo
+
+A fumaça/rastro antigo foi substituído por um sistema de aurora atmosférica:
+- `mouse-aurora-field`
+- `aurora-smoke-layer`
+- `aurora-smoke-blob`
+- `premium-smoke-gradient`
+- `initAuroraSmoke()`
+- `updateAuroraSmoke()`
+- `renderAuroraSmoke()`
+
+Teste:
+`CHECK_V17_AURORA.html`
+
+
+## V18 — Nimo Fluid Aurora Trail
+
+O zip do Nimo foi analisado. O efeito original é um canvas de fluido (`webgl-fluid`) configurado com:
+- `TRIGGER: 'hover'`
+- `TRANSPARENT: true`
+- `DENSITY_DISSIPATION`
+- `CURL`
+- `SPLAT_RADIUS`
+
+A V18 recria esse comportamento visual com Canvas 2D:
+- `nimo-fluid-aurora-canvas`
+- `nimo-fluid-aurora-trail`
+- `initNimoFluidAurora()`
+- `updateNimoFluidAurora()`
+- `renderNimoFluidAurora()`
+
+Teste:
+`CHECK_V18_FLUID_AURORA.html`

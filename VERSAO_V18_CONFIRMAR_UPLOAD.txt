@@ -1,0 +1,20 @@
+V18 — NIMO FLUID AURORA TRAIL
+
+Após analisar o zip do Nimo, o efeito correto foi identificado:
+- arquivo canvas.js com biblioteca webgl-fluid;
+- configuração TRIGGER: 'hover';
+- TRANSPARENT: true;
+- DENSITY_DISSIPATION, CURL, SPLAT_RADIUS controlam o rastro fluido.
+
+Esta versão recria essa lógica visual em Canvas 2D:
+- canvas #nimo-fluid-aurora-canvas;
+- rastro fluido tipo aurora boreal;
+- splats grandes e translúcidos;
+- dissipação gradual;
+- curl suave;
+- sem bolinhas;
+- sem explosão branca;
+- com movimento seguindo o mouse.
+
+Teste:
+CHECK_V18_FLUID_AURORA.html
