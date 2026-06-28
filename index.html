@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- V21-FULL-SITE-NIMO-POLISH -->
 <!-- V20-NIMO-NATIVE-FLUID-CANVAS -->
 <!-- V19-WEBGL-FLUID-SMOKE-NIMO -->
 <!-- V18-NIMO-FLUID-AURORA-TRAIL -->
@@ -9,7 +10,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lucas Coimbra — Lucas Coimbra — Visual Law Motion Studio V20</title>
+    <title>Lucas Coimbra — Lucas Coimbra — Visual Law Motion Studio V21</title>
     <meta name="description" content="Visual Law, Legal Design e motion para clareza visual em decisões jurídicas complexas.">
     <meta name="theme-color" content="#030403">
 
@@ -44,9 +45,7 @@
   </head>
 
   <body>
-    <canvas id="nimo-webgl-fluid-canvas" class="webgl-fluid-smoke nimo-webgl-fluid-smoke nimo-smoke-aurora-field" aria-hidden="true"></canvas>
-    <canvas id="nimo-fluid-aurora-canvas" class="nimo-fluid-aurora-canvas nimo-fluid-aurora-trail mouse-aurora-field aurora-smoke-layer" aria-hidden="true"></canvas>
-    <canvas id="aurora-smoke-canvas" class="mouse-aurora-field aurora-smoke-layer" aria-hidden="true"></canvas>
+    <canvas id="nimo-native-fluid-canvas" class="nimo-native-fluid-canvas nimo-global-fluid-canvas" aria-hidden="true"></canvas>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <canvas class="nimo-particle-canvas" id="particle-canvas" aria-hidden="true"></canvas>
@@ -105,7 +104,6 @@
 
       <main id="conteudo">
         <section class="hero section-flow" id="inicio">
-          <canvas id="nimo-native-fluid-canvas" class="nimo-native-fluid-canvas" aria-hidden="true"></canvas>
           <div class="animated-color-field" aria-hidden="true"></div>
           <div class="hero-neon-ring hero-rotating-wheel" aria-hidden="true"></div>
           <div class="hero-rainbow-arc" aria-hidden="true"></div>
@@ -124,7 +122,7 @@
           <div class="hero-inner">
             <div class="hero-copy">
               <p class="kicker motion">Visual Law / Legal Design / São Paulo</p>
-              <h1 class="display split">
+              <h1 class="display split hero-letter-fx" data-nimo-letter-fx>
                 <span>Clareza visual</span>
                 <span>para decisões</span>
                 <span><em class="serif">jurídicas</em> complexas.</span>
@@ -267,10 +265,10 @@
             <div class="section-head">
               <div>
                 <p class="kicker motion">{04} Cases</p>
-                <h2 class="h2 scroll-fill-text">Projetos vivos, não cards parados.</h2>
+                <h2 class="h2 scroll-fill-text">Portfólio jurídico com presença de estúdio.</h2>
               </div>
               <p class="section-copy motion">
-                Imagem grande, tags flutuantes, botão de olho que segue o mouse, zoom suave, borda lime e drawer com estratégia.
+                Materiais jurídicos transformados em peças visuais com leitura clara, hierarquia forte e apresentação premium.
               </p>
             </div>
 
@@ -400,43 +398,51 @@
           </div>
         </section>
 
-        <section class="section-flow orbit-testimonial" id="percepcao">
+        
+        <section class="section-flow orbit-testimonial testimonial-wheel-section" id="percepcao">
           <div class="section-transition-glow" aria-hidden="true"></div>
           <div class="container">
             <div class="section-head">
               <div>
-                <p class="kicker motion">{06} Percepção</p>
-                <h2 class="h2 scroll-fill-text">Como a clareza visual muda a percepção do jurídico.</h2>
+                <p class="kicker motion">{06} Depoimentos</p>
+                <h2 class="h2 scroll-fill-text">Uma roda de percepções sobre clareza jurídica.</h2>
               </div>
+              <p class="section-copy motion">
+                Estrutura preparada para receber fotos reais depois. Por enquanto, os círculos funcionam como placeholders editáveis em <code>assets/generated/testimonial-*.svg</code>.
+              </p>
             </div>
 
-            <div class="orbit-wrap motion-mask">
-              <div class="orbit-ring"></div>
-              <div class="orbit-ring two"></div>
+            <div class="testimonial-wheel motion-mask">
+              <div class="testimonial-ring testimonial-ring-one" aria-hidden="true"></div>
+              <div class="testimonial-ring testimonial-ring-two" aria-hidden="true"></div>
 
-              <span class="orbit-node orbit-node-active trust-glow">Clareza</span>
-              <span class="orbit-node">Confiança</span>
-              <span class="orbit-node">Decisão</span>
-              <span class="orbit-node">Entendimento</span>
-              <span class="orbit-node">Estratégia</span>
-              <span class="orbit-node">Segurança</span>
-              <span class="orbit-node">Convencimento</span>
+              <figure class="testimonial-avatar avatar-1"><img src="assets/generated/testimonial-01.svg" alt="Placeholder de depoimento 1"></figure>
+              <figure class="testimonial-avatar avatar-2"><img src="assets/generated/testimonial-02.svg" alt="Placeholder de depoimento 2"></figure>
+              <figure class="testimonial-avatar avatar-3"><img src="assets/generated/testimonial-03.svg" alt="Placeholder de depoimento 3"></figure>
+              <figure class="testimonial-avatar avatar-4"><img src="assets/generated/testimonial-04.svg" alt="Placeholder de depoimento 4"></figure>
+              <figure class="testimonial-avatar avatar-5"><img src="assets/generated/testimonial-05.svg" alt="Placeholder de depoimento 5"></figure>
+              <figure class="testimonial-avatar avatar-6"><img src="assets/generated/testimonial-06.svg" alt="Placeholder de depoimento 6"></figure>
+              <figure class="testimonial-avatar avatar-7"><img src="assets/generated/testimonial-07.svg" alt="Placeholder de depoimento 7"></figure>
+              <figure class="testimonial-avatar avatar-8"><img src="assets/generated/testimonial-08.svg" alt="Placeholder de depoimento 8"></figure>
+              <figure class="testimonial-avatar avatar-9 is-active"><img src="assets/generated/testimonial-09.svg" alt="Placeholder de depoimento 9"></figure>
 
-              <div class="quote-core">
-                <div class="quote">”</div>
-                <p>Quando a informação jurídica é bem organizada, ela deixa de ser apenas lida — ela passa a orientar decisões.</p>
+              <div class="testimonial-core">
+                <div class="quote-mark">”</div>
+                <p>“Quando a informação jurídica é bem organizada, ela deixa de ser apenas lida — ela passa a orientar decisões.”</p>
+                <div class="testimonial-stars">★★★★★</div>
+                <span>Espaço para depoimento / cliente</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="section-flow" id="processo">
+<section class="section-flow" id="processo">
           <div class="section-transition-glow" aria-hidden="true"></div>
           <div class="container">
             <div class="section-head">
               <div>
                 <p class="kicker motion">{07} Processo</p>
-                <h2 class="h2 scroll-fill-text">4 etapas para transformar complexidade em clareza.</h2>
+                <h2 class="h2 scroll-fill-text">4 etapas para transformar complexidade em clareza visual.</h2>
               </div>
             </div>
 
@@ -559,5 +565,6 @@
     <script src="assets/js/effects.js" defer></script>
     <script src="assets/js/main.js" defer></script>
       <script src="assets/js/nimo-native-fluid.js" defer></script>
+      <script src="assets/js/v21-polish.js" defer></script>
   </body>
 </html>

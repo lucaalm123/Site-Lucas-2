@@ -117,3 +117,17 @@ Arquivos:
 - `assets/js/nimo-native-fluid.js`
 - `CHECK_V20_NIMO_NATIVE.html`
 - `_instrucoes/ANALISE_REAL_EFEITO_NIMO_V20.md`
+
+
+## V21 — Full Site Nimo Polish
+
+Correções principais:
+- `#nimo-native-fluid-canvas` virou camada global fixa no site inteiro.
+- `assets/js/nimo-native-fluid.js` mantém a lógica nativa do Nimo.
+- `assets/js/v21-polish.js` adiciona letter FX, hero parallax, header polish, testimonial wheel e stack update.
+- `assets/generated/testimonial-*.svg` são placeholders de fotos para depoimentos.
+- Cases e portfólio foram refinados visualmente.
+- Buracos grandes e cards fechados foram reduzidos.
+
+Teste:
+`CHECK_V21_FULL_SITE.html`

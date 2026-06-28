@@ -1,0 +1,19 @@
+V21 — FULL SITE NIMO POLISH
+
+Principais correções:
+- efeito webgl-fluid nativo do Nimo agora é canvas GLOBAL fixo no site inteiro;
+- o efeito não fica mais restrito ao teste ou ao Hero;
+- seções ficaram translúcidas o suficiente para o fluido aparecer;
+- cards Missão / Visão / Método foram abertos e não ficam mais fechados/sobrepostos;
+- scroll stack foi refeito para progressão suave;
+- portfólio/cases ficou maior e mais premium;
+- roda de depoimentos com placeholders de fotos em assets/generated/testimonial-*.svg;
+- etapas/processo mais legíveis;
+- menu/hero com efeitos adicionais;
+- efeito de letras inspirado no SplitText do Nimo, sem depender de GSAP.
+
+Teste:
+CHECK_V21_FULL_SITE.html
+
+Console esperado:
+[V21] Nimo native webgl-fluid global OK

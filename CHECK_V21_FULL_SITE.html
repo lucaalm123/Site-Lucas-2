@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHECK V21 — Full Site Nimo Polish</title>
+<link rel="stylesheet" href="assets/css/01-tokens.css">
+<link rel="stylesheet" href="assets/css/02-base.css">
+<link rel="stylesheet" href="assets/css/03-layout.css">
+<link rel="stylesheet" href="assets/css/04-components.css">
+<link rel="stylesheet" href="assets/css/05-sections.css">
+<link rel="stylesheet" href="assets/css/06-effects.css">
+<link rel="stylesheet" href="assets/css/07-responsive.css">
+<style>
+body{margin:0;background:#000;color:#fff;font-family:var(--font-body);min-height:180vh}
+.test{position:relative;z-index:1;padding:130px var(--pad)}
+.panel{max-width:860px;padding:28px;margin:28px 0}
+.status{position:fixed;right:18px;bottom:18px;z-index:999;border-radius:999px;padding:12px 16px;background:var(--lime);color:var(--ink);font-family:var(--font-mono);font-weight:900}
+pre{white-space:pre-wrap;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px}
+</style>
+</head>
+<body>
+<canvas id="nimo-native-fluid-canvas" class="nimo-native-fluid-canvas nimo-global-fluid-canvas" aria-hidden="true"></canvas>
+<main class="test">
+  <p class="kicker">{{ V21 }} Full Site Nimo Polish</p>
+  <h1 class="h2 hero-letter-fx" data-nimo-letter-fx>O efeito do Nimo agora é global no site inteiro.</h1>
+  <div class="panel glass">
+    <p class="lead">Mova o mouse. O canvas deve reagir mesmo fora do Hero. Abra o console: precisa aparecer <strong>[V21] Nimo native webgl-fluid global OK</strong>.</p>
+  </div>
+  <pre id="status">Verificando arquivos...</pre>
+</main>
+<div class="status">CHECK V21</div>
+<script src="assets/js/nimo-native-fluid.js" defer></script>
+<script src="assets/js/v21-polish.js" defer></script>
+<script>
+Promise.all([
+  fetch("assets/js/nimo-native-fluid.js",{cache:"no-store"}).then(r=>["nimo-native-fluid.js",r.ok]),
+  fetch("assets/js/v21-polish.js",{cache:"no-store"}).then(r=>["v21-polish.js",r.ok]),
+  fetch("assets/css/05-sections.css",{cache:"no-store"}).then(r=>["05-sections.css",r.ok]),
+  fetch("assets/generated/testimonial-01.svg",{cache:"no-store"}).then(r=>["testimonial-01.svg",r.ok]),
+  fetch("index.html",{cache:"no-store"}).then(r=>["index.html",r.ok])
+]).then(results=>{
+  document.getElementById("status").textContent = results.map(([name,ok]) => `${ok ? "OK" : "ERRO"} — ${name}`).join("\n");
+});
+</script>
+</body>
+</html>
