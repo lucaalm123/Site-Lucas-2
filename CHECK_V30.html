@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHECK V30</title>
+<link rel="stylesheet" href="assets/css/v30.css">
+<style>
+.check-hero{position:relative;min-height:88vh;padding:120px var(--pad);overflow:hidden;background:#000}
+.check-box{position:relative;z-index:3;max-width:980px;padding:28px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(0,0,0,.42);backdrop-filter:blur(12px)}
+pre{white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div class="site">
+  <section class="hero check-hero">
+    <canvas id="nimo-native-fluid-canvas" class="nimo-native-fluid-canvas" aria-hidden="true"></canvas>
+    <div class="check-box">
+      <p class="kicker">CHECK V30</p>
+      <h1 class="h2">Fumaça real da V20 dentro do Hero.</h1>
+      <p class="lead">Mova o mouse dentro desta área. O fundo deve continuar preto, e a fumaça colorida do Nimo/V20 deve aparecer como rastro no Hero.</p>
+      <a class="btn primary" href="#">Botão com acento</a>
+      <pre id="status">verificando...</pre>
+    </div>
+  </section>
+</div>
+<script src="assets/js/nimo-native-fluid.js" defer></script>
+<script src="assets/js/v30.js" defer></script>
+<script>
+Promise.all([
+fetch("assets/css/v30.css",{cache:"no-store"}).then(r=>["v30.css",r.ok]),
+fetch("assets/js/v30.js",{cache:"no-store"}).then(r=>["v30.js",r.ok]),
+fetch("assets/js/nimo-native-fluid.js",{cache:"no-store"}).then(r=>["nimo-native-fluid.js da V20",r.ok]),
+fetch("index.html",{cache:"no-store"}).then(r=>["index.html",r.ok])
+]).then(res=>status.textContent=res.map(([n,ok])=>`${ok?"OK":"ERRO"} — ${n}`).join("\n"));
+</script>
+</body>
+</html>

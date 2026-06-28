@@ -1,0 +1,24 @@
+V31 — GLOBAL V20 NIMO SMOKE
+
+Correção principal:
+- efeito da V20 agora é global, não apenas no Hero;
+- canvas #nimo-native-fluid-canvas fica fixo no site inteiro;
+- fundo continua preto;
+- sem overlay fake, sem aurora artificial, sem fundo roxo/azul;
+- o canvas real do Nimo fica atrás do conteúdo;
+- seções ficaram transparentes o suficiente para a fumaça aparecer;
+- há movimento inicial e pulso discreto usando o próprio canvas real, para aparecer desde o carregamento;
+- o mouse alimenta o canvas em qualquer seção do site;
+- projetos com hover reveal e cubo menor preservados.
+
+Arquivos:
+assets/css/v31.css
+assets/js/v31.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V31.html
+
+Console esperado:
+[V31] Global V20 Nimo smoke bridge OK
+[V31] Global V20 Nimo smoke OK

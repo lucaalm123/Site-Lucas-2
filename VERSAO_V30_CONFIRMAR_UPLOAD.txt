@@ -1,0 +1,25 @@
+V30 — V20 NIMO SMOKE + PROJECT HOVER FIX
+
+Correções:
+- usei o nimo-native-fluid.js EXATO da versão 20;
+- o canvas voltou para dentro do Hero, como na V20;
+- removi overlay/aurora fake;
+- fundo continua preto;
+- fumaça colorida aparece pelo canvas real do Nimo/V20;
+- não há mais tecla F nem prime artificial;
+- projetos agora mostram imagem no hover dentro da própria linha;
+- o preview fixo continua como reforço;
+- cubo ficou menor e não cria mais aquele vazio enorme à esquerda;
+- título do Hero foi quebrado em linhas mais seguras para não cortar.
+
+Arquivos:
+assets/css/v30.css
+assets/js/v30.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V30.html
+
+Console esperado:
+[V30] V20 Nimo smoke bridge OK
+[V30] V20 Nimo smoke + project hover fix OK

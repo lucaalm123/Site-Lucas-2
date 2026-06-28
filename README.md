@@ -201,3 +201,27 @@ Teste:
 - Canvas Nimo acima do fundo e abaixo do conteúdo.
 - Helper alimenta o canvas real com mouse e rastro inicial.
 - Pressione `F` no CHECK para intensificar.
+
+
+## V30 — V20 Nimo Smoke + Project Hover Fix
+
+- `nimo-native-fluid.js` substituído pelo arquivo exato da V20.
+- Canvas dentro do Hero, como na V20.
+- Sem overlay/fumaça falsa.
+- Projetos com imagem inline no hover.
+- Cubo menor e sem grande vazio lateral.
+
+Teste:
+`CHECK_V30.html`
+
+
+## V31 — Global V20 Nimo Smoke
+
+- Efeito real da V20 agora fixo/global no site inteiro.
+- Fundo preto, sem overlay/gradiente fake.
+- Mouse alimenta o canvas em qualquer seção.
+- Movimento inicial e idle discreto usando o próprio canvas real.
+- Projetos/cubo da V30 preservados.
+
+Teste:
+`CHECK_V31.html`
