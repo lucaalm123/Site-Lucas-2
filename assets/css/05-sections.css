@@ -1743,3 +1743,227 @@ body::after {
   .rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(92px) rotate(-180deg) !important; }
   .rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(92px) rotate(-270deg) !important; }
 }
+
+
+/* =========================================================
+   V18 — NIMO FLUID AURORA TRAIL
+   Análise do zip Nimo: o efeito original usa um canvas WebGL
+   fluid simulation acionado por hover/mouse. Esta versão recria
+   a lógica visual: rastro contínuo tipo aurora boreal, com
+   dissipação, curl suave e grandes splats translúcidos.
+   ========================================================= */
+
+/* Desliga tentativas anteriores para não conflitar. */
+.mouse-smoke-field,
+#smoke-canvas,
+#aurora-smoke-canvas {
+  display: none !important;
+}
+
+/* Canvas novo: rastro fluido e aurora ampla. */
+.nimo-fluid-aurora-canvas,
+.nimo-fluid-aurora-trail,
+.mouse-aurora-field {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  opacity: .82 !important;
+  mix-blend-mode: screen !important;
+  filter: blur(10px) saturate(1.22) contrast(.98) !important;
+  transform: translateZ(0);
+}
+
+/* Classes documentadas do prompt, mantidas no código. */
+.aurora-smoke-layer,
+.aurora-smoke-blob,
+.premium-smoke-gradient {
+  pointer-events: none;
+}
+
+/* Deixa a aurora aparecer por trás do site sem cobrir leitura. */
+.site-shell {
+  position: relative;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 72% 16%, rgba(var(--lime-rgb), .020), transparent 30%),
+    linear-gradient(180deg, rgba(3,4,3,.78), rgba(3,4,3,.91));
+}
+
+.section-flow,
+.hero,
+.why-nimo-section,
+.stacked-info-section {
+  background-color: rgba(3,4,3,.76) !important;
+}
+
+.section-flow {
+  padding-top: clamp(68px, 6.5vw, 106px) !important;
+  padding-bottom: clamp(68px, 6.5vw, 106px) !important;
+}
+
+.hero {
+  min-height: 100svh !important;
+  padding-top: clamp(120px, 10vw, 146px) !important;
+  padding-bottom: clamp(48px, 5.5vw, 76px) !important;
+}
+
+.section-transition-glow {
+  opacity: .22 !important;
+  height: 13% !important;
+}
+
+/* Menos buracos na área sticky. */
+.scroll-stack-section {
+  height: 195vh !important;
+  min-height: 980px !important;
+}
+
+.scroll-stack-track {
+  padding-top: clamp(62px, 6vw, 96px) !important;
+  padding-bottom: clamp(44px, 5vw, 74px) !important;
+}
+
+.scroll-stack-inner,
+.scroll-stack-cards {
+  min-height: 470px !important;
+  height: 470px !important;
+}
+
+.scroll-stack-card {
+  min-height: 310px !important;
+}
+
+/* Cards Missão / Visão / Método: sem sobreposição ruim. */
+.stacked-card-group {
+  display: grid !important;
+  gap: 18px !important;
+  min-height: auto !important;
+  align-content: center !important;
+}
+
+.stacked-card {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  min-height: 158px !important;
+  padding: 25px !important;
+  transform: none !important;
+}
+
+.stacked-card-active {
+  transform: translateX(-8px) scale(1.01) !important;
+}
+
+/* Palavras sem corte. */
+.display,
+.h2,
+.h3,
+.scroll-fill-text,
+.scroll-fill-line,
+.scroll-fill-word,
+.case-caption h3,
+.timeline-card h3,
+.why-card h3,
+.scroll-stack-card h3 {
+  overflow: visible !important;
+  text-wrap: balance;
+}
+
+.hero-copy .display {
+  max-width: 760px !important;
+  font-size: clamp(46px, 6.42vw, 100px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.061em !important;
+}
+
+/* Roda lateral alinhada com símbolos curtos. */
+.rotating-social-wheel,
+.hero-rotating-wheel {
+  right: -10vw !important;
+  top: 31% !important;
+  width: min(330px, 21.5vw) !important;
+  border-width: 26px !important;
+}
+
+.rotating-wheel-item {
+  width: 38px !important;
+  height: 38px !important;
+  margin: -19px 0 0 -19px !important;
+  font-size: 13px !important;
+}
+
+.rotating-wheel-item:nth-child(1) { transform: rotate(0deg) translate(138px) rotate(0deg) !important; }
+.rotating-wheel-item:nth-child(2) { transform: rotate(90deg) translate(138px) rotate(-90deg) !important; }
+.rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(138px) rotate(-180deg) !important; }
+.rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(138px) rotate(-270deg) !important; }
+
+@media (max-width: 1180px) {
+  .scroll-stack-section {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .scroll-stack-track,
+  .scroll-stack-inner,
+  .scroll-stack-cards,
+  .scroll-stack-card {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .rotating-social-wheel,
+  .hero-rotating-wheel {
+    right: -22vw !important;
+    width: 288px !important;
+    border-width: 23px !important;
+  }
+
+  .rotating-wheel-item:nth-child(1) { transform: rotate(0deg) translate(121px) rotate(0deg) !important; }
+  .rotating-wheel-item:nth-child(2) { transform: rotate(90deg) translate(121px) rotate(-90deg) !important; }
+  .rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(121px) rotate(-180deg) !important; }
+  .rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(121px) rotate(-270deg) !important; }
+}
+
+@media (max-width: 720px) {
+  .nimo-fluid-aurora-canvas,
+  .nimo-fluid-aurora-trail,
+  .mouse-aurora-field {
+    opacity: .56 !important;
+    filter: blur(8px) saturate(1.14) !important;
+  }
+
+  .section-flow {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .hero-copy .display {
+    font-size: clamp(40px, 10.7vw, 62px) !important;
+    line-height: 1.04 !important;
+  }
+
+  .rotating-social-wheel,
+  .hero-rotating-wheel {
+    right: -48vw !important;
+    width: 216px !important;
+    border-width: 19px !important;
+  }
+
+  .rotating-wheel-item {
+    width: 32px !important;
+    height: 32px !important;
+    margin: -16px 0 0 -16px !important;
+    font-size: 11px !important;
+  }
+
+  .rotating-wheel-item:nth-child(1) { transform: rotate(0deg) translate(90px) rotate(0deg) !important; }
+  .rotating-wheel-item:nth-child(2) { transform: rotate(90deg) translate(90px) rotate(-90deg) !important; }
+  .rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(90px) rotate(-180deg) !important; }
+  .rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(90px) rotate(-270deg) !important; }
+}
