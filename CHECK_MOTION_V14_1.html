@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHECK MOTION V14.1</title>
+<script>document.documentElement.classList.remove("no-js");document.documentElement.classList.add("js-ready");</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/01-tokens.css"><link rel="stylesheet" href="assets/css/02-base.css"><link rel="stylesheet" href="assets/css/03-layout.css"><link rel="stylesheet" href="assets/css/04-components.css"><link rel="stylesheet" href="assets/css/05-sections.css"><link rel="stylesheet" href="assets/css/06-effects.css"><link rel="stylesheet" href="assets/css/07-responsive.css">
+<style>body{min-height:260vh}.test-panel{position:relative;z-index:10;padding:140px var(--pad) 80px}.test-card{max-width:760px;margin:60px 0;padding:34px}.test-eye{position:relative;width:min(620px,92vw);height:360px;border-radius:34px;overflow:hidden;background:#10120e;border:1px solid rgba(255,250,240,.14)}.test-eye img{width:100%;height:100%;object-fit:contain;padding:24px;filter:drop-shadow(0 40px 90px rgba(0,0,0,.6))}.status{position:fixed;right:18px;bottom:18px;z-index:999;border-radius:999px;padding:12px 16px;background:var(--lime);color:var(--ink);font-family:var(--font-mono);font-weight:900}</style>
+</head>
+<body>
+<canvas class="nimo-particle-canvas" id="particle-canvas" aria-hidden="true"></canvas><canvas class="mouse-smoke-field" id="smoke-canvas" aria-hidden="true"></canvas><div class="animated-grid-bg" aria-hidden="true"></div><div class="lime-dot-field" aria-hidden="true"></div><div class="site-spotlight" aria-hidden="true"></div><div class="cursor" aria-hidden="true">Ver case</div>
+<main class="test-panel">
+<p class="kicker motion">{{ CHECK }} Motion V14.1</p>
+<h1 class="h2 scroll-fill-text">Mova o mouse para ver a fumaça colorida e desça a página para ver o texto ficando branco.</h1>
+<div class="test-card glass lime-hover-card motion"><p class="copy">Passe o mouse neste card: ele precisa ficar lime. A fumaça colorida deve seguir o mouse no fundo.</p></div>
+<article class="case-showcase-card case-neon-border test-eye motion-mask"><button class="case-hover case-eye-follow" data-case="contratos" data-action="drawer" type="button"><img class="case-image-zoom" src="assets/portfolio/contratos.png" alt="Teste de olho"><span class="case-hover-overlay"></span><span class="case-view-eye-button"><span class="case-eye-icon"><span class="case-eye-pupil"></span></span></span><span class="case-floating-tags"><span class="pill">olho segue mouse</span></span></button></article>
+<section style="height:120vh;display:grid;align-items:center"><h2 class="h2 scroll-fill-text">Se este texto preenche em branco durante o scroll, o efeito está funcionando.</h2></section>
+</main>
+<div class="status">MOTION TEST</div>
+<script src="assets/js/data.js" defer></script><script src="assets/js/utils.js" defer></script><script src="assets/js/menu.js" defer></script><script src="assets/js/cases.js" defer></script><script src="assets/js/effects.js" defer></script><script src="assets/js/main.js" defer></script>
+</body></html>
