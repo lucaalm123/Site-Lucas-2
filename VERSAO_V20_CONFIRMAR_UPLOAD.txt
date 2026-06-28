@@ -1,0 +1,28 @@
+V20 — NIMO NATIVE FLUID CANVAS
+
+Esta versão analisou o zip enviado e mudou a abordagem.
+
+O efeito real do Nimo está no arquivo:
+assets/9426e36ba46911c5_canvas.js
+
+Ele usa:
+window['webgl-fluid'](...)
+TRIGGER: 'hover'
+DENSITY_DISSIPATION: 10
+CURL: 5
+SPLAT_RADIUS: 0.3
+TRANSPARENT: true
+BLOOM: false
+SUNRAYS: false
+
+A V20 usa essa lógica no novo arquivo:
+assets/js/nimo-native-fluid.js
+
+Canvas:
+#nimo-native-fluid-canvas
+
+Teste:
+CHECK_V20_NIMO_NATIVE.html
+
+Console esperado:
+[V20] Nimo native webgl-fluid OK

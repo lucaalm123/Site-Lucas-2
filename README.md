@@ -98,3 +98,22 @@ Nova arquitetura do efeito:
 
 Teste:
 `CHECK_V19_WEBGL_FLUID.html`
+
+
+## V20 — Nimo Native Fluid Canvas
+
+A V20 abandona a tentativa de recriar manualmente o efeito com Canvas 2D/shader simplificado.
+
+Foi analisado o zip do Nimo e aplicado o mesmo padrão:
+- canvas dentro do Hero;
+- `webgl-fluid`;
+- `TRIGGER: 'hover'`;
+- `DENSITY_DISSIPATION: 10`;
+- `CURL: 5`;
+- `SPLAT_RADIUS: 0.3`;
+- `TRANSPARENT: true`.
+
+Arquivos:
+- `assets/js/nimo-native-fluid.js`
+- `CHECK_V20_NIMO_NATIVE.html`
+- `_instrucoes/ANALISE_REAL_EFEITO_NIMO_V20.md`
