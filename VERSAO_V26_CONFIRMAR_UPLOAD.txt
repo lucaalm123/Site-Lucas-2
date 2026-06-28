@@ -1,0 +1,22 @@
+V26 — SATURATED FLUID + COLOR ACCENTS
+
+Correções:
+- fumaça/webgl-fluid muito mais saturada e brilhante;
+- aumentei presença visual via CSS: brightness, saturate, contrast;
+- ajustei o webgl-fluid para dissipar menos rápido e ter splat maior;
+- adicionei camada cromática sutil no fundo;
+- botões, palavras, hover de projetos, ring, drawer e cards agora usam gradiente ciano/magenta/violeta;
+- sem voltar para laranja/verde como identidade principal;
+- base DreamLab preto/branco mantida.
+
+Arquivos:
+assets/css/v26.css
+assets/js/v26.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V26.html
+
+Console esperado:
+[V26] Saturated fluid + color accents OK
+[V26] Nimo native webgl-fluid saturated OK

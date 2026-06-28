@@ -180,3 +180,14 @@ Teste:
 
 Teste:
 `CHECK_V25.html`
+
+
+## V26 — Saturated Fluid + Color Accents
+
+- Fumaça/webgl-fluid mais saturada e brilhante.
+- Acentos coloridos ciano/magenta/violeta em botões, palavras, hovers e cards.
+- Base DreamLab preto/branco preservada.
+- Sem laranja/verde como identidade principal.
+
+Teste:
+`CHECK_V26.html`
