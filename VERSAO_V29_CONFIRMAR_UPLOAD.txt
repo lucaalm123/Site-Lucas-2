@@ -1,0 +1,24 @@
+V29 — BLACK BACKGROUND + VISIBLE REAL NIMO SMOKE
+
+Correção:
+- fundo permanece preto;
+- removi overlays/fundos coloridos artificiais;
+- o canvas Nimo fica acima do fundo e abaixo do conteúdo;
+- seções ficaram transparentes/vidro para não esconder a fumaça;
+- adicionei helper que alimenta o canvas real do Nimo com o movimento do mouse;
+- há um pequeno rastro inicial para confirmar que o efeito está ativo;
+- tecla F no CHECK_V29 intensifica o canvas;
+- marquee mantém palavras coloridas, sem retângulos.
+
+Arquivos:
+assets/css/v29.css
+assets/js/v29.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V29.html
+
+Console esperado:
+[V29] Real Nimo smoke helper OK
+[V29] Black background + visible real Nimo smoke OK
+[V29] Real Nimo smoke visible OK

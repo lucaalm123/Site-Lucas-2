@@ -192,3 +192,12 @@ Teste:
 
 Teste:
 `CHECK_V28.html`
+
+
+## V29 — Black Background + Visible Real Nimo Smoke
+
+- Fundo preto real.
+- Sem aurora/overlay fake.
+- Canvas Nimo acima do fundo e abaixo do conteúdo.
+- Helper alimenta o canvas real com mouse e rastro inicial.
+- Pressione `F` no CHECK para intensificar.
