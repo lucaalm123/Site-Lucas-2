@@ -1,6 +1,6 @@
 // options in the bottom
 
-if(document.querySelector("#nimo-native-fluid-canvas")) {
+if(document.querySelectorAll("canvas").length) {
 
 ;(function (z, F) {
   typeof exports == "object" && typeof module != "undefined"
@@ -4074,7 +4074,7 @@ Here's the new load parameter for your <code>GUI</code>'s constructor:
       }
       function it() {
           let o = ct(Math.random(), 1, 1)
-          return (o.r *= 0.72), (o.g *= 0.72), (o.b *= 0.72), o
+          return (o.r *= 0.24), (o.g *= 0.24), (o.b *= 0.24), o
       }
       function ct(o, s, a) {
           let f, p, w, y, L, O, te, ye
@@ -4141,33 +4141,33 @@ Here's the new load parameter for your <code>GUI</code>'s constructor:
   return z
 })
 
-const canvas = document.querySelector('#nimo-native-fluid-canvas');
+const canvas = document.querySelector('canvas');
 
 window.addEventListener('load', () => {
   if (window.innerWidth > 767) {
       window['webgl-fluid'](canvas, {
           TRIGGER: 'hover',
           PRESSURE_ITERATIONS: 10,
-          DENSITY_DISSIPATION: 2.35,
-          CURL: 18,
-          SPLAT_RADIUS: 0.52,
-          COLOR_UPDATE_SPEED: 12,
+          DENSITY_DISSIPATION: 8.5,
+          CURL: 5,
+          SPLAT_RADIUS: 0.32,
+          COLOR_UPDATE_SPEED: 7,
           TRANSPARENT: true,
-          BLOOM: true,
-          SUNRAYS: true,
+          BLOOM: false,
+          SUNRAYS: false,
       });
   } else {
       window['webgl-fluid'](canvas, {
           TRIGGER: 'hover',
           PRESSURE_ITERATIONS: 10,
-          DENSITY_DISSIPATION: 2.35,
-          CURL: 18,
-          SPLAT_RADIUS: 0.78,
-          SPLAT_FORCE: 2800,
-          COLOR_UPDATE_SPEED: 12,
+          DENSITY_DISSIPATION: 8.5,
+          CURL: 5,
+          SPLAT_RADIUS: 0.9,
+          SPLAT_FORCE: 1000,
+          COLOR_UPDATE_SPEED: 7,
           TRANSPARENT: true,
-          BLOOM: true,
-          SUNRAYS: true,
+          BLOOM: false,
+          SUNRAYS: false,
       });
   }
 
@@ -4176,4 +4176,4 @@ window.addEventListener('load', () => {
 
 }
 
-console.info('[V32] V20 Nimo fluid engine vivid patch loaded');
+console.info('[V33] Nimo original canvas balanced global smoke loaded');
