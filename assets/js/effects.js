@@ -604,6 +604,218 @@
     });
   }
 
+
+  /* =========================================================
+     V17 — Aurora Smoke Nimo
+     Grandes gradientes atmosféricos. Sem bolinhas, sem rastro
+     de cometa, sem branco estourado.
+     ========================================================= */
+  var aurora = null;
+
+  function lerp(a, b, t) {
+    return a + (b - a) * t;
+  }
+
+  function initAuroraSmoke() {
+    if (prefersReducedMotion()) return;
+
+    var canvas = $("#aurora-smoke-canvas");
+
+    if (!canvas) {
+      canvas = document.createElement("canvas");
+      canvas.id = "aurora-smoke-canvas";
+      canvas.className = "mouse-aurora-field aurora-smoke-layer";
+      canvas.setAttribute("aria-hidden", "true");
+      document.body.prepend(canvas);
+    }
+
+    var ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+    var pointer = {
+      x: window.innerWidth * 0.42,
+      y: window.innerHeight * 0.38,
+      tx: window.innerWidth * 0.42,
+      ty: window.innerHeight * 0.38
+    };
+
+    var isMobile = window.innerWidth < 720;
+    var intensity = isMobile ? 0.54 : 1;
+
+    var blobs = [
+      {
+        name: "blue-depth",
+        x: window.innerWidth * 0.42,
+        y: window.innerHeight * 0.36,
+        ox: -160,
+        oy: -20,
+        radius: isMobile ? 300 : 520,
+        color: [54, 201, 255],
+        alpha: 0.115 * intensity,
+        lag: 0.035,
+        drift: 0.0009,
+        scale: 1
+      },
+      {
+        name: "lime-rim",
+        x: window.innerWidth * 0.56,
+        y: window.innerHeight * 0.40,
+        ox: 80,
+        oy: 12,
+        radius: isMobile ? 260 : 430,
+        color: [223, 255, 47],
+        alpha: 0.085 * intensity,
+        lag: 0.026,
+        drift: 0.0011,
+        scale: 1
+      },
+      {
+        name: "magenta-side",
+        x: window.innerWidth * 0.28,
+        y: window.innerHeight * 0.46,
+        ox: -310,
+        oy: 46,
+        radius: isMobile ? 270 : 470,
+        color: [255, 42, 114],
+        alpha: 0.060 * intensity,
+        lag: 0.018,
+        drift: 0.0007,
+        scale: 1
+      },
+      {
+        name: "amber-low",
+        x: window.innerWidth * 0.36,
+        y: window.innerHeight * 0.62,
+        ox: -80,
+        oy: 170,
+        radius: isMobile ? 230 : 360,
+        color: [255, 183, 94],
+        alpha: 0.052 * intensity,
+        lag: 0.015,
+        drift: 0.0013,
+        scale: 1
+      },
+      {
+        name: "deep-cyan-wide",
+        x: window.innerWidth * 0.62,
+        y: window.innerHeight * 0.22,
+        ox: 190,
+        oy: -160,
+        radius: isMobile ? 320 : 620,
+        color: [39, 236, 198],
+        alpha: 0.038 * intensity,
+        lag: 0.012,
+        drift: 0.00055,
+        scale: 1
+      }
+    ];
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 1.6);
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      isMobile = window.innerWidth < 720;
+      intensity = isMobile ? 0.54 : 1;
+    }
+
+    function onPointerMove(event) {
+      pointer.tx = event.clientX;
+      pointer.ty = event.clientY;
+    }
+
+    resize();
+    window.addEventListener("resize", resize, { passive: true });
+    document.addEventListener("pointermove", onPointerMove, { passive: true });
+
+    aurora = {
+      canvas: canvas,
+      ctx: ctx,
+      pointer: pointer,
+      blobs: blobs,
+      startedAt: performance.now(),
+      running: true
+    };
+
+    renderAuroraSmoke();
+  }
+
+  function updateAuroraSmoke(time) {
+    if (!aurora) return;
+
+    var pointer = aurora.pointer;
+    pointer.x = lerp(pointer.x, pointer.tx, 0.055);
+    pointer.y = lerp(pointer.y, pointer.ty, 0.055);
+
+    var t = (time - aurora.startedAt) * 0.001;
+
+    aurora.blobs.forEach(function (blob, index) {
+      var waveX = Math.cos(t * (0.34 + index * 0.07) + index * 1.7) * (34 + index * 8);
+      var waveY = Math.sin(t * (0.28 + index * 0.05) + index * 1.2) * (22 + index * 5);
+      var targetX = pointer.x + blob.ox + waveX;
+      var targetY = pointer.y + blob.oy + waveY;
+
+      blob.x = lerp(blob.x, targetX, blob.lag);
+      blob.y = lerp(blob.y, targetY, blob.lag);
+      blob.scale = 1 + Math.sin(t * (0.52 + index * 0.04) + index) * 0.045;
+    });
+  }
+
+  function renderAuroraSmoke(time) {
+    if (!aurora || !aurora.running) return;
+
+    var ctx = aurora.ctx;
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var now = typeof time === "number" ? time : performance.now();
+
+    updateAuroraSmoke(now);
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.globalCompositeOperation = "screen";
+
+    // Camada base quase imperceptível, para a fumaça não parecer colada.
+    var base = ctx.createRadialGradient(width * 0.52, height * 0.38, 0, width * 0.52, height * 0.38, Math.max(width, height) * 0.82);
+    base.addColorStop(0, "rgba(20, 70, 62, 0.035)");
+    base.addColorStop(0.48, "rgba(10, 36, 48, 0.018)");
+    base.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = base;
+    ctx.fillRect(0, 0, width, height);
+
+    aurora.blobs.forEach(function (blob) {
+      var radius = blob.radius * blob.scale;
+      var color = blob.color;
+      var gradient = ctx.createRadialGradient(blob.x, blob.y, 0, blob.x, blob.y, radius);
+
+      // Sem branco puro: centro colorido translúcido e borda longa.
+      gradient.addColorStop(0, "rgba(" + color[0] + "," + color[1] + "," + color[2] + "," + blob.alpha + ")");
+      gradient.addColorStop(0.28, "rgba(" + color[0] + "," + color[1] + "," + color[2] + "," + (blob.alpha * 0.62) + ")");
+      gradient.addColorStop(0.62, "rgba(" + color[0] + "," + color[1] + "," + color[2] + "," + (blob.alpha * 0.22) + ")");
+      gradient.addColorStop(1, "rgba(" + color[0] + "," + color[1] + "," + color[2] + ",0)");
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(blob.x, blob.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    ctx.globalCompositeOperation = "source-over";
+
+    requestAnimationFrame(renderAuroraSmoke);
+  }
+
+  // Compatibilidade: chamadas antigas de smoke agora usam Aurora.
+  function initMouseSmokeTrail() {
+    initAuroraSmoke();
+  }
+
+  function updateSmokeTrail() {
+    updateAuroraSmoke(performance.now());
+  }
+
   function initEffects() {
     if (window.__effectsInitialized) {
       onScroll();
@@ -622,7 +834,7 @@
     initStackedHoverCards();
     initPortfolioHover();
     initEyeFollow();
-    initMouseSmokeTrail();
+    initAuroraSmoke();
     initOrbitNodes();
     initParticleCanvas();
     initParallax();
@@ -635,6 +847,9 @@
     markMotionOk();
   }
 
+  window.initAuroraSmoke = initAuroraSmoke;
+  window.updateAuroraSmoke = updateAuroraSmoke;
+  window.renderAuroraSmoke = renderAuroraSmoke;
   window.initSmoothScrollFallback = initSmoothScrollFallback;
   window.initScrollReveal = initScrollReveal;
   window.initScrollFillText = initScrollFillText;
