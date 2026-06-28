@@ -809,11 +809,306 @@
 
   // Compatibilidade: chamadas antigas de smoke agora usam Aurora.
   function initMouseSmokeTrail() {
-    initAuroraSmoke();
+    initNimoFluidAurora();
   }
 
   function updateSmokeTrail() {
     updateAuroraSmoke(performance.now());
+  }
+
+
+  /* =========================================================
+     V18 — Nimo Fluid Aurora Trail
+     O zip do Nimo usa webgl-fluid em canvas:
+     TRIGGER:'hover', TRANSPARENT:true, DENSITY_DISSIPATION,
+     CURL, SPLAT_RADIUS. Aqui recrio o comportamento visual
+     em Canvas 2D: rastro fluido, splats amplos, dissipação e
+     curl suave. Não é bolinha nem partícula pontilhada.
+     ========================================================= */
+  var nimoFluidAurora = null;
+
+  function initNimoFluidAurora() {
+    if (prefersReducedMotion()) return;
+
+    var canvas = $("#nimo-fluid-aurora-canvas");
+
+    if (!canvas) {
+      canvas = document.createElement("canvas");
+      canvas.id = "nimo-fluid-aurora-canvas";
+      canvas.className = "nimo-fluid-aurora-canvas nimo-fluid-aurora-trail mouse-aurora-field aurora-smoke-layer";
+      canvas.setAttribute("aria-hidden", "true");
+      document.body.prepend(canvas);
+    }
+
+    var ctx = canvas.getContext("2d", { alpha: true });
+    if (!ctx) return;
+
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var isMobile = window.innerWidth < 720;
+
+    var pointer = {
+      x: window.innerWidth * 0.43,
+      y: window.innerHeight * 0.38,
+      px: window.innerWidth * 0.43,
+      py: window.innerHeight * 0.38,
+      tx: window.innerWidth * 0.43,
+      ty: window.innerHeight * 0.38,
+      vx: 0,
+      vy: 0,
+      speed: 0,
+      active: false,
+      lastMove: performance.now()
+    };
+
+    var colors = [
+      [54, 201, 255],   // blue
+      [39, 236, 198],   // cyan-green
+      [223, 255, 47],   // lime
+      [255, 42, 114],   // magenta
+      [255, 183, 94]    // amber
+    ];
+
+    var trails = [];
+    var maxTrail = isMobile ? 18 : 30;
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      isMobile = window.innerWidth < 720;
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function addTrailPoint(x, y, speed) {
+      var hueIndex = Math.floor((performance.now() * 0.0018 + trails.length * 0.33) % colors.length);
+      trails.push({
+        x: x,
+        y: y,
+        px: pointer.px,
+        py: pointer.py,
+        speed: Math.min(speed, isMobile ? 38 : 52),
+        life: 1,
+        radius: (isMobile ? 110 : 180) + Math.min(speed, 48) * (isMobile ? 2.2 : 3.4),
+        color: colors[hueIndex],
+        color2: colors[(hueIndex + 2) % colors.length],
+        curl: (Math.random() - 0.5) * 26
+      });
+
+      if (trails.length > maxTrail) {
+        trails.splice(0, trails.length - maxTrail);
+      }
+    }
+
+    function onPointerMove(event) {
+      pointer.tx = event.clientX;
+      pointer.ty = event.clientY;
+      pointer.active = true;
+      pointer.lastMove = performance.now();
+    }
+
+    function onPointerLeave() {
+      pointer.active = false;
+    }
+
+    function splat(x, y, radius, color, alpha, elongation, angle) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.scale(elongation, 1);
+
+      var gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, radius);
+      gradient.addColorStop(0, "rgba(" + color[0] + "," + color[1] + "," + color[2] + "," + alpha + ")");
+      gradient.addColorStop(0.25, "rgba(" + color[0] + "," + color[1] + "," + color[2] + "," + (alpha * 0.58) + ")");
+      gradient.addColorStop(0.62, "rgba(" + color[0] + "," + color[1] + "," + color[2] + "," + (alpha * 0.20) + ")");
+      gradient.addColorStop(1, "rgba(" + color[0] + "," + color[1] + "," + color[2] + ",0)");
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawRibbon(point, index, total) {
+      var alpha = 0.030 * point.life;
+      var width = (isMobile ? 72 : 118) + point.speed * 2.2;
+      var angle = Math.atan2(point.y - point.py, point.x - point.px);
+      var nx = Math.cos(angle + Math.PI / 2) * point.curl;
+      var ny = Math.sin(angle + Math.PI / 2) * point.curl;
+
+      var grad = ctx.createLinearGradient(point.px, point.py, point.x, point.y);
+      grad.addColorStop(0, "rgba(" + point.color[0] + "," + point.color[1] + "," + point.color[2] + ",0)");
+      grad.addColorStop(0.42, "rgba(" + point.color[0] + "," + point.color[1] + "," + point.color[2] + "," + alpha + ")");
+      grad.addColorStop(1, "rgba(" + point.color2[0] + "," + point.color2[1] + "," + point.color2[2] + "," + (alpha * 0.82) + ")");
+
+      ctx.save();
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(point.px - nx * 0.3, point.py - ny * 0.3);
+      ctx.quadraticCurveTo(
+        (point.px + point.x) / 2 + nx,
+        (point.py + point.y) / 2 + ny,
+        point.x,
+        point.y
+      );
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function resizeSafe() {
+      resize();
+    }
+
+    document.addEventListener("pointermove", onPointerMove, { passive: true });
+    document.addEventListener("pointerleave", onPointerLeave, { passive: true });
+    window.addEventListener("resize", resizeSafe, { passive: true });
+
+    resize();
+
+    nimoFluidAurora = {
+      canvas: canvas,
+      ctx: ctx,
+      pointer: pointer,
+      trails: trails,
+      colors: colors,
+      startedAt: performance.now(),
+      addTrailPoint: addTrailPoint,
+      splat: splat,
+      drawRibbon: drawRibbon,
+      running: true
+    };
+
+    renderNimoFluidAurora();
+  }
+
+  function updateNimoFluidAurora(time) {
+    if (!nimoFluidAurora) return;
+
+    var p = nimoFluidAurora.pointer;
+    var oldX = p.x;
+    var oldY = p.y;
+
+    p.px = p.x;
+    p.py = p.y;
+    p.x = lerp(p.x, p.tx, 0.075);
+    p.y = lerp(p.y, p.ty, 0.075);
+    p.vx = p.x - oldX;
+    p.vy = p.y - oldY;
+    p.speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+
+    var idle = time - p.lastMove;
+    var t = (time - nimoFluidAurora.startedAt) * 0.001;
+
+    // Mesmo parado, mantém uma aurora viva e lenta, como luz de fundo.
+    if (idle > 120) {
+      p.tx += Math.cos(t * 0.9) * 0.12;
+      p.ty += Math.sin(t * 0.7) * 0.10;
+    }
+
+    if (p.speed > 0.35 || idle < 180) {
+      nimoFluidAurora.addTrailPoint(p.x, p.y, p.speed);
+    }
+
+    for (var i = nimoFluidAurora.trails.length - 1; i >= 0; i--) {
+      var point = nimoFluidAurora.trails[i];
+      point.life -= 0.018;
+      point.radius *= 1.006;
+      point.curl *= 0.992;
+
+      if (point.life <= 0) {
+        nimoFluidAurora.trails.splice(i, 1);
+      }
+    }
+  }
+
+  function renderNimoFluidAurora(time) {
+    if (!nimoFluidAurora || !nimoFluidAurora.running) return;
+
+    var ctx = nimoFluidAurora.ctx;
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+    var now = typeof time === "number" ? time : performance.now();
+
+    updateNimoFluidAurora(now);
+
+    // Dissipação tipo fluido: apaga devagar, mantendo rastro.
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.fillStyle = "rgba(0,0,0,0.045)";
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+
+    ctx.save();
+    ctx.globalCompositeOperation = "screen";
+
+    var t = (now - nimoFluidAurora.startedAt) * 0.001;
+    var p = nimoFluidAurora.pointer;
+
+    // Massa atmosférica larga que segue o mouse com atraso.
+    var ambientColors = nimoFluidAurora.colors;
+    for (var a = 0; a < 4; a++) {
+      var c = ambientColors[a];
+      var ax = p.x + Math.cos(t * (0.42 + a * 0.08) + a) * (120 + a * 38) + (a - 1.5) * 90;
+      var ay = p.y + Math.sin(t * (0.34 + a * 0.07) + a * 1.8) * (70 + a * 24) + (a - 1.5) * 34;
+      var ar = (window.innerWidth < 720 ? 250 : 430) + a * 46;
+      var aa = [0.038, 0.030, 0.026, 0.020][a];
+
+      nimoFluidAurora.splat(ax, ay, ar, c, aa, 1.55 + a * 0.18, t * 0.18 + a);
+    }
+
+    // Rastro de aurora — faixas largas, não bolinhas.
+    nimoFluidAurora.trails.forEach(function (point, index) {
+      nimoFluidAurora.drawRibbon(point, index, nimoFluidAurora.trails.length);
+    });
+
+    // Splats fluidos espalhados na trilha, mas grandes e translúcidos.
+    nimoFluidAurora.trails.forEach(function (point, index) {
+      if (index % 2 !== 0) return;
+
+      var angle = Math.atan2(point.y - point.py, point.x - point.px);
+      var alpha = Math.min(0.055, 0.018 + point.speed * 0.0018) * point.life;
+      var elongation = 1.65 + Math.min(point.speed, 45) * 0.018;
+
+      nimoFluidAurora.splat(
+        point.x,
+        point.y,
+        point.radius,
+        point.color,
+        alpha,
+        elongation,
+        angle
+      );
+    });
+
+    ctx.restore();
+
+    requestAnimationFrame(renderNimoFluidAurora);
+  }
+
+  // Mantém os nomes pedidos no prompt, mas agora com rastro fluido.
+  function initAuroraSmoke() {
+    initNimoFluidAurora();
+  }
+
+  function updateAuroraSmoke() {
+    updateNimoFluidAurora(performance.now());
+  }
+
+  function renderAuroraSmoke() {
+    renderNimoFluidAurora(performance.now());
+  }
+
+  function initMouseSmokeTrail() {
+    initNimoFluidAurora();
+  }
+
+  function updateSmokeTrail() {
+    updateNimoFluidAurora(performance.now());
   }
 
   function initEffects() {
@@ -834,7 +1129,7 @@
     initStackedHoverCards();
     initPortfolioHover();
     initEyeFollow();
-    initAuroraSmoke();
+    initNimoFluidAurora();
     initOrbitNodes();
     initParticleCanvas();
     initParallax();
@@ -847,6 +1142,9 @@
     markMotionOk();
   }
 
+  window.initNimoFluidAurora = initNimoFluidAurora;
+  window.updateNimoFluidAurora = updateNimoFluidAurora;
+  window.renderNimoFluidAurora = renderNimoFluidAurora;
   window.initAuroraSmoke = initAuroraSmoke;
   window.updateAuroraSmoke = updateAuroraSmoke;
   window.renderAuroraSmoke = renderAuroraSmoke;
