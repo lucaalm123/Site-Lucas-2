@@ -36,3 +36,17 @@ Correções principais:
 - Roda lateral substituída por símbolos curtos alinhados.
 - Tipografia do Hero ajustada para não cortar palavras.
 - Paleta mais controlada: lime principal, azul/magenta/âmbar apenas como atmosfera.
+
+
+## V16 — Bugfix Smoke / Stack / Gap
+
+Baseado no `effects.fixed.js` enviado pelo usuário.
+
+Principais correções:
+- fumaça agora cria canvas automaticamente se o HTML não tiver `#smoke-canvas`;
+- fumaça em camada visível;
+- redução de intensidade para não virar bola branca;
+- cards Missão/Visão/Método separados, sem sobreposição ruim;
+- scroll stack mais compacto;
+- redução de buraco entre seções;
+- proteção contra títulos/palavras cortadas.

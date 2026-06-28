@@ -1,0 +1,9 @@
+V16 — BUGFIX SMOKE / STACK / GAP
+
+Correções:
+- effects.js baseado no effects.fixed.js enviado pelo usuário;
+- canvas da fumaça é criado automaticamente se não existir;
+- fumaça fica visível, mas sem bola branca estourada;
+- cards Missão/Visão/Método não ficam mais com sobreposição ruim;
+- seção scroll-stack mais compacta para reduzir buraco;
+- proteção contra palavras cortadas.
