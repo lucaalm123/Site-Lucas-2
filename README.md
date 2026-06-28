@@ -131,3 +131,14 @@ Correções principais:
 
 Teste:
 `CHECK_V21_FULL_SITE.html`
+
+
+## V22 — Nimo Complete Rebuild
+
+Esta versão reconstrói o `index.html` e usa CSS/JS novos:
+- `assets/css/v22.css`
+- `assets/js/v22.js`
+- `assets/js/nimo-native-fluid.js`
+
+Teste:
+`CHECK_V22.html`

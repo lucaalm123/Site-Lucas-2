@@ -1,0 +1,21 @@
+V22 — NIMO COMPLETE REBUILD
+
+Correções principais:
+- index reconstruído do zero para eliminar hero quebrado, buracos e seções capengas;
+- efeito webgl-fluid nativo do Nimo continua global e agora com brilho/cor muito mais vivos via CSS;
+- cards Missão / Visão / Método ficam abertos e legíveis;
+- stack de cards no scroll foi refeito para ser progressivo e legível;
+- portfólio/cases ficou maior, com layout editorial;
+- roda de depoimentos foi refeita, grande e inspirada na composição circular do Nimo;
+- faixa marquee com Legal Design / Visual Law / Contratos Visuais;
+- menu com hover/ponto lime e CTA animado;
+- hero com efeito de letras e parallax;
+- timeline com progresso lime.
+
+Teste:
+CHECK_V22.html
+
+URLs:
+VERSAO_V22_CONFIRMAR_UPLOAD.txt
+CHECK_V22.html
+?v=22
