@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lucas Coimbra — Visual Law Motion Studio</title>
-    <meta name="description" content="Clareza visual para decisões jurídicas complexas. Visual Law, Legal Design e comunicação jurídica visual com motion premium.">
-    <meta name="theme-color" content="#050505">
+    <meta name="description" content="Visual Law, Legal Design e motion para clareza visual em decisões jurídicas complexas.">
+    <meta name="theme-color" content="#030403">
 
     <script>
       (function () {
@@ -14,7 +14,7 @@
         window.__motionWatchdog = window.setTimeout(function () {
           if (!document.documentElement.classList.contains("motion-ok")) {
             document.documentElement.classList.add("motion-failed");
-            console.error("[Visual Law Motion] Motion não inicializou. Conteúdo revelado por fallback.");
+            console.error("[Visual Law Nimo Rebuild] Motion não inicializou. Fallback visual ativado.");
           }
         }, 4500);
       })();
@@ -41,229 +41,243 @@
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <canvas class="nimo-particle-canvas" id="particle-canvas" aria-hidden="true"></canvas>
+    <canvas class="mouse-smoke-field" id="smoke-canvas" aria-hidden="true"></canvas>
     <div class="animated-grid-bg" aria-hidden="true"></div>
     <div class="lime-dot-field" aria-hidden="true"></div>
     <div class="site-spotlight" aria-hidden="true"></div>
     <div class="site-noise" aria-hidden="true"></div>
     <div class="cursor" aria-hidden="true">Ver case</div>
 
-    <header class="premium-nimo-header premium-pill-header header-lime-border" aria-label="Cabeçalho">
-      <a class="brand" href="#inicio" aria-label="Voltar ao início">
-        <span class="brand-mark">L</span>
-        <span>
-          <strong>Lucas Coimbra</strong>
-          <span>Visual Law Studio</span>
-        </span>
-      </a>
+    <div class="site-shell continuous-dark-bg">
+      <header class="premium-nimo-header premium-pill-header header-lime-border" aria-label="Cabeçalho">
+        <a class="brand" href="#inicio" aria-label="Voltar ao início">
+          <span class="brand-mark">L</span>
+          <span>
+            <strong>Lucas Coimbra</strong>
+            <span>Visual Law Studio</span>
+          </span>
+        </a>
 
-      <nav class="header-nav" aria-label="Navegação principal">
-        <a href="#why">Por quê</a>
-        <a href="#entendimento">Atuação</a>
-        <a href="#forma">Forma</a>
-        <a href="#cases">Cases</a>
-        <a href="#processo">Processo</a>
-        <a href="#contato">Contato</a>
-      </nav>
+        <nav class="header-nav" aria-label="Navegação principal">
+          <a href="#why">Por quê</a>
+          <a href="#entendimento">Atuação</a>
+          <a href="#forma">Forma</a>
+          <a href="#cases">Cases</a>
+          <a href="#processo">Processo</a>
+          <a href="#contato">Contato</a>
+        </nav>
 
-      <a class="header-cta-pill magnetic-button lime-glow" href="#contato">
-        <span class="header-arrow-icon">→</span>
-        Enviar material
-      </a>
+        <a class="header-cta-pill magnetic-button lime-glow" href="#contato">
+          <span class="header-arrow-icon">→</span>
+          Enviar material
+        </a>
 
-      <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
-        Menu
-      </button>
-    </header>
+        <button class="menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">Menu</button>
+      </header>
 
-    <aside class="drawer" id="menu" aria-hidden="true" aria-label="Menu mobile">
-      <button class="overlay-bg" data-close type="button" aria-label="Fechar menu"></button>
-      <section class="drawer-panel">
-        <button class="overlay-close menu-close" type="button" data-close>Fechar</button>
-        <div class="drawer-content">
-          <p class="section-kicker">Menu</p>
-          <h2>Visual Law Motion Studio</h2>
-          <div class="drawer-block">
-            <a class="menu-link" href="#why">Por quê</a><br>
-            <a class="menu-link" href="#entendimento">Atuação</a><br>
-            <a class="menu-link" href="#forma">Forma</a><br>
-            <a class="menu-link" href="#cases">Cases</a><br>
-            <a class="menu-link" href="#processo">Processo</a><br>
-            <a class="menu-link" href="#contato">Contato</a>
+      <aside class="drawer" id="mobile-menu" aria-hidden="true" aria-label="Menu mobile">
+        <button class="overlay-bg" data-close type="button" aria-label="Fechar menu"></button>
+        <section class="drawer-panel">
+          <button class="overlay-close menu-close" data-close type="button">Fechar</button>
+          <div class="drawer-content">
+            <p class="kicker">Menu</p>
+            <h2>Visual Law Motion Studio</h2>
+            <div class="drawer-block">
+              <a class="mobile-menu-link" href="#why">Por quê</a><br>
+              <a class="mobile-menu-link" href="#entendimento">Atuação</a><br>
+              <a class="mobile-menu-link" href="#forma">Forma</a><br>
+              <a class="mobile-menu-link" href="#cases">Cases</a><br>
+              <a class="mobile-menu-link" href="#processo">Processo</a><br>
+              <a class="mobile-menu-link" href="#contato">Contato</a>
+            </div>
           </div>
-        </div>
-      </section>
-    </aside>
+        </section>
+      </aside>
 
-    <main id="conteudo">
-      <section class="hero" id="inicio">
-        <div class="animated-color-field" aria-hidden="true"></div>
-        <div class="hero-neon-ring" aria-hidden="true"></div>
-        <div class="hero-rainbow-arc" aria-hidden="true"></div>
-        <div class="hero-orbit-line" aria-hidden="true"></div>
-        <div class="hero-starburst" aria-hidden="true"><span></span></div>
+      <main id="conteudo">
+        <section class="hero section-flow" id="inicio">
+          <div class="animated-color-field" aria-hidden="true"></div>
+          <div class="hero-neon-ring hero-rotating-wheel" aria-hidden="true"></div>
+          <div class="hero-rainbow-arc" aria-hidden="true"></div>
+          <div class="hero-orbit-line" aria-hidden="true"></div>
+          <div class="hero-starburst" aria-hidden="true"><span></span></div>
 
-        <div class="hero-inner">
-          <div class="hero-copy">
-            <p class="section-kicker motion">Visual Law / Legal Design / São Paulo</p>
-            <h1 class="display split">
-              <span>Clareza visual</span>
-              <span>para decisões</span>
-              <span><em class="serif">jurídicas</em> complexas.</span>
-            </h1>
-            <p class="lead motion">
-              Transformo documentos, contratos, apresentações e materiais jurídicos densos em narrativas visuais claras, estratégicas e úteis.
-            </p>
-            <ul class="pills hero-tags motion">
-              <li>Visual Law</li>
-              <li>Legal Design</li>
-              <li>Design da informação</li>
-            </ul>
-            <div class="btn-row hero-actions motion">
-              <a class="nimo-cta hero-lime-cta magnetic-button" href="#cases">
-                <span class="nimo-cta-icon">→</span>
-                Ver cases
-              </a>
-              <a class="secondary-btn" href="#contato">Enviar material</a>
+          <div class="rotating-social-wheel" aria-hidden="true">
+            <div class="rotating-wheel-track">
+              <span class="rotating-wheel-item">LAW</span>
+              <span class="rotating-wheel-item">DESIGN</span>
+              <span class="rotating-wheel-item">IA</span>
+              <span class="rotating-wheel-item">LEGAL</span>
             </div>
           </div>
 
-          <div class="hero-dark-figure-area motion-mask parallax" data-speed="0.035">
-            <button class="hero-floating-documents case-hover" data-case="contratos" data-action="drawer" type="button" aria-label="Abrir case Manual de contratos">
-              <img class="hero-main-doc" src="assets/portfolio/contratos.png" alt="Manual de contratos">
-              <img class="hero-doc-mini one" src="assets/portfolio/procon.png" alt="Manual do Livro do Procon">
-              <img class="hero-doc-mini two" src="assets/portfolio/ticket.png" alt="Guia visual de privacidade">
-            </button>
+          <div class="hero-inner">
+            <div class="hero-copy">
+              <p class="kicker motion">Visual Law / Legal Design / São Paulo</p>
+              <h1 class="display split">
+                <span>Clareza visual</span>
+                <span>para decisões</span>
+                <span><em class="serif">jurídicas</em> complexas.</span>
+              </h1>
+              <p class="lead motion">
+                Transformo documentos, contratos, apresentações e materiais jurídicos densos em narrativas visuais claras, estratégicas e úteis.
+              </p>
 
-            <div class="hero-brief glass motion">
-              <strong>Motion + Visual Law</strong>
-              <p>A informação jurídica deixa de ser apenas lida e passa a conduzir entendimento.</p>
+              <ul class="pills hero-tags motion">
+                <li>Visual Law</li>
+                <li>Legal Design</li>
+                <li>Motion jurídico</li>
+              </ul>
+
+              <div class="btn-row hero-actions motion">
+                <a class="nimo-cta hero-lime-cta magnetic-button" href="#cases">
+                  <span class="nimo-cta-icon">→</span>
+                  Ver cases
+                </a>
+                <a class="secondary-btn" href="#contato">Enviar material</a>
+              </div>
+            </div>
+
+            <div class="hero-dark-figure-area motion-mask parallax" data-speed="0.035">
+              <button class="hero-floating-documents case-hover" data-case="contratos" data-action="drawer" type="button" aria-label="Abrir case Manual de contratos">
+                <img class="hero-main-doc" src="assets/portfolio/contratos.png" alt="Manual de contratos">
+                <img class="hero-doc-mini one" src="assets/portfolio/procon.png" alt="Manual do Livro do Procon">
+                <img class="hero-doc-mini two" src="assets/portfolio/ticket.png" alt="Guia visual de privacidade">
+              </button>
+
+              <div class="hero-brief glass motion">
+                <strong>Motion + Visual Law</strong>
+                <p>A informação jurídica deixa de ser apenas lida e passa a conduzir entendimento.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section why-nimo-section" id="why">
-        <div class="container">
-          <div class="why-grid">
+        <section class="section-flow why-nimo-section" id="why">
+          <div class="section-transition-glow" aria-hidden="true"></div>
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="kicker motion">{03} Por que escolher?</p>
+                <h2 class="h2 why-fill-title scroll-fill-text">Porque clareza não é estética. É estratégia.</h2>
+              </div>
+              <p class="section-copy motion">
+                Documentos jurídicos densos exigem mais do que bom conteúdo. Eles precisam de ordem, hierarquia, ritmo e linguagem visual para serem compreendidos no momento certo.
+              </p>
+            </div>
+
+            <div class="why-card-stack">
+              <article class="why-card glass lime-hover-card why-lime-hover motion">
+                <span>01 / Menos ruído</span>
+                <h3>A essência aparece antes da complexidade.</h3>
+                <p>A leitura começa pelo que realmente importa, não pela massa de informação acumulada.</p>
+              </article>
+              <article class="why-card glass lime-hover-card why-card-active why-lime-hover motion">
+                <span>02 / Mais compreensão</span>
+                <h3>A leitura ganha caminho e prioridade.</h3>
+                <p>A estrutura visual conduz o destinatário por blocos, etapas e decisões.</p>
+              </article>
+              <article class="why-card glass lime-hover-card why-lime-hover motion">
+                <span>03 / Decisão mais segura</span>
+                <h3>O próximo passo fica mais evidente.</h3>
+                <p>O material ajuda a entender problema, risco, orientação e ação necessária.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-flow stacked-info-section" id="entendimento">
+          <div class="section-transition-glow" aria-hidden="true"></div>
+          <div class="container stacked-layout">
             <div>
-              <p class="section-kicker motion">{03} Por que escolher?</p>
-              <h2 class="h2 why-fill-title scroll-fill-text why-nimo-title">
-                Porque clareza não é estética. É estratégia.
-              </h2>
-            </div>
-            <p class="section-copy motion">
-              Documentos jurídicos densos exigem mais do que bom conteúdo. Eles precisam de ordem, hierarquia, ritmo e linguagem visual para serem compreendidos no momento certo.
-            </p>
-          </div>
-
-          <div class="why-card-stack">
-            <article class="why-card glass lime-hover-card why-lime-hover motion">
-              <span>01 / Menos ruído</span>
-              <h3>A essência aparece antes da complexidade.</h3>
-              <p>A leitura começa pelo que realmente importa, não pela massa de informação acumulada.</p>
-            </article>
-            <article class="why-card glass lime-hover-card why-card-active why-lime-hover motion">
-              <span>02 / Mais compreensão</span>
-              <h3>A leitura ganha caminho e prioridade.</h3>
-              <p>A estrutura visual conduz o destinatário por blocos, etapas e decisões.</p>
-            </article>
-            <article class="why-card glass lime-hover-card why-lime-hover motion">
-              <span>03 / Decisão mais segura</span>
-              <h3>O próximo passo fica mais evidente.</h3>
-              <p>O material ajuda a entender problema, risco, orientação e ação necessária.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section stacked-info-section" id="entendimento">
-        <div class="container stacked-layout">
-          <div class="stacked-copy">
-            <p class="section-kicker motion">{01} Atuação</p>
-            <h2 class="h2 scroll-fill-text">
-              Do jurídico denso ao entendimento visual.
-            </h2>
-            <p class="text-copy motion">
-              Eu não apenas redesenho documentos. Eu reorganizo raciocínios jurídicos para que a informação seja entendida, lembrada e utilizada.
-            </p>
-          </div>
-
-          <div class="stacked-card-group motion-mask">
-            <article class="stacked-card glass lime-hover-card stacked-card-hover">
-              <span class="stacked-card-icon">◎</span>
-              <h3>Missão</h3>
-              <p>Transformar complexidade jurídica em comunicação clara.</p>
-            </article>
-            <article class="stacked-card glass lime-hover-card stacked-card-active stacked-card-lime stacked-card-hover">
-              <span class="stacked-card-icon">◉</span>
-              <h3>Visão</h3>
-              <p>Fazer do Visual Law uma ferramenta de estratégia, não de decoração.</p>
-            </article>
-            <article class="stacked-card glass lime-hover-card stacked-card-hover">
-              <span class="stacked-card-icon">⌘</span>
-              <h3>Método</h3>
-              <p>Unir leitura jurídica, arquitetura da informação e design visual.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="scroll-stack-section" id="forma">
-        <div class="scroll-stack-track">
-          <div class="scroll-stack-inner">
-            <div class="scroll-stack-heading">
-              <p class="section-kicker motion">{02} Forma</p>
-              <h2 class="h2 scroll-fill-text">Como a informação jurídica ganha forma.</h2>
+              <p class="kicker motion">{01} Atuação</p>
+              <h2 class="h2 scroll-fill-text">Do jurídico denso ao entendimento visual.</h2>
+              <p class="lead motion">
+                Eu não apenas redesenho documentos. Eu reorganizo raciocínios jurídicos para que a informação seja entendida, lembrada e utilizada.
+              </p>
             </div>
 
-            <div class="scroll-stack-cards">
-              <article class="scroll-stack-card glass lime-hover-card">
-                <span>01</span>
-                <h3>Densidade</h3>
-                <p>O conteúdo original tem volume, técnica e camadas que dificultam a entrada do leitor.</p>
+            <div class="stacked-card-group motion-mask">
+              <article class="stacked-card glass lime-hover-card stacked-card-hover">
+                <span class="stacked-card-icon">◎</span>
+                <h3>Missão</h3>
+                <p>Transformar complexidade jurídica em comunicação clara.</p>
               </article>
-              <article class="scroll-stack-card glass lime-hover-card">
-                <span>02</span>
-                <h3>Estrutura</h3>
-                <p>A informação é reorganizada por hierarquia, sequência, objetivo e destinatário.</p>
+              <article class="stacked-card glass lime-hover-card stacked-card-active stacked-card-lime stacked-card-hover">
+                <span class="stacked-card-icon">◉</span>
+                <h3>Visão</h3>
+                <p>Fazer do Visual Law uma ferramenta de estratégia, não de decoração.</p>
               </article>
-              <article class="scroll-stack-card glass lime-hover-card">
-                <span>03</span>
-                <h3>Tradução visual</h3>
-                <p>Fluxos, destaques, grids, ícones e blocos criam uma jornada de compreensão.</p>
-              </article>
-              <article class="scroll-stack-card glass lime-hover-card">
-                <span>04</span>
-                <h3>Clareza aplicada</h3>
-                <p>O material final orienta leitura, decisão, apresentação, treinamento ou circulação.</p>
+              <article class="stacked-card glass lime-hover-card stacked-card-hover">
+                <span class="stacked-card-icon">⌘</span>
+                <h3>Método</h3>
+                <p>Unir leitura jurídica, arquitetura da informação e design visual.</p>
               </article>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section cases-section" id="cases">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker motion">{04} Cases</p>
-              <h2 class="h2 scroll-fill-text">Projetos vivos, não cards parados.</h2>
+        <section class="scroll-stack-section continuous-dark-bg" id="forma">
+          <div class="scroll-stack-track">
+            <div class="scroll-stack-inner">
+              <div class="scroll-stack-heading">
+                <p class="kicker motion">{02} Forma</p>
+                <h2 class="h2 scroll-fill-text">Como a informação jurídica ganha forma.</h2>
+              </div>
+
+              <div class="scroll-stack-cards">
+                <article class="scroll-stack-card glass lime-hover-card">
+                  <span>01</span>
+                  <h3>Densidade</h3>
+                  <p>O conteúdo original tem volume, técnica e camadas que dificultam a entrada do leitor.</p>
+                </article>
+                <article class="scroll-stack-card glass lime-hover-card">
+                  <span>02</span>
+                  <h3>Estrutura</h3>
+                  <p>A informação é reorganizada por hierarquia, sequência, objetivo e destinatário.</p>
+                </article>
+                <article class="scroll-stack-card glass lime-hover-card">
+                  <span>03</span>
+                  <h3>Tradução visual</h3>
+                  <p>Fluxos, destaques, grids, ícones e blocos criam uma jornada de compreensão.</p>
+                </article>
+                <article class="scroll-stack-card glass lime-hover-card">
+                  <span>04</span>
+                  <h3>Clareza aplicada</h3>
+                  <p>O material final orienta leitura, decisão, apresentação, treinamento ou circulação.</p>
+                </article>
+              </div>
             </div>
-            <p class="section-copy motion">
-              Os trabalhos são apresentados como peças de portfólio: imagem grande, hover com zoom, tags flutuantes, botão central e drawer com estratégia.
-            </p>
           </div>
+        </section>
 
-          <div class="case-showcase-grid">
+        <section class="section-flow" id="cases">
+          <div class="section-transition-glow" aria-hidden="true"></div>
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="kicker motion">{04} Cases</p>
+                <h2 class="h2 scroll-fill-text">Projetos vivos, não cards parados.</h2>
+              </div>
+              <p class="section-copy motion">
+                Imagem grande, tags flutuantes, botão de olho que segue o mouse, zoom suave, borda lime e drawer com estratégia.
+              </p>
+            </div>
+
+            <div class="case-showcase-grid">
 
               <article class="case-showcase-card case-neon-border motion-mask">
-                <button class="case-hover" data-case="contratos" data-action="drawer" type="button" aria-label="Abrir case Manual de contratos">
+                <button class="case-hover case-eye-follow" data-case="contratos" data-action="drawer" type="button" aria-label="Abrir case Manual de contratos">
                   <img class="case-image-zoom" src="assets/portfolio/contratos.png" alt="Manual de contratos">
                   <span class="case-hover-overlay" aria-hidden="true"></span>
-                  <span class="case-view-button" aria-hidden="true">↗</span>
                   <span class="case-floating-tags">
                     <span class="pill">Legal Ops</span>
                     <span class="pill">Contratos</span>
+                  </span>
+                  <span class="case-view-eye-button" aria-hidden="true">
+                    <span class="case-eye-icon">
+                      <span class="case-eye-pupil"></span>
+                    </span>
                   </span>
                   <span class="case-caption">
                     <h3>Manual de contratos</h3>
@@ -274,13 +288,17 @@
 
 
               <article class="case-showcase-card case-neon-border motion-mask">
-                <button class="case-hover" data-case="procon" data-action="drawer" type="button" aria-label="Abrir case Manual do Livro do Procon">
+                <button class="case-hover case-eye-follow" data-case="procon" data-action="drawer" type="button" aria-label="Abrir case Manual do Livro do Procon">
                   <img class="case-image-zoom" src="assets/portfolio/procon.png" alt="Manual do Livro do Procon">
                   <span class="case-hover-overlay" aria-hidden="true"></span>
-                  <span class="case-view-button" aria-hidden="true">↗</span>
                   <span class="case-floating-tags">
                     <span class="pill">Manual</span>
                     <span class="pill">Operação</span>
+                  </span>
+                  <span class="case-view-eye-button" aria-hidden="true">
+                    <span class="case-eye-icon">
+                      <span class="case-eye-pupil"></span>
+                    </span>
                   </span>
                   <span class="case-caption">
                     <h3>Manual do Livro do Procon</h3>
@@ -291,13 +309,17 @@
 
 
               <article class="case-showcase-card case-neon-border motion-mask">
-                <button class="case-hover" data-case="ticket" data-action="drawer" type="button" aria-label="Abrir case Guia visual de privacidade">
+                <button class="case-hover case-eye-follow" data-case="ticket" data-action="drawer" type="button" aria-label="Abrir case Guia visual de privacidade">
                   <img class="case-image-zoom" src="assets/portfolio/ticket.png" alt="Guia visual de privacidade">
                   <span class="case-hover-overlay" aria-hidden="true"></span>
-                  <span class="case-view-button" aria-hidden="true">↗</span>
                   <span class="case-floating-tags">
                     <span class="pill">Visual Law</span>
                     <span class="pill">Privacidade</span>
+                  </span>
+                  <span class="case-view-eye-button" aria-hidden="true">
+                    <span class="case-eye-icon">
+                      <span class="case-eye-pupil"></span>
+                    </span>
                   </span>
                   <span class="case-caption">
                     <h3>Guia visual de privacidade</h3>
@@ -308,13 +330,17 @@
 
 
               <article class="case-showcase-card case-neon-border motion-mask">
-                <button class="case-hover" data-case="obramax" data-action="drawer" type="button" aria-label="Abrir case Governança de dados pessoais">
+                <button class="case-hover case-eye-follow" data-case="obramax" data-action="drawer" type="button" aria-label="Abrir case Governança de dados pessoais">
                   <img class="case-image-zoom" src="assets/portfolio/obramax.png" alt="Governança de dados pessoais">
                   <span class="case-hover-overlay" aria-hidden="true"></span>
-                  <span class="case-view-button" aria-hidden="true">↗</span>
                   <span class="case-floating-tags">
                     <span class="pill">Legal Design</span>
                     <span class="pill">LGPD</span>
+                  </span>
+                  <span class="case-view-eye-button" aria-hidden="true">
+                    <span class="case-eye-icon">
+                      <span class="case-eye-pupil"></span>
+                    </span>
                   </span>
                   <span class="case-caption">
                     <h3>Governança de dados pessoais</h3>
@@ -325,13 +351,17 @@
 
 
               <article class="case-showcase-card case-neon-border motion-mask">
-                <button class="case-hover" data-case="impugnacao" data-action="drawer" type="button" aria-label="Abrir case Impugnação administrativa">
+                <button class="case-hover case-eye-follow" data-case="impugnacao" data-action="drawer" type="button" aria-label="Abrir case Impugnação administrativa">
                   <img class="case-image-zoom" src="assets/portfolio/impugnacao.png" alt="Impugnação administrativa">
                   <span class="case-hover-overlay" aria-hidden="true"></span>
-                  <span class="case-view-button" aria-hidden="true">↗</span>
                   <span class="case-floating-tags">
                     <span class="pill">Tributário</span>
                     <span class="pill">Peça visual</span>
+                  </span>
+                  <span class="case-view-eye-button" aria-hidden="true">
+                    <span class="case-eye-icon">
+                      <span class="case-eye-pupil"></span>
+                    </span>
                   </span>
                   <span class="case-caption">
                     <h3>Impugnação administrativa</h3>
@@ -340,169 +370,177 @@
                 </button>
               </article>
 
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="section funfact-legal-section funfact-grid-bg" id="impacto">
-        <div class="container funfact-content">
-          <p class="section-kicker motion">{05} Impacto</p>
-          <h2 class="h2 funfact-fill-text scroll-fill-text">
-            Um documento não precisa ser simplificado para ser compreendido. Ele precisa ser estruturado.
-          </h2>
-          <div class="funfact-floating-tags motion">
-            <span class="pill">clareza</span>
-            <span class="pill">hierarquia</span>
-            <span class="pill">decisão</span>
+        <section class="section-flow funfact-legal-section funfact-grid-bg" id="impacto">
+          <div class="section-transition-glow" aria-hidden="true"></div>
+          <div class="container funfact-content">
+            <p class="kicker motion">{05} Impacto</p>
+            <h2 class="h2 funfact-fill-text scroll-fill-text">
+              Um documento não precisa ser simplificado para ser compreendido. Ele precisa ser estruturado.
+            </h2>
+            <div class="funfact-floating-tags motion">
+              <span class="pill">clareza</span>
+              <span class="pill">hierarquia</span>
+              <span class="pill">decisão</span>
+            </div>
+            <img class="funfact-side-mockup parallax" data-speed="0.08" src="assets/portfolio/impugnacao.png" alt="Mockup de peça visual jurídica">
           </div>
-          <img class="funfact-side-mockup parallax" data-speed="0.08" src="assets/portfolio/impugnacao.png" alt="Mockup de peça visual jurídica">
-        </div>
-      </section>
+        </section>
 
-      <section class="section orbit-testimonial" id="percepcao">
-        <div class="container">
-          <div class="section-head">
+        <section class="section-flow orbit-testimonial" id="percepcao">
+          <div class="section-transition-glow" aria-hidden="true"></div>
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="kicker motion">{06} Percepção</p>
+                <h2 class="h2 scroll-fill-text">Como a clareza visual muda a percepção do jurídico.</h2>
+              </div>
+            </div>
+
+            <div class="orbit-wrap motion-mask">
+              <div class="orbit-ring"></div>
+              <div class="orbit-ring two"></div>
+
+              <span class="orbit-node orbit-node-active trust-glow">Clareza</span>
+              <span class="orbit-node">Confiança</span>
+              <span class="orbit-node">Decisão</span>
+              <span class="orbit-node">Entendimento</span>
+              <span class="orbit-node">Estratégia</span>
+              <span class="orbit-node">Segurança</span>
+              <span class="orbit-node">Convencimento</span>
+
+              <div class="quote-core">
+                <div class="quote">”</div>
+                <p>Quando a informação jurídica é bem organizada, ela deixa de ser apenas lida — ela passa a orientar decisões.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-flow" id="processo">
+          <div class="section-transition-glow" aria-hidden="true"></div>
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <p class="kicker motion">{07} Processo</p>
+                <h2 class="h2 scroll-fill-text">4 etapas para transformar complexidade em clareza.</h2>
+              </div>
+            </div>
+
+            <div class="method-timeline">
+              <div class="timeline-progress"><div class="timeline-progress-fill"></div></div>
+
+              <div class="timeline-item">
+                <article class="timeline-card timeline-card-left glass lime-hover-card">
+                  <h3>Diagnóstico jurídico</h3>
+                  <p>Entendo o material, o público, o risco e o objetivo da comunicação.</p>
+                </article>
+                <div class="timeline-node">1</div>
+                <div></div>
+              </div>
+
+              <div class="timeline-item">
+                <div></div>
+                <div class="timeline-node">2</div>
+                <article class="timeline-card timeline-card-right glass lime-hover-card">
+                  <h3>Arquitetura da informação</h3>
+                  <p>Organizo hierarquia, sequência, mensagens-chave e blocos de leitura.</p>
+                </article>
+              </div>
+
+              <div class="timeline-item">
+                <article class="timeline-card timeline-card-left glass lime-hover-card">
+                  <h3>Tradução visual</h3>
+                  <p>Transformo o conteúdo em layout, fluxos, ícones, destaques e narrativa visual.</p>
+                </article>
+                <div class="timeline-node">3</div>
+                <div></div>
+              </div>
+
+              <div class="timeline-item">
+                <div></div>
+                <div class="timeline-node">4</div>
+                <article class="timeline-card timeline-card-right glass lime-hover-card">
+                  <h3>Entrega estratégica</h3>
+                  <p>Finalizo o material para apresentação, treinamento, circulação ou tomada de decisão.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-flow" id="contato">
+          <div class="section-transition-glow" aria-hidden="true"></div>
+          <div class="container contact-layout">
             <div>
-              <p class="section-kicker motion">{06} Percepção</p>
-              <h2 class="h2 scroll-fill-text">Como a clareza visual muda a percepção do jurídico.</h2>
+              <p class="kicker motion">{08} Contato</p>
+              <h2 class="h2 scroll-fill-text">Tem um material difícil de explicar?</h2>
+              <p class="lead motion">
+                Envie o documento, objetivo e contexto. Eu analiso como transformar a informação jurídica em uma peça mais clara, visual e estratégica.
+              </p>
             </div>
+
+            <form class="contact-form glass motion-mask" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+              <input type="hidden" name="_subject" value="Novo contato pelo site Lucas Coimbra">
+              <label>Nome <input name="nome" type="text" placeholder="Seu nome" required></label>
+              <label>E-mail <input name="email" type="email" placeholder="seuemail@exemplo.com" required></label>
+              <label>Empresa ou escritório <input name="empresa" type="text" placeholder="Nome da empresa ou escritório"></label>
+              <label>Tipo de material
+                <select name="tipo" required>
+                  <option value="">Selecione uma opção</option>
+                  <option value="Visual Law">Visual Law</option>
+                  <option value="Legal Design">Legal Design</option>
+                  <option value="Redesign de documento jurídico">Redesign de documento jurídico</option>
+                  <option value="Apresentação estratégica">Apresentação estratégica</option>
+                  <option value="Manual ou guia visual">Manual ou guia visual</option>
+                </select>
+              </label>
+              <label>Mensagem <textarea name="mensagem" placeholder="Conte qual é o material, quem vai ler e qual decisão ele precisa apoiar..." required></textarea></label>
+              <button class="nimo-cta magnetic-button" type="submit">
+                <span class="nimo-cta-icon">→</span>
+                Enviar material
+              </button>
+            </form>
           </div>
+        </section>
+      </main>
 
-          <div class="orbit-wrap motion-mask">
-            <div class="orbit-ring"></div>
-            <div class="orbit-ring two"></div>
+      <footer class="site-footer">
+        <p>Lucas Coimbra © <span id="current-year"></span></p>
+        <p>Visual Law / Legal Design / Motion jurídico</p>
+      </footer>
 
-            <span class="orbit-node orbit-node-active trust-glow">Clareza</span>
-            <span class="orbit-node">Confiança</span>
-            <span class="orbit-node">Decisão</span>
-            <span class="orbit-node">Entendimento</span>
-            <span class="orbit-node">Estratégia</span>
-            <span class="orbit-node">Segurança</span>
-            <span class="orbit-node">Convencimento</span>
-
-            <div class="quote-core">
-              <div class="quote">”</div>
-              <p>Quando a informação jurídica é bem organizada, ela deixa de ser apenas lida — ela passa a orientar decisões.</p>
-            </div>
+      <aside class="drawer" id="case-drawer" aria-hidden="true" aria-label="Detalhes do case">
+        <button class="overlay-bg" data-close type="button" aria-label="Fechar detalhes"></button>
+        <section class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+          <button class="overlay-close" data-close type="button">Fechar</button>
+          <div class="drawer-media">
+            <img id="drawer-image" src="assets/portfolio/contratos.png" alt="">
           </div>
-        </div>
-      </section>
-
-      <section class="section timeline-section" id="processo">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker motion">{07} Processo</p>
-              <h2 class="h2 scroll-fill-text">4 etapas para transformar complexidade em clareza.</h2>
-            </div>
+          <div class="drawer-content">
+            <p class="kicker" id="drawer-category">Case</p>
+            <h2 id="drawer-title">Título do case</h2>
+            <p id="drawer-doc"></p>
+            <div class="drawer-block"><span>Problema jurídico</span><p id="drawer-problem"></p></div>
+            <div class="drawer-block"><span>Solução aplicada</span><p id="drawer-solution"></p></div>
+            <div class="drawer-block"><span>Recursos usados</span><ul class="pills" id="drawer-resources"></ul></div>
+            <div class="drawer-block"><span>Resultado</span><p id="drawer-result"></p></div>
           </div>
+        </section>
+      </aside>
 
-          <div class="method-timeline">
-            <div class="timeline-progress"><div class="timeline-progress-fill"></div></div>
-
-            <div class="timeline-item">
-              <article class="timeline-card timeline-card-left glass lime-hover-card">
-                <h3>Diagnóstico jurídico</h3>
-                <p>Entendo o material, o público, o risco e o objetivo da comunicação.</p>
-              </article>
-              <div class="timeline-node">1</div>
-              <div></div>
-            </div>
-
-            <div class="timeline-item">
-              <div></div>
-              <div class="timeline-node">2</div>
-              <article class="timeline-card timeline-card-right glass lime-hover-card">
-                <h3>Arquitetura da informação</h3>
-                <p>Organizo hierarquia, sequência, mensagens-chave e blocos de leitura.</p>
-              </article>
-            </div>
-
-            <div class="timeline-item">
-              <article class="timeline-card timeline-card-left glass lime-hover-card">
-                <h3>Tradução visual</h3>
-                <p>Transformo o conteúdo em layout, fluxos, ícones, destaques e narrativa visual.</p>
-              </article>
-              <div class="timeline-node">3</div>
-              <div></div>
-            </div>
-
-            <div class="timeline-item">
-              <div></div>
-              <div class="timeline-node">4</div>
-              <article class="timeline-card timeline-card-right glass lime-hover-card">
-                <h3>Entrega estratégica</h3>
-                <p>Finalizo o material para apresentação, treinamento, circulação ou tomada de decisão.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section contact-section" id="contato">
-        <div class="container contact-layout">
-          <div>
-            <p class="section-kicker motion">{08} Contato</p>
-            <h2 class="h2 scroll-fill-text">Tem um material difícil de explicar?</h2>
-            <p class="lead motion">
-              Envie o documento, objetivo e contexto. Eu analiso como transformar a informação jurídica em uma peça mais clara, visual e estratégica.
-            </p>
-          </div>
-
-          <form class="contact-form glass motion-mask" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
-            <input type="hidden" name="_subject" value="Novo contato pelo site Lucas Coimbra">
-            <label>Nome <input name="nome" type="text" placeholder="Seu nome" required></label>
-            <label>E-mail <input name="email" type="email" placeholder="seuemail@exemplo.com" required></label>
-            <label>Empresa ou escritório <input name="empresa" type="text" placeholder="Nome da empresa ou escritório"></label>
-            <label>Tipo de material
-              <select name="tipo" required>
-                <option value="">Selecione uma opção</option>
-                <option value="Visual Law">Visual Law</option>
-                <option value="Legal Design">Legal Design</option>
-                <option value="Redesign de documento jurídico">Redesign de documento jurídico</option>
-                <option value="Apresentação estratégica">Apresentação estratégica</option>
-                <option value="Manual ou guia visual">Manual ou guia visual</option>
-              </select>
-            </label>
-            <label>Mensagem <textarea name="mensagem" placeholder="Conte qual é o material, quem vai ler e qual decisão ele precisa apoiar..." required></textarea></label>
-            <button class="nimo-cta magnetic-button" type="submit"><span class="nimo-cta-icon">→</span>Enviar material</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <p>Lucas Coimbra © <span id="current-year"></span></p>
-      <p>Visual Law / Legal Design / Motion jurídico</p>
-    </footer>
-
-    <aside class="drawer" id="case-drawer" aria-hidden="true" aria-label="Detalhes do case">
-      <button class="overlay-bg" data-close type="button" aria-label="Fechar detalhes"></button>
-      <section class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
-        <button class="overlay-close" data-close type="button">Fechar</button>
-        <div class="drawer-media">
-          <img id="drawer-image" src="assets/portfolio/contratos.png" alt="">
-        </div>
-        <div class="drawer-content">
-          <p class="section-kicker" id="drawer-category">Case</p>
-          <h2 id="drawer-title">Título do case</h2>
-          <p id="drawer-doc"></p>
-          <div class="drawer-block"><span>Problema jurídico</span><p id="drawer-problem"></p></div>
-          <div class="drawer-block"><span>Solução aplicada</span><p id="drawer-solution"></p></div>
-          <div class="drawer-block"><span>Recursos usados</span><ul class="pills" id="drawer-resources"></ul></div>
-          <div class="drawer-block"><span>Resultado</span><p id="drawer-result"></p></div>
-        </div>
-      </section>
-    </aside>
-
-    <aside class="lightbox" id="lightbox" aria-hidden="true" aria-label="Imagem ampliada">
-      <button class="overlay-bg" data-close type="button" aria-label="Fechar imagem"></button>
-      <figure>
-        <button class="overlay-close" data-close type="button">Fechar</button>
-        <img id="lightbox-image" src="assets/portfolio/contratos.png" alt="">
-        <figcaption id="lightbox-caption">Imagem ampliada</figcaption>
-      </figure>
-    </aside>
+      <aside class="lightbox" id="lightbox" aria-hidden="true" aria-label="Imagem ampliada">
+        <button class="overlay-bg" data-close type="button" aria-label="Fechar imagem"></button>
+        <figure>
+          <button class="overlay-close" data-close type="button">Fechar</button>
+          <img id="lightbox-image" src="assets/portfolio/contratos.png" alt="">
+          <figcaption id="lightbox-caption">Imagem ampliada</figcaption>
+        </figure>
+      </aside>
+    </div>
 
     <script src="assets/js/data.js" defer></script>
     <script src="assets/js/utils.js" defer></script>
