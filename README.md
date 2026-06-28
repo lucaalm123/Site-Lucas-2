@@ -142,3 +142,15 @@ Esta versão reconstrói o `index.html` e usa CSS/JS novos:
 
 Teste:
 `CHECK_V22.html`
+
+
+## V23 — Testimonial + Text Fix
+
+Correções:
+- `assets/js/v23.js` preserva palavras no efeito de letras.
+- Side wheel agora exibe `VISUAL LAW` e `LEGAL DESIGN`.
+- Depoimentos refeitos com arco amplo estilo Nimo.
+- Placeholders de depoimentos melhorados.
+
+Teste:
+`CHECK_V23.html`

@@ -1,0 +1,16 @@
+V23 — TESTIMONIAL + TEXT FIX
+
+Correções:
+- textos do hero não quebram mais palavra por palavra/letra por letra;
+- split de letras agora preserva palavras inteiras com .word-wrap;
+- círculo giratório do hero agora usa as palavras VISUAL LAW e LEGAL DESIGN;
+- seção de depoimentos foi refeita no estilo Nimo com arco amplo;
+- placeholders de fotos foram melhorados, sem C1/C2 visível;
+- nova lógica em assets/js/v23.js.
+
+Teste:
+CHECK_V23.html
+
+Console esperado:
+[V23] Text + testimonial wheel fix OK
+[V22] Nimo native webgl-fluid global vivid OK

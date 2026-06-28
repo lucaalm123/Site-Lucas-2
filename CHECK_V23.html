@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHECK V23</title>
+<link rel="stylesheet" href="assets/css/v22.css">
+<style>.check{position:relative;z-index:5;padding:120px var(--pad);min-height:130vh}.box{max-width:960px;padding:28px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(0,0,0,.52)}pre{white-space:pre-wrap}</style>
+</head>
+<body>
+<canvas id="nimo-native-fluid-canvas" class="nimo-native-fluid-canvas nimo-global-fluid-canvas" aria-hidden="true"></canvas>
+<div class="check"><div class="box"><p class="kicker">CHECK V23</p><h1 class="h2" data-letter-fx>Texto sem corte, roda melhor e círculo com palavras.</h1><p class="lead">Teste: as palavras não podem quebrar no meio. A roda lateral deve ter Visual Law / Legal Design. A roda de depoimentos usa a nova classe nimo-avatar.</p><pre id="status">verificando...</pre></div></div>
+<script src="assets/js/nimo-native-fluid.js" defer></script>
+<script src="assets/js/v23.js" defer></script>
+<script>
+Promise.all([
+fetch("assets/css/v22.css",{cache:"no-store"}).then(r=>["v22.css",r.ok]),
+fetch("assets/js/v23.js",{cache:"no-store"}).then(r=>["v23.js",r.ok]),
+fetch("assets/js/nimo-native-fluid.js",{cache:"no-store"}).then(r=>["nimo-native-fluid.js",r.ok]),
+fetch("assets/generated/testimonial-01.svg",{cache:"no-store"}).then(r=>["testimonial-01.svg",r.ok]),
+fetch("index.html",{cache:"no-store"}).then(r=>["index.html",r.ok])
+]).then(res=>status.textContent=res.map(([n,ok])=>`${ok?"OK":"ERRO"} — ${n}`).join("\n"));
+</script>
+</body>
+</html>
