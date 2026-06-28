@@ -1,32 +1,12 @@
 [
   {
-    "asset_name": "hero-abstract-glow.webp",
+    "asset_name": "hero-legal-neon-mockup.png",
     "section": "Hero",
-    "purpose": "Criar um fundo abstrato colorido atrás dos mockups jurídicos, inspirado em efeitos premium de shapes e blobs, sem competir com o texto.",
-    "recommended_size": "1920x1080",
-    "format": "webp",
-    "transparent_background": false,
-    "prompt": "Abstract premium digital background for a Visual Law and Legal Design studio website, deep black and graphite base, sophisticated amber, magenta, violet and electric blue gradients, soft glowing blobs, subtle grain, elegant legal-tech atmosphere, cinematic depth, no text, no logos, refined and professional, high-end creative agency style.",
-    "negative_prompt": "cheap template, childish colors, excessive neon, readable text, logos, people, cluttered composition, low resolution, cartoon style"
-  },
-  {
-    "asset_name": "floating-legal-document-01.png",
-    "section": "Hero",
-    "purpose": "Documento jurídico flutuante com aparência premium, usado como objeto visual principal do Hero.",
-    "recommended_size": "1600x1600",
+    "purpose": "Mockup jurídico central para substituir a figura humana do Nimo.",
+    "recommended_size": "1800x1800",
     "format": "png",
     "transparent_background": true,
-    "prompt": "Premium floating legal document mockup, single curved sheet of paper, elegant editorial legal design layout, abstract charts, icons and structured information blocks, off-white paper, subtle amber and blue accents, realistic studio lighting, soft shadow, isolated object, transparent background, high-end portfolio mockup, no readable text, no logos.",
-    "negative_prompt": "busy readable text, fake logos, watermark, low quality, flat screenshot, white background, clutter, cartoon, harsh shadow"
-  },
-  {
-    "asset_name": "impact-flow-abstract.svg",
-    "section": "Experiência / Impacto",
-    "purpose": "Elemento abstrato vetorial para conectar documento denso, reorganização, clareza e decisão.",
-    "recommended_size": "1600x900",
-    "format": "svg",
-    "transparent_background": true,
-    "prompt": "Elegant abstract flow diagram for legal information design, dark transparent background, thin amber lines, magenta and blue glow nodes, four connected stages, premium editorial composition, minimal, no text, no logos.",
-    "negative_prompt": "complex labels, readable text, corporate stock design, clutter, low quality"
+    "prompt": "Premium floating legal design composition, multiple editorial legal documents and contract sheets floating in dark studio space, strong lime green, amber, magenta and electric blue neon rim lights, cinematic depth, realistic shadows, high-end creative agency website hero object, transparent background, no readable text, no logos.",
+    "negative_prompt": "cheap mockup, corporate stock photo, readable text, logos, watermark, white background, cluttered, cartoon, low resolution"
   }
 ]
