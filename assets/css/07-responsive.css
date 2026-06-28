@@ -12,7 +12,6 @@
     display: inline-flex;
     justify-self: end;
     align-items: center;
-    gap: 10px;
     min-height: 48px;
     border: 1px solid rgba(var(--lime-rgb), .45);
     border-radius: var(--pill);
@@ -26,19 +25,24 @@
   }
 
   .hero-inner,
-  .why-grid,
+  .section-head,
   .stacked-layout,
-  .contact-layout,
-  .section-head {
+  .contact-layout {
     grid-template-columns: 1fr;
   }
 
   .hero {
-    padding-top: 128px;
+    padding-top: 126px;
   }
 
   .hero-dark-figure-area {
-    min-height: 560px;
+    min-height: 540px;
+  }
+
+  .rotating-social-wheel,
+  .hero-rotating-wheel {
+    right: -24vw;
+    width: 330px;
   }
 
   .why-card-stack,
@@ -67,8 +71,8 @@
   }
 
   .scroll-stack-inner,
-  .scroll-stack-cards,
-  .scroll-stack-heading {
+  .scroll-stack-heading,
+  .scroll-stack-cards {
     position: relative;
     width: 100%;
     height: auto;
@@ -89,8 +93,8 @@
     position: relative;
     inset: auto;
     min-height: auto;
-    transform: none !important;
     opacity: 1 !important;
+    transform: none !important;
   }
 
   .timeline-card-left,
@@ -105,7 +109,9 @@
 }
 
 @media (max-width: 720px) {
-  :root { --pad: 18px; }
+  :root {
+    --pad: 18px;
+  }
 
   .premium-nimo-header {
     top: 10px;
@@ -115,12 +121,25 @@
     padding: 8px 10px;
   }
 
-  .brand-mark { width: 44px; height: 44px; }
-  .brand strong { max-width: 185px; font-size: 21px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .brand span { display: none; }
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+  }
+
+  .brand strong {
+    max-width: 178px;
+    overflow: hidden;
+    font-size: 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .brand span span {
+    display: none;
+  }
 
   .display {
-    font-size: clamp(48px, 13vw, 74px);
+    font-size: clamp(47px, 13vw, 74px);
     line-height: 1;
   }
 
@@ -133,33 +152,46 @@
     padding-top: 104px;
   }
 
-  .hero-neon-ring {
-    right: -54vw;
-    top: 42%;
-    width: 92vw;
-  }
-
-  .hero-rainbow-arc {
-    right: -34vw;
-    width: 78vw;
-  }
-
-  .hero-starburst {
-    right: 8%;
-    top: 45%;
-    width: 54px;
-  }
-
   .hero-dark-figure-area {
     min-height: 420px;
   }
 
+  .hero-main-doc {
+    width: 112%;
+    margin-left: -6%;
+  }
+
   .hero-doc-mini {
-    width: 88px;
+    width: 86px;
   }
 
   .hero-brief {
     display: none;
+  }
+
+  .hero-neon-ring {
+    right: -58vw;
+    top: 43%;
+    width: 96vw;
+  }
+
+  .hero-rainbow-arc {
+    right: -36vw;
+    width: 78vw;
+  }
+
+  .hero-starburst {
+    width: 54px;
+    right: 7%;
+    top: 45%;
+  }
+
+  .rotating-social-wheel,
+  .hero-rotating-wheel {
+    right: -46vw;
+    top: 48%;
+    width: 240px;
+    border-width: 24px;
   }
 
   .btn-row {
@@ -171,18 +203,21 @@
     width: 100%;
   }
 
-  .why-card,
-  .method-card,
-  .timeline-card {
+  .why-card {
     min-height: auto;
   }
 
   .case-showcase-card {
-    min-height: 390px;
+    min-height: 380px;
   }
 
   .case-caption h3 {
     font-size: 31px;
+  }
+
+  .case-view-eye-button {
+    width: 92px;
+    height: 92px;
   }
 
   .funfact-side-mockup {

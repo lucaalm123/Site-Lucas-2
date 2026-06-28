@@ -74,7 +74,10 @@
   }
 
   .cursor,
-  .nimo-particle-canvas { display: none !important; }
+  .nimo-particle-canvas,
+  .mouse-smoke-field {
+    display: none !important;
+  }
 
   .motion,
   .motion-mask,

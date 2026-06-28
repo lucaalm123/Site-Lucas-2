@@ -1,13 +1,37 @@
-.site-shell {
+.section-flow {
   position: relative;
-  min-height: 100vh;
-  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(110px, 11vw, 180px) var(--pad);
+  background:
+    radial-gradient(circle at 88% 12%, rgba(var(--lime-rgb), .055), transparent 25%),
+    radial-gradient(circle at 6% 80%, rgba(54,201,255,.04), transparent 28%),
+    linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.006));
 }
 
-.section {
-  position: relative;
-  padding: clamp(96px, 11vw, 176px) var(--pad);
-  overflow: hidden;
+.continuous-dark-bg {
+  background-color: var(--black);
+}
+
+.section-flow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 74px 74px;
+  mask-image: radial-gradient(circle at 50% 45%, #000, transparent 80%);
+}
+
+.section-transition-glow {
+  position: absolute;
+  inset: -28% 0 auto;
+  height: 42%;
+  z-index: -2;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, rgba(var(--lime-rgb), .09), transparent 66%);
 }
 
 .container {
@@ -15,38 +39,38 @@
   margin-inline: auto;
 }
 
-.section-kicker {
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, .96fr) minmax(320px, .78fr);
+  gap: clamp(36px, 7vw, 118px);
+  align-items: start;
+  margin-bottom: clamp(46px, 6vw, 96px);
+}
+
+.kicker {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin: 0 0 26px;
+  margin: 0 0 24px;
   color: var(--muted);
-  font-family: var(--font-body);
-  font-size: clamp(15px, 1.2vw, 20px);
-  font-weight: 700;
+  font-size: clamp(15px, 1.05vw, 18px);
+  font-weight: 800;
 }
 
-.section-kicker::before {
+.kicker::before {
   content: "";
   width: 13px;
   height: 13px;
   border-radius: 50%;
   background: var(--lime);
-  box-shadow: 0 0 26px rgba(var(--lime-rgb), .80);
-}
-
-.section-head {
-  display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(320px, .82fr);
-  gap: clamp(36px, 7vw, 120px);
-  align-items: start;
-  margin-bottom: clamp(42px, 6vw, 92px);
+  box-shadow: 0 0 26px rgba(var(--lime-rgb), .76);
 }
 
 .section-copy {
+  max-width: 620px;
   margin: 0;
   color: var(--soft);
-  font-size: clamp(18px, 1.45vw, 25px);
-  line-height: 1.45;
-  letter-spacing: -.02em;
+  font-size: clamp(18px, 1.35vw, 24px);
+  line-height: 1.48;
+  letter-spacing: -.018em;
 }
