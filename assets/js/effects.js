@@ -1,32 +1,72 @@
 (function () {
+  "use strict";
+
+  var root = document.documentElement;
   var ticking = false;
   var smokeParticles = [];
   var lastMouse = { x: 0, y: 0, t: 0 };
+  var smokeCanvas = null;
+  var smokeCtx = null;
+  var smokeDpr = 1;
+
+  function $(selector, scope) {
+    return (scope || document).querySelector(selector);
+  }
+
+  function $$(selector, scope) {
+    return Array.prototype.slice.call((scope || document).querySelectorAll(selector));
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function prefersReducedMotion() {
+    return Boolean(
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+
+  function isTouchDevice() {
+    return Boolean(
+      "ontouchstart" in window ||
+      (navigator.maxTouchPoints && navigator.maxTouchPoints > 0)
+    );
+  }
+
+  function escapeHtml(value) {
+    var span = document.createElement("span");
+    span.textContent = String(value);
+    return span.innerHTML;
+  }
 
   function initSmoothScrollFallback() {
-    document.documentElement.style.scrollBehavior = "smooth";
+    root.style.scrollBehavior = prefersReducedMotion() ? "auto" : "smooth";
   }
 
   function initMotionFallback() {
+    clearTimeout(window.__motionFallbackTimer);
+
     window.__motionFallbackTimer = window.setTimeout(function () {
-      if (!document.documentElement.classList.contains("motion-ok")) {
-        document.documentElement.classList.add("motion-failed");
+      if (!root.classList.contains("motion-ok")) {
+        root.classList.add("motion-failed");
       }
     }, 4500);
   }
 
   function markMotionOk() {
-    document.documentElement.classList.add("motion-ok");
-    document.documentElement.classList.remove("motion-failed");
+    root.classList.add("motion-ok");
+    root.classList.remove("motion-failed");
 
-    if (window.__motionWatchdog) clearTimeout(window.__motionWatchdog);
-    if (window.__motionFallbackTimer) clearTimeout(window.__motionFallbackTimer);
+    clearTimeout(window.__motionWatchdog);
+    clearTimeout(window.__motionFallbackTimer);
   }
 
   function initSplitLines() {
     $$(".split").forEach(function (el) {
       Array.from(el.children).forEach(function (child, index) {
-        child.style.setProperty("--i", index);
+        child.style.setProperty("--i", String(index));
       });
     });
   }
@@ -37,7 +77,9 @@
     var targets = $$(".motion, .motion-mask, .split");
 
     if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
-      targets.forEach(function (el) { el.classList.add("inview"); });
+      targets.forEach(function (el) {
+        el.classList.add("inview");
+      });
       return;
     }
 
@@ -52,7 +94,8 @@
 
     targets.forEach(function (el) {
       var rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * .94 && rect.bottom > 0) {
+
+      if (rect.top < window.innerHeight * 0.94 && rect.bottom > 0) {
         el.classList.add("inview");
       } else {
         observer.observe(el);
@@ -60,8 +103,10 @@
     });
 
     window.addEventListener("load", function () {
-      setTimeout(function () {
-        targets.forEach(function (el) { el.classList.add("inview"); });
+      window.setTimeout(function () {
+        targets.forEach(function (el) {
+          el.classList.add("inview");
+        });
       }, 1800);
     }, { once: true });
   }
@@ -71,9 +116,14 @@
       if (el.dataset.prepared === "true") return;
 
       var text = el.textContent.trim().replace(/\s+/g, " ");
-      el.innerHTML = '<span class="scroll-fill-line">' + text.split(" ").map(function (word, index) {
-        return '<span class="scroll-fill-word" data-word-index="' + index + '" style="--word-progress:0">' + escapeHtml(word) + '</span>';
-      }).join(" ") + '</span>';
+      var words = text ? text.split(" ") : [];
+
+      el.innerHTML = '<span class="scroll-fill-line">' + words.map(function (word, index) {
+        return (
+          '<span class="scroll-fill-word" data-word-index="' + index +
+          '" style="--word-progress:0">' + escapeHtml(word) + "</span>"
+        );
+      }).join(" ") + "</span>";
 
       el.dataset.prepared = "true";
     });
@@ -85,8 +135,8 @@
     $$(".scroll-fill-text").forEach(function (el) {
       var rect = el.getBoundingClientRect();
       var vh = window.innerHeight || document.documentElement.clientHeight;
-      var start = vh * .90;
-      var end = vh * .22;
+      var start = vh * 0.9;
+      var end = vh * 0.22;
       var progress = clamp((start - rect.top) / Math.max(1, start - end), 0, 1);
       var words = $$(".scroll-fill-word", el);
       var count = Math.max(1, words.length);
@@ -97,7 +147,7 @@
       });
 
       el.style.setProperty("--fill-progress", progress.toFixed(3));
-      el.classList.toggle("text-fill-active", progress > .02);
+      el.classList.toggle("text-fill-active", progress > 0.02);
     });
   }
 
@@ -108,13 +158,21 @@
   function updateScrollStackCards() {
     var section = $(".scroll-stack-section");
     var cards = $$(".scroll-stack-card");
+
     if (!section || !cards.length) return;
 
     if (window.innerWidth <= 1180) {
       cards.forEach(function (card) {
-        card.style.setProperty("--stack-offset", 0);
-        card.style.setProperty("--stack-scale", 1);
-        card.style.setProperty("--stack-opacity", 1);
+        card.style.setProperty("--stack-offset", "0");
+        card.style.setProperty("--stack-scale", "1");
+        card.style.setProperty("--stack-opacity", "1");
+        card.style.setProperty("--stack-z", "1");
+        card.classList.remove(
+          "scroll-stack-card-current",
+          "scroll-stack-card-past",
+          "scroll-stack-card-next",
+          "lime-hover-active"
+        );
       });
       return;
     }
@@ -127,9 +185,9 @@
     cards.forEach(function (card, index) {
       var distance = index - progress * (cards.length - 1);
       var abs = Math.abs(distance);
-      var offset = distance * 72 + Math.max(0, index) * 10;
-      var scale = clamp(1 - abs * .055, .84, 1);
-      var opacity = clamp(1 - abs * .18, .42, 1);
+      var offset = distance * 72 + index * 10;
+      var scale = clamp(1 - abs * 0.055, 0.84, 1);
+      var opacity = clamp(1 - abs * 0.18, 0.42, 1);
 
       card.style.setProperty("--stack-offset", offset.toFixed(2));
       card.style.setProperty("--stack-scale", scale.toFixed(3));
@@ -149,22 +207,26 @@
 
   function updateTimelineProgress() {
     var timeline = $(".method-timeline");
+
     if (!timeline) return;
 
     var rect = timeline.getBoundingClientRect();
     var vh = window.innerHeight || document.documentElement.clientHeight;
-    var progress = clamp((vh * .72 - rect.top) / Math.max(1, rect.height - vh * .25), 0, 1);
-
-    timeline.style.setProperty("--timeline-progress", progress.toFixed(3));
-
+    var progress = clamp((vh * 0.72 - rect.top) / Math.max(1, rect.height - vh * 0.25), 0, 1);
     var nodes = $$(".timeline-node", timeline);
     var cards = $$(".timeline-card", timeline);
 
+    timeline.style.setProperty("--timeline-progress", progress.toFixed(3));
+
     nodes.forEach(function (node, index) {
       var point = nodes.length <= 1 ? 1 : index / (nodes.length - 1);
-      var active = progress + .04 >= point;
+      var active = progress + 0.04 >= point;
+
       node.classList.toggle("timeline-node-active", active);
-      if (cards[index]) cards[index].classList.toggle("timeline-card-active", active);
+
+      if (cards[index]) {
+        cards[index].classList.toggle("timeline-card-active", active);
+      }
     });
   }
 
@@ -176,21 +238,22 @@
         var rect = button.getBoundingClientRect();
         var x = event.clientX - rect.left - rect.width / 2;
         var y = event.clientY - rect.top - rect.height / 2;
-
-        button.style.setProperty("--shift-x", (x * .10).toFixed(2) + "px");
-        button.style.setProperty("--shift-y", (y * .16).toFixed(2) + "px");
-
         var icon = $(".nimo-cta-icon, .header-arrow-icon", button);
+
+        button.style.setProperty("--shift-x", (x * 0.1).toFixed(2) + "px");
+        button.style.setProperty("--shift-y", (y * 0.16).toFixed(2) + "px");
+
         if (icon) {
-          icon.style.transform = "translate(" + (x * .13).toFixed(2) + "px," + (y * .13).toFixed(2) + "px)";
+          icon.style.transform = "translate(" + (x * 0.13).toFixed(2) + "px," + (y * 0.13).toFixed(2) + "px)";
         }
       });
 
       button.addEventListener("mouseleave", function () {
+        var icon = $(".nimo-cta-icon, .header-arrow-icon", button);
+
         button.style.setProperty("--shift-x", "0px");
         button.style.setProperty("--shift-y", "0px");
 
-        var icon = $(".nimo-cta-icon, .header-arrow-icon", button);
         if (icon) icon.style.transform = "";
       });
     });
@@ -200,6 +263,7 @@
     $$(".stacked-card").forEach(function (card) {
       card.addEventListener("mouseenter", function () {
         var group = card.closest(".stacked-card-group");
+
         if (!group) return;
 
         $$(".stacked-card", group).forEach(function (other) {
@@ -221,11 +285,15 @@
 
   function initPortfolioHover() {
     $$(".case-showcase-card").forEach(function (card) {
-      card.addEventListener("mouseenter", function () { card.classList.add("is-hovered"); });
+      card.addEventListener("mouseenter", function () {
+        card.classList.add("is-hovered");
+      });
+
       card.addEventListener("mouseleave", function () {
         card.classList.remove("is-hovered");
         updateEyeFollow(card, null, true);
       });
+
       card.addEventListener("mousemove", function (event) {
         updateEyeFollow(card, event, false);
       });
@@ -238,12 +306,15 @@
 
   function updateEyeFollow(card, event, reset) {
     if (!card) {
-      $$(".case-showcase-card").forEach(function (item) { updateEyeFollow(item, null, true); });
+      $$(".case-showcase-card").forEach(function (item) {
+        updateEyeFollow(item, null, true);
+      });
       return;
     }
 
     var eye = $(".case-eye-icon", card);
     var pupil = $(".case-eye-pupil", card);
+
     if (!eye || !pupil) return;
 
     if (reset || !event) {
@@ -257,49 +328,60 @@
     var rect = card.getBoundingClientRect();
     var cx = rect.left + rect.width / 2;
     var cy = rect.top + rect.height / 2;
-    var dx = clamp((event.clientX - cx) / rect.width, -.5, .5);
-    var dy = clamp((event.clientY - cy) / rect.height, -.5, .5);
+    var dx = clamp((event.clientX - cx) / Math.max(rect.width, 1), -0.5, 0.5);
+    var dy = clamp((event.clientY - cy) / Math.max(rect.height, 1), -0.5, 0.5);
     var x = dx * 24;
     var y = dy * 18;
 
     eye.style.setProperty("--eye-x", x.toFixed(2) + "px");
     eye.style.setProperty("--eye-y", y.toFixed(2) + "px");
-    pupil.style.setProperty("--eye-x", (x * .72).toFixed(2) + "px");
-    pupil.style.setProperty("--eye-y", (y * .72).toFixed(2) + "px");
+    pupil.style.setProperty("--eye-x", (x * 0.72).toFixed(2) + "px");
+    pupil.style.setProperty("--eye-y", (y * 0.72).toFixed(2) + "px");
+  }
+
+  function addSmoke(x, y, speed) {
+    var colors = ["223,255,47", "54,201,255", "255,42,114", "255,183,94"];
+    var amount = clamp(Math.round(speed / 18), 3, 9);
+
+    for (var i = 0; i < amount; i++) {
+      smokeParticles.push({
+        x: x + (Math.random() - 0.5) * 14,
+        y: y + (Math.random() - 0.5) * 14,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
+        r: 18 + Math.random() * 34 + Math.min(speed, 42) * 0.045,
+        life: 0.82,
+        decay: 0.012 + Math.random() * 0.018,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+
+    if (smokeParticles.length > 180) {
+      smokeParticles.splice(0, smokeParticles.length - 180);
+    }
+  }
+
+  function resizeSmokeCanvas() {
+    if (!smokeCanvas || !smokeCtx) return;
+
+    smokeDpr = Math.min(window.devicePixelRatio || 1, 2);
+    smokeCanvas.width = Math.floor(window.innerWidth * smokeDpr);
+    smokeCanvas.height = Math.floor(window.innerHeight * smokeDpr);
+    smokeCanvas.style.width = window.innerWidth + "px";
+    smokeCanvas.style.height = window.innerHeight + "px";
+    smokeCtx.setTransform(smokeDpr, 0, 0, smokeDpr, 0, 0);
   }
 
   function initMouseSmokeTrail() {
-    var canvas = $("#smoke-canvas");
-    if (!canvas || prefersReducedMotion()) return;
+    smokeCanvas = $("#smoke-canvas");
 
-    var ctx = canvas.getContext("2d");
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    if (!smokeCanvas || prefersReducedMotion()) return;
 
-    function resize() {
-      canvas.width = Math.floor(window.innerWidth * dpr);
-      canvas.height = Math.floor(window.innerHeight * dpr);
-      canvas.style.width = window.innerWidth + "px";
-      canvas.style.height = window.innerHeight + "px";
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
+    smokeCtx = smokeCanvas.getContext("2d");
 
-    function addSmoke(x, y, speed) {
-      var colors = ["223,255,47", "54,201,255", "255,42,114", "255,183,94"];
-      var amount = clamp(Math.round(speed / 18), 3, 9);
-      for (var i = 0; i < amount; i++) {
-        smokeParticles.push({
-          x: x + (Math.random() - .5) * 14,
-          y: y + (Math.random() - .5) * 14,
-          vx: (Math.random() - .5) * 0.7,
-          vy: (Math.random() - .5) * 0.7,
-          r: 18 + Math.random() * 34 + Math.min(speed, 42) * .045,
-          life: .82,
-          decay: .012 + Math.random() * .018,
-          color: colors[Math.floor(Math.random() * colors.length)]
-        });
-      }
-      if (smokeParticles.length > 180) smokeParticles.splice(0, smokeParticles.length - 180);
-    }
+    if (!smokeCtx) return;
+
+    resizeSmokeCanvas();
 
     document.addEventListener("pointermove", function (event) {
       var now = performance.now();
@@ -308,39 +390,37 @@
       var dt = Math.max(16, now - lastMouse.t);
       var speed = Math.sqrt(dx * dx + dy * dy) / dt * 16.67;
 
-      document.documentElement.style.setProperty("--mx", event.clientX + "px");
-      document.documentElement.style.setProperty("--my", event.clientY + "px");
+      root.style.setProperty("--mx", event.clientX + "px");
+      root.style.setProperty("--my", event.clientY + "px");
 
       addSmoke(event.clientX, event.clientY, speed);
 
       lastMouse = { x: event.clientX, y: event.clientY, t: now };
     }, { passive: true });
 
-    function draw() {
-      updateSmokeTrail(ctx);
-      requestAnimationFrame(draw);
-    }
+    window.addEventListener("resize", resizeSmokeCanvas);
 
-    resize();
-    window.addEventListener("resize", resize);
-
-    // Initial subtle atmospheric trace, not an explosion.
-    setTimeout(function () {
-      addSmoke(window.innerWidth * .54, window.innerHeight * .38, 22);
+    window.setTimeout(function () {
+      addSmoke(window.innerWidth * 0.54, window.innerHeight * 0.38, 22);
     }, 450);
 
-    draw();
+    requestAnimationFrame(function drawSmoke() {
+      updateSmokeTrail();
+      requestAnimationFrame(drawSmoke);
+    });
   }
 
   function updateSmokeTrail(ctx) {
-    var canvas = $("#smoke-canvas");
-    if (!canvas || !ctx) return;
+    var targetCtx = ctx || smokeCtx;
 
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    ctx.globalCompositeOperation = "lighter";
+    if (!smokeCanvas || !targetCtx) return;
+
+    targetCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    targetCtx.globalCompositeOperation = "lighter";
 
     for (var i = smokeParticles.length - 1; i >= 0; i--) {
       var p = smokeParticles[i];
+
       p.x += p.vx;
       p.y += p.vy;
       p.r *= 1.006;
@@ -351,21 +431,24 @@
         continue;
       }
 
-      var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * .105) + ")");
-      grad.addColorStop(.42, "rgba(" + p.color + "," + (p.life * .052) + ")");
+      var grad = targetCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+
+      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * 0.105) + ")");
+      grad.addColorStop(0.42, "rgba(" + p.color + "," + (p.life * 0.052) + ")");
       grad.addColorStop(1, "rgba(" + p.color + ",0)");
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
+
+      targetCtx.fillStyle = grad;
+      targetCtx.beginPath();
+      targetCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      targetCtx.fill();
     }
 
-    ctx.globalCompositeOperation = "source-over";
+    targetCtx.globalCompositeOperation = "source-over";
   }
 
   function initOrbitNodes() {
     var nodes = $$(".orbit-node");
+
     if (!nodes.length) return;
 
     nodes.forEach(function (node, index) {
@@ -381,6 +464,7 @@
 
   function initParticleCanvas() {
     var canvas = $("#particle-canvas");
+
     if (!canvas || prefersReducedMotion()) return;
 
     var ctx = canvas.getContext("2d");
@@ -388,7 +472,10 @@
     var particles = [];
     var mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
+    if (!ctx) return;
+
     function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.floor(window.innerWidth * dpr);
       canvas.height = Math.floor(window.innerHeight * dpr);
       canvas.style.width = window.innerWidth + "px";
@@ -399,10 +486,10 @@
         return {
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
-          r: Math.random() * 2.3 + .8,
-          vx: (Math.random() - .5) * .18,
-          vy: -0.08 - Math.random() * .22,
-          a: .18 + Math.random() * .68,
+          r: Math.random() * 2.3 + 0.8,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: -0.08 - Math.random() * 0.22,
+          a: 0.18 + Math.random() * 0.68,
           hue: i % 6 === 0 ? "54,201,255" : (i % 5 === 0 ? "255,42,114" : "223,255,47")
         };
       });
@@ -418,9 +505,10 @@
         var dx = p.x - mouse.x;
         var dy = p.y - mouse.y;
         var dist = Math.sqrt(dx * dx + dy * dy);
+
         if (dist < 120) {
-          p.x += dx / Math.max(dist, 1) * .22;
-          p.y += dy / Math.max(dist, 1) * .22;
+          p.x += dx / Math.max(dist, 1) * 0.22;
+          p.y += dy / Math.max(dist, 1) * 0.22;
         }
 
         if (p.y < -20) p.y = window.innerHeight + 20;
@@ -446,11 +534,6 @@
     resize();
     window.addEventListener("resize", resize);
 
-    // Initial subtle atmospheric trace, not an explosion.
-    setTimeout(function () {
-      addSmoke(window.innerWidth * .54, window.innerHeight * .38, 22);
-    }, 450);
-
     draw();
   }
 
@@ -462,11 +545,13 @@
     if (prefersReducedMotion()) return;
 
     var vh = window.innerHeight || document.documentElement.clientHeight;
+
     $$(".parallax").forEach(function (el) {
       var rect = el.getBoundingClientRect();
-      var speed = Number(el.getAttribute("data-speed") || .06);
+      var speed = Number(el.getAttribute("data-speed") || 0.06);
       var center = rect.top + rect.height / 2;
       var y = (center - vh / 2) * speed * -1;
+
       el.style.translate = "0 " + y.toFixed(2) + "px";
     });
   }
@@ -475,26 +560,32 @@
     if (isTouchDevice()) return;
 
     var cursor = $(".cursor");
+
     if (!cursor) return;
 
     document.addEventListener("pointermove", function (event) {
       cursor.style.left = event.clientX + "px";
       cursor.style.top = event.clientY + "px";
-      document.documentElement.style.setProperty("--mx", event.clientX + "px");
-      document.documentElement.style.setProperty("--my", event.clientY + "px");
+      root.style.setProperty("--mx", event.clientX + "px");
+      root.style.setProperty("--my", event.clientY + "px");
     }, { passive: true });
 
     document.addEventListener("mouseover", function (event) {
-      if (event.target.closest(".case-hover")) cursor.classList.add("is-active");
+      if (event.target && event.target.closest && event.target.closest(".case-hover")) {
+        cursor.classList.add("is-active");
+      }
     });
 
     document.addEventListener("mouseout", function (event) {
-      if (event.target.closest(".case-hover")) cursor.classList.remove("is-active");
+      if (event.target && event.target.closest && event.target.closest(".case-hover")) {
+        cursor.classList.remove("is-active");
+      }
     });
   }
 
   function onScroll() {
     if (ticking) return;
+
     ticking = true;
 
     requestAnimationFrame(function () {
@@ -507,6 +598,13 @@
   }
 
   function initEffects() {
+    if (window.__effectsInitialized) {
+      onScroll();
+      return;
+    }
+
+    window.__effectsInitialized = true;
+
     initMotionFallback();
     initSmoothScrollFallback();
     initScrollReveal();
