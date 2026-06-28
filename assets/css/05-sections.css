@@ -3,15 +3,20 @@
 .mouse-smoke-field {
   position: fixed;
   inset: 0;
-  z-index: -8;
   width: 100%;
   height: 100%;
   pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.nimo-particle-canvas {
+  z-index: 2;
+  opacity: .42;
 }
 
 .mouse-smoke-field {
-  z-index: -6;
-  mix-blend-mode: screen;
+  z-index: 3;
+  opacity: .78;
 }
 
 .smoke-trail,
@@ -166,8 +171,9 @@
   overflow: hidden;
   padding: 140px var(--pad) 72px;
   background:
-    linear-gradient(180deg, rgba(255,255,255,.012), rgba(255,255,255,.004)),
-    var(--black);
+    radial-gradient(circle at 70% 42%, rgba(var(--lime-rgb), .045), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.010), rgba(255,255,255,.004)),
+    rgba(3,4,3,.96);
 }
 
 .animated-color-field {
@@ -390,9 +396,9 @@
 /* Why */
 .why-nimo-section {
   background:
-    radial-gradient(circle at 10% 18%, rgba(var(--lime-rgb), .12), transparent 28%),
-    radial-gradient(circle at 96% 82%, rgba(var(--lime-rgb), .07), transparent 26%),
-    var(--black);
+    radial-gradient(circle at 10% 18%, rgba(var(--lime-rgb), .10), transparent 28%),
+    radial-gradient(circle at 96% 82%, rgba(var(--lime-rgb), .055), transparent 26%),
+    rgba(3,4,3,.94);
 }
 
 .why-fill-title { max-width: 860px; }
@@ -435,7 +441,7 @@
 
 /* Stacked cards */
 .stacked-info-section {
-  background: var(--black);
+  background: rgba(3,4,3,.94);
 }
 
 .stacked-layout {
@@ -985,3 +991,44 @@
 @keyframes arcBreath { to { transform: scale(1.06) rotate(10deg); opacity: .94; } }
 @keyframes floatingDoc { to { translate: 0 -20px; } }
 @keyframes dotDrift { to { transform: translateY(-18px); opacity: .75; } }
+
+
+/* V14.1 hotfix: make motion layers visibly testable */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(520px circle at var(--mx) var(--my), rgba(var(--lime-rgb), .055), transparent 58%),
+    radial-gradient(760px circle at calc(var(--mx) + 9vw) calc(var(--my) + 8vh), rgba(54,201,255,.030), transparent 66%);
+}
+
+.site-shell {
+  z-index: 1;
+}
+
+.hero-copy .display {
+  max-width: 780px;
+  font-size: clamp(50px, 7.25vw, 116px);
+  line-height: .94;
+}
+
+.hero-copy {
+  min-width: 0;
+}
+
+.hero-inner {
+  grid-template-columns: minmax(430px, .92fr) minmax(500px, 1.08fr);
+}
+
+@media (max-width: 1180px) {
+  .hero-copy .display {
+    max-width: 100%;
+    font-size: clamp(50px, 10vw, 96px);
+  }
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+}
