@@ -185,9 +185,9 @@
     cards.forEach(function (card, index) {
       var distance = index - progress * (cards.length - 1);
       var abs = Math.abs(distance);
-      var offset = distance * 72 + index * 10;
-      var scale = clamp(1 - abs * 0.055, 0.84, 1);
-      var opacity = clamp(1 - abs * 0.18, 0.42, 1);
+      var offset = distance * 64 + index * 18;
+      var scale = clamp(1 - abs * 0.052, 0.86, 1);
+      var opacity = clamp(1 - abs * 0.16, 0.46, 1);
 
       card.style.setProperty("--stack-offset", offset.toFixed(2));
       card.style.setProperty("--stack-scale", scale.toFixed(3));
@@ -341,7 +341,7 @@
 
   function addSmoke(x, y, speed) {
     var colors = ["223,255,47", "54,201,255", "255,42,114", "255,183,94"];
-    var amount = clamp(Math.round(speed / 18), 3, 9);
+    var amount = clamp(Math.round(speed / 24), 2, 6);
 
     for (var i = 0; i < amount; i++) {
       smokeParticles.push({
@@ -349,9 +349,9 @@
         y: y + (Math.random() - 0.5) * 14,
         vx: (Math.random() - 0.5) * 0.7,
         vy: (Math.random() - 0.5) * 0.7,
-        r: 18 + Math.random() * 34 + Math.min(speed, 42) * 0.045,
-        life: 0.82,
-        decay: 0.012 + Math.random() * 0.018,
+        r: 14 + Math.random() * 28 + Math.min(speed, 36) * 0.035,
+        life: 0.62,
+        decay: 0.018 + Math.random() * 0.022,
         color: colors[Math.floor(Math.random() * colors.length)]
       });
     }
@@ -375,7 +375,16 @@
   function initMouseSmokeTrail() {
     smokeCanvas = $("#smoke-canvas");
 
-    if (!smokeCanvas || prefersReducedMotion()) return;
+    // V16: cria o canvas automaticamente se o HTML antigo não tiver o elemento.
+    if (!smokeCanvas) {
+      smokeCanvas = document.createElement("canvas");
+      smokeCanvas.id = "smoke-canvas";
+      smokeCanvas.className = "mouse-smoke-field";
+      smokeCanvas.setAttribute("aria-hidden", "true");
+      document.body.prepend(smokeCanvas);
+    }
+
+    if (prefersReducedMotion()) return;
 
     smokeCtx = smokeCanvas.getContext("2d");
 
@@ -400,9 +409,7 @@
 
     window.addEventListener("resize", resizeSmokeCanvas);
 
-    window.setTimeout(function () {
-      addSmoke(window.innerWidth * 0.54, window.innerHeight * 0.38, 22);
-    }, 450);
+    // V16: sem explosão inicial; a fumaça aparece apenas com o movimento real do mouse.
 
     requestAnimationFrame(function drawSmoke() {
       updateSmokeTrail();
@@ -416,7 +423,7 @@
     if (!smokeCanvas || !targetCtx) return;
 
     targetCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    targetCtx.globalCompositeOperation = "lighter";
+    targetCtx.globalCompositeOperation = "screen";
 
     for (var i = smokeParticles.length - 1; i >= 0; i--) {
       var p = smokeParticles[i];
@@ -433,8 +440,8 @@
 
       var grad = targetCtx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
 
-      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * 0.105) + ")");
-      grad.addColorStop(0.42, "rgba(" + p.color + "," + (p.life * 0.052) + ")");
+      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * 0.075) + ")");
+      grad.addColorStop(0.48, "rgba(" + p.color + "," + (p.life * 0.034) + ")");
       grad.addColorStop(1, "rgba(" + p.color + ",0)");
 
       targetCtx.fillStyle = grad;
