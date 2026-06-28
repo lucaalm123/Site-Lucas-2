@@ -64,6 +64,7 @@
 
       var item = getCase(trigger.getAttribute("data-case"));
       var action = trigger.getAttribute("data-action");
+
       if (action === "drawer") openDrawer(item);
       if (action === "lightbox") openLightbox(item);
     });

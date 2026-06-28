@@ -3,10 +3,10 @@
     try {
       if (typeof fn === "function") {
         fn();
-        console.info("[Visual Law Motion] " + name + " OK");
+        console.info("[Visual Law Nimo Rebuild] " + name + " OK");
       }
     } catch (error) {
-      console.error("[Visual Law Motion] Erro em " + name + ":", error);
+      console.error("[Visual Law Nimo Rebuild] Erro em " + name + ":", error);
       document.documentElement.classList.add("motion-failed");
     }
   }

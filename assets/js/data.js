@@ -1,5 +1,25 @@
 window.SITE_DATA = {
   cases: {
+    contratos: {
+      title: "Manual de contratos",
+      category: "Legal Operations / Contratos",
+      image: "assets/portfolio/contratos.png",
+      document: "Manual sobre gestão contratual, compliance, fluxos de trabalho, riscos e Legal Operations.",
+      problem: "O conteúdo precisava orientar advogados, analistas e gestores sem se tornar um documento burocrático e pouco consultável.",
+      solution: "A estrutura foi reorganizada em módulos, fluxos, responsabilidades e mensagens de orientação para diferentes perfis de leitura.",
+      result: "O material ficou mais adequado para consulta, treinamento e alinhamento entre áreas.",
+      resources: ["Legal Operations", "Fluxos", "Governança", "Compliance", "Manual visual"]
+    },
+    procon: {
+      title: "Manual do Livro do Procon",
+      category: "Manual operacional jurídico",
+      image: "assets/portfolio/procon.png",
+      document: "Orientações sobre Livro de Reclamações do Procon, prazos, vias, preenchimento e ServiceNow.",
+      problem: "As equipes precisavam agir com rapidez, preencher corretamente e cumprir prazos sem depender de uma leitura jurídica longa.",
+      solution: "O manual foi estruturado em etapas, alertas, instruções objetivas e blocos de consulta para orientar a ação correta.",
+      result: "A operação ganhou um material mais didático, aplicável e compatível com a rotina de atendimento.",
+      resources: ["Fluxo operacional", "Alertas", "Consulta rápida", "Prazos", "Prevenção de falhas"]
+    },
     ticket: {
       title: "Guia visual de privacidade",
       category: "Visual Law / Privacidade",
@@ -19,26 +39,6 @@ window.SITE_DATA = {
       solution: "A comunicação foi estruturada com metáforas visuais, mensagens-chave e organização progressiva das responsabilidades.",
       result: "O conteúdo ganhou mais clareza para circular internamente e apoiar uma cultura de proteção de dados.",
       resources: ["LGPD", "Governança", "Metáforas visuais", "Responsabilidades", "Cultura de privacidade"]
-    },
-    procon: {
-      title: "Manual do Livro do Procon",
-      category: "Manual operacional jurídico",
-      image: "assets/portfolio/procon.png",
-      document: "Orientações sobre Livro de Reclamações do Procon, prazos, vias, preenchimento e ServiceNow.",
-      problem: "As equipes precisavam agir com rapidez, preencher corretamente e cumprir prazos sem depender de uma leitura jurídica longa.",
-      solution: "O manual foi estruturado em etapas, alertas, instruções objetivas e blocos de consulta para orientar a ação correta.",
-      result: "A operação ganhou um material mais didático, aplicável e compatível com a rotina de atendimento.",
-      resources: ["Fluxo operacional", "Alertas", "Consulta rápida", "Prazos", "Prevenção de falhas"]
-    },
-    contratos: {
-      title: "Manual de contratos",
-      category: "Legal Operations / Contratos",
-      image: "assets/portfolio/contratos.png",
-      document: "Manual sobre gestão contratual, compliance, fluxos de trabalho, riscos e Legal Operations.",
-      problem: "O conteúdo precisava orientar advogados, analistas e gestores sem se tornar um documento burocrático e pouco consultável.",
-      solution: "A estrutura foi reorganizada em módulos, fluxos, responsabilidades e mensagens de orientação para diferentes perfis de leitura.",
-      result: "O material ficou mais adequado para consulta, treinamento e alinhamento entre áreas.",
-      resources: ["Legal Operations", "Fluxos", "Governança", "Compliance", "Manual visual"]
     },
     impugnacao: {
       title: "Impugnação administrativa",

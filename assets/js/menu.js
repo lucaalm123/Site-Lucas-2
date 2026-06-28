@@ -1,8 +1,9 @@
 (function () {
   function initMenu() {
     var toggle = $(".menu-toggle");
-    var menu = $("#menu");
+    var menu = $("#mobile-menu");
     var close = $(".menu-close");
+
     if (!toggle || !menu || !close) return;
 
     function openMenu() {
@@ -25,7 +26,7 @@
 
     close.addEventListener("click", closeMenu);
 
-    $$(".menu-link", menu).forEach(function (link) {
+    $$(".mobile-menu-link", menu).forEach(function (link) {
       link.addEventListener("click", closeMenu);
     });
 
