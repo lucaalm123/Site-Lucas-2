@@ -127,9 +127,9 @@
     cards.forEach(function (card, index) {
       var distance = index - progress * (cards.length - 1);
       var abs = Math.abs(distance);
-      var offset = distance * 92;
-      var scale = clamp(1 - abs * .075, .78, 1);
-      var opacity = clamp(1 - abs * .24, .30, 1);
+      var offset = distance * 72 + Math.max(0, index) * 10;
+      var scale = clamp(1 - abs * .055, .84, 1);
+      var opacity = clamp(1 - abs * .18, .42, 1);
 
       card.style.setProperty("--stack-offset", offset.toFixed(2));
       card.style.setProperty("--stack-scale", scale.toFixed(3));
@@ -285,16 +285,16 @@
 
     function addSmoke(x, y, speed) {
       var colors = ["223,255,47", "54,201,255", "255,42,114", "255,183,94"];
-      var amount = clamp(Math.round(speed / 20), 2, 8);
+      var amount = clamp(Math.round(speed / 18), 3, 9);
       for (var i = 0; i < amount; i++) {
         smokeParticles.push({
           x: x + (Math.random() - .5) * 14,
           y: y + (Math.random() - .5) * 14,
           vx: (Math.random() - .5) * 0.7,
           vy: (Math.random() - .5) * 0.7,
-          r: 42 + Math.random() * 74 + speed * .10,
-          life: 1,
-          decay: .007 + Math.random() * .014,
+          r: 18 + Math.random() * 34 + Math.min(speed, 42) * .045,
+          life: .82,
+          decay: .012 + Math.random() * .018,
           color: colors[Math.floor(Math.random() * colors.length)]
         });
       }
@@ -324,10 +324,9 @@
     resize();
     window.addEventListener("resize", resize);
 
-    // Initial visible pulse to confirm the smoke layer is active.
+    // Initial subtle atmospheric trace, not an explosion.
     setTimeout(function () {
-      addSmoke(window.innerWidth * .52, window.innerHeight * .38, 70);
-      addSmoke(window.innerWidth * .58, window.innerHeight * .42, 90);
+      addSmoke(window.innerWidth * .54, window.innerHeight * .38, 22);
     }, 450);
 
     draw();
@@ -353,8 +352,8 @@
       }
 
       var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * .28) + ")");
-      grad.addColorStop(.38, "rgba(" + p.color + "," + (p.life * .13) + ")");
+      grad.addColorStop(0, "rgba(" + p.color + "," + (p.life * .105) + ")");
+      grad.addColorStop(.42, "rgba(" + p.color + "," + (p.life * .052) + ")");
       grad.addColorStop(1, "rgba(" + p.color + ",0)");
       ctx.fillStyle = grad;
       ctx.beginPath();
@@ -447,10 +446,9 @@
     resize();
     window.addEventListener("resize", resize);
 
-    // Initial visible pulse to confirm the smoke layer is active.
+    // Initial subtle atmospheric trace, not an explosion.
     setTimeout(function () {
-      addSmoke(window.innerWidth * .52, window.innerHeight * .38, 70);
-      addSmoke(window.innerWidth * .58, window.innerHeight * .42, 90);
+      addSmoke(window.innerWidth * .54, window.innerHeight * .38, 22);
     }, 450);
 
     draw();
