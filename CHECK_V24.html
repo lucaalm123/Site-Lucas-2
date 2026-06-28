@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHECK V24</title>
+<link rel="stylesheet" href="assets/css/v24.css">
+<style>.check{position:relative;z-index:5;padding:130px var(--pad);min-height:150vh}.box{max-width:960px;padding:28px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(0,0,0,.58)}pre{white-space:pre-wrap}</style>
+</head>
+<body>
+<canvas id="nimo-native-fluid-canvas" class="nimo-native-fluid-canvas nimo-global-fluid-canvas" aria-hidden="true"></canvas>
+<div class="check"><div class="box"><p class="kicker">CHECK V24</p><h1 class="h2" data-letter-fx>DreamLab clean com efeito Nimo preservado.</h1><p class="lead">A estética agora abandona o verde, remove a roda de percepções e usa portfólio/serviços em uma linguagem mais limpa.</p><pre id="status">verificando...</pre></div></div>
+<script src="assets/js/nimo-native-fluid.js" defer></script>
+<script src="assets/js/v24.js" defer></script>
+<script>
+Promise.all([
+fetch("assets/css/v24.css",{cache:"no-store"}).then(r=>["v24.css",r.ok]),
+fetch("assets/js/v24.js",{cache:"no-store"}).then(r=>["v24.js",r.ok]),
+fetch("assets/js/nimo-native-fluid.js",{cache:"no-store"}).then(r=>["nimo-native-fluid.js",r.ok]),
+fetch("assets/portfolio/contratos.png",{cache:"no-store"}).then(r=>["contratos.png",r.ok]),
+fetch("index.html",{cache:"no-store"}).then(r=>["index.html",r.ok])
+]).then(res=>status.textContent=res.map(([n,ok])=>`${ok?"OK":"ERRO"} — ${n}`).join("\n"));
+</script>
+</body>
+</html>

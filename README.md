@@ -154,3 +154,16 @@ Correções:
 
 Teste:
 `CHECK_V23.html`
+
+
+## V24 — DreamLab Clean Rebuild
+
+Direção:
+- estética DreamLab mais clean;
+- sem roda de depoimentos/percepções;
+- sem verde dominante;
+- Nimo webgl-fluid global mantido;
+- portfólio e serviços em linguagem de estúdio premium.
+
+Teste:
+`CHECK_V24.html`

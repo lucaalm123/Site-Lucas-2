@@ -1,0 +1,23 @@
+V24 — DREAMLAB CLEAN REBUILD
+
+Nova direção:
+- estética mais clean, inspirada no DreamLab;
+- abandono do verde/lime como cor principal;
+- laranja/vermelho como acento pontual;
+- colorido principal fica no efeito webgl-fluid do mouse;
+- roda de percepções removida completamente;
+- substituída por seção editorial de valor com 3 cards;
+- hero refeito com título sem corte de palavras;
+- portfólio premium assimétrico;
+- faixas marquee;
+- menu no estilo DreamLab;
+- contato mais legível;
+- Nimo webgl-fluid mantido global.
+
+Arquivos:
+assets/css/v24.css
+assets/js/v24.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V24.html
