@@ -1,11 +1,13 @@
 .site-shell {
   position: relative;
+  min-height: 100vh;
   isolation: isolate;
 }
 
 .section {
   position: relative;
-  padding: clamp(88px, 10vw, 168px) var(--pad);
+  padding: clamp(96px, 11vw, 176px) var(--pad);
+  overflow: hidden;
 }
 
 .container {
@@ -13,37 +15,38 @@
   margin-inline: auto;
 }
 
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 26px;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 20px);
+  font-weight: 700;
+}
+
+.section-kicker::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 26px rgba(var(--lime-rgb), .80);
+}
+
 .section-head {
   display: grid;
-  grid-template-columns: minmax(150px, 210px) minmax(0, 1fr);
-  gap: clamp(28px, 7vw, 122px);
+  grid-template-columns: minmax(0, .92fr) minmax(320px, .82fr);
+  gap: clamp(36px, 7vw, 120px);
   align-items: start;
-  margin-bottom: clamp(44px, 6vw, 90px);
+  margin-bottom: clamp(42px, 6vw, 92px);
 }
 
-.grid-12 {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: clamp(14px, 2vw, 24px);
-}
-
-.two-col {
-  display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-  gap: clamp(44px, 8vw, 130px);
-  align-items: center;
-}
-
-.stack {
-  display: grid;
-  gap: 24px;
-}
-
-.stack-lg {
-  display: grid;
-  gap: clamp(28px, 4vw, 52px);
-}
-
-.bleed {
-  margin-inline: calc(var(--pad) * -1);
+.section-copy {
+  margin: 0;
+  color: var(--soft);
+  font-size: clamp(18px, 1.45vw, 25px);
+  line-height: 1.45;
+  letter-spacing: -.02em;
 }

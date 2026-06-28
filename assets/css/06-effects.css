@@ -1,29 +1,35 @@
-/* Content remains visible without JS. JS enhances with motion. */
+.no-js .motion,
+.no-js .motion-mask,
+.no-js .split > span,
+.motion-failed .motion,
+.motion-failed .motion-mask,
+.motion-failed .split > span {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+}
+
+.split { overflow: hidden; }
+.split > span { display: block; }
+
 .js-ready:not(.motion-failed) .motion:not(.inview) {
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(34px);
   filter: blur(10px);
 }
 
 .js-ready:not(.motion-failed) .motion-mask:not(.inview) {
   opacity: 0;
+  transform: translateY(42px);
   clip-path: inset(0 0 100% 0 round 28px);
-  transform: translateY(34px);
-  filter: blur(10px);
+  filter: blur(12px);
 }
 
 .js-ready:not(.motion-failed) .split:not(.inview) > span {
   opacity: 0;
-  transform: translateY(110%);
+  transform: translateY(112%);
   filter: blur(10px);
-}
-
-.split {
-  overflow: hidden;
-}
-
-.split > span {
-  display: block;
 }
 
 .motion.inview,
@@ -32,10 +38,10 @@
   transform: translateY(0);
   filter: blur(0);
   transition:
-    opacity 760ms var(--ease),
-    transform 760ms var(--ease),
-    filter 760ms var(--ease),
-    clip-path 900ms var(--ease);
+    opacity .82s var(--ease),
+    transform .82s var(--ease),
+    filter .82s var(--ease),
+    clip-path .95s var(--ease);
 }
 
 .motion-mask.inview {
@@ -47,50 +53,15 @@
   transform: translateY(0);
   filter: blur(0);
   transition:
-    opacity 820ms var(--ease),
-    transform 820ms var(--ease),
-    filter 820ms var(--ease);
-  transition-delay: calc(var(--i, 0) * 86ms);
+    opacity .86s var(--ease),
+    transform .86s var(--ease),
+    filter .86s var(--ease);
+  transition-delay: calc(var(--i, 0) * 82ms);
 }
 
-.float-slow {
-  animation: doc-float 5.8s var(--ease-soft) infinite alternate;
-}
-
-.float-slow.delay {
-  animation-delay: -2.2s;
-}
-
-.tilt {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.parallax {
-  will-change: translate;
-}
-
-.case-hover {
-  cursor: none;
-}
-
-@keyframes doc-float {
-  to {
-    translate: 0 -16px;
-  }
-}
-
-.motion-failed .motion,
-.motion-failed .motion-mask,
-.motion-failed .split > span,
-.no-js .motion,
-.no-js .motion-mask,
-.no-js .split > span {
-  opacity: 1 !important;
-  transform: none !important;
-  filter: none !important;
-  clip-path: none !important;
-}
+.parallax { will-change: translate; }
+.magnetic-button { will-change: transform; }
+.case-hover { cursor: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -102,13 +73,8 @@
     scroll-behavior: auto !important;
   }
 
-  .cursor {
-    display: none;
-  }
-
-  .case-hover {
-    cursor: pointer;
-  }
+  .cursor,
+  .nimo-particle-canvas { display: none !important; }
 
   .motion,
   .motion-mask,
@@ -117,5 +83,10 @@
     transform: none !important;
     filter: none !important;
     clip-path: none !important;
+  }
+
+  .scroll-fill-word {
+    background: none !important;
+    color: var(--white) !important;
   }
 }

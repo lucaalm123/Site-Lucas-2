@@ -1,190 +1,235 @@
 @media (max-width: 1180px) {
-  .header-nav {
-    display: none;
+  .premium-nimo-header {
+    grid-template-columns: 1fr auto;
   }
 
-  .section-head,
-  .hero-inner,
-  .two-col,
-  .menu-panel,
-  .drawer-panel,
-  .contact-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    min-height: auto;
-    padding-top: 116px;
-  }
-
-  .hero-visual {
-    min-height: 560px;
-  }
-
-  .practice-points,
-  .method-grid,
-  .impact-flow {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .case-row,
-  .case-row:nth-child(even) .case-visual,
-  .case-row:nth-child(even) .case-text {
-    grid-template-columns: 1fr;
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .case-row {
-    min-height: auto;
-  }
-
-  .drawer-media {
-    min-height: auto;
-    padding-top: 60px;
-  }
-
-  .drawer-content {
-    padding-top: 0;
-  }
-}
-
-@media (max-width: 720px) {
-  :root {
-    --pad: 18px;
-    --header-h: 76px;
-    --radius-lg: 26px;
-  }
-
-  .site-header {
-    padding-top: 14px;
-    padding-bottom: 14px;
-  }
-
-  .brand strong {
-    max-width: calc(100vw - 120px);
-    overflow: hidden;
-    font-size: 25px;
-    text-overflow: ellipsis;
-  }
-
-  .brand span {
+  .header-nav,
+  .header-cta-pill {
     display: none;
   }
 
   .menu-toggle {
-    min-height: 42px;
-    padding: 0 12px;
+    display: inline-flex;
+    justify-self: end;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    border: 1px solid rgba(var(--lime-rgb), .45);
+    border-radius: var(--pill);
+    padding: 0 16px;
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .12em;
+    text-transform: uppercase;
   }
 
-  .menu-toggle-text {
-    display: none;
-  }
-
-  .menu-link {
-    grid-template-columns: 36px minmax(0, 1fr);
-    font-size: clamp(40px, 12vw, 68px);
-    line-height: 1.04;
-  }
-
-  .display {
-    font-size: clamp(50px, 14vw, 82px);
-    line-height: 1.02;
-  }
-
-  .h2 {
-    font-size: clamp(36px, 11vw, 62px);
-    line-height: 1.06;
-  }
-
-  .hero-visual {
-    min-height: 420px;
-  }
-
-  .hero-doc-main {
-    width: min(88vw, 430px);
-  }
-
-  .hero-doc-main img {
-    max-height: 430px;
-  }
-
-  .hero-floating-doc {
-    width: 86px;
-  }
-
-  .hero-floating-doc.left {
-    left: -1%;
-    bottom: 8%;
-  }
-
-  .hero-floating-doc.right {
-    right: 0;
-    top: 5%;
-  }
-
-  .hero-caption-card {
-    display: none;
-  }
-
-  .btn-row,
-  .hero-actions {
-    display: grid;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .practice-points,
-  .method-grid,
-  .impact-flow {
+  .hero-inner,
+  .why-grid,
+  .stacked-layout,
+  .contact-layout,
+  .section-head {
     grid-template-columns: 1fr;
   }
 
-  .practice-point {
+  .hero {
+    padding-top: 128px;
+  }
+
+  .hero-dark-figure-area {
+    min-height: 560px;
+  }
+
+  .why-card-stack,
+  .case-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stacked-card-group {
+    min-height: auto;
+    display: grid;
+    gap: 16px;
+  }
+
+  .stacked-card {
+    position: relative;
+    inset: auto !important;
+  }
+
+  .scroll-stack-section {
+    height: auto;
+  }
+
+  .scroll-stack-track {
+    position: relative;
     min-height: auto;
   }
 
-  .practice-point p,
-  .method-card h3,
-  .impact-step h3 {
-    margin-top: 44px;
+  .scroll-stack-inner,
+  .scroll-stack-cards,
+  .scroll-stack-heading {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
   }
 
-  .impact-step:not(:last-child)::after {
-    content: "↓";
+  .scroll-stack-inner {
+    display: grid;
+    gap: 28px;
+  }
+
+  .scroll-stack-cards {
+    display: grid;
+    gap: 16px;
+  }
+
+  .scroll-stack-card {
+    position: relative;
+    inset: auto;
+    min-height: auto;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .timeline-card-left,
+  .timeline-card-right {
+    grid-column: 3;
+    text-align: left;
+  }
+
+  .drawer-panel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  :root { --pad: 18px; }
+
+  .premium-nimo-header {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    min-height: 68px;
+    padding: 8px 10px;
+  }
+
+  .brand-mark { width: 44px; height: 44px; }
+  .brand strong { max-width: 185px; font-size: 21px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .brand span { display: none; }
+
+  .display {
+    font-size: clamp(48px, 13vw, 74px);
+    line-height: 1;
+  }
+
+  .h2 {
+    font-size: clamp(36px, 11vw, 60px);
+    line-height: 1.06;
+  }
+
+  .hero {
+    padding-top: 104px;
+  }
+
+  .hero-neon-ring {
+    right: -54vw;
+    top: 42%;
+    width: 92vw;
+  }
+
+  .hero-rainbow-arc {
+    right: -34vw;
+    width: 78vw;
+  }
+
+  .hero-starburst {
+    right: 8%;
+    top: 45%;
+    width: 54px;
+  }
+
+  .hero-dark-figure-area {
+    min-height: 420px;
+  }
+
+  .hero-doc-mini {
+    width: 88px;
+  }
+
+  .hero-brief {
+    display: none;
+  }
+
+  .btn-row {
+    display: grid;
+  }
+
+  .nimo-cta,
+  .secondary-btn {
+    width: 100%;
+  }
+
+  .why-card,
+  .method-card,
+  .timeline-card {
+    min-height: auto;
+  }
+
+  .case-showcase-card {
+    min-height: 390px;
+  }
+
+  .case-caption h3 {
+    font-size: 31px;
+  }
+
+  .funfact-side-mockup {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .funfact-floating-tags {
+    position: relative;
+    right: auto;
     top: auto;
-    right: 24px;
-    bottom: -34px;
-    transform: none;
+    margin-top: 24px;
   }
 
-  .deliverable-card {
-    flex-basis: 82vw;
-    min-height: 320px;
+  .orbit-wrap {
+    min-height: 560px;
   }
 
-  .case-visual {
-    min-height: 330px;
+  .orbit-node {
+    width: 74px;
+    height: 74px;
+    font-size: 9px;
   }
 
-  .case-visual img {
-    max-height: 360px;
+  .timeline-item {
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 16px;
+    min-height: auto;
+    margin-bottom: 24px;
   }
 
-  .drawer-panel,
-  .lightbox {
-    padding: 18px;
+  .timeline-progress {
+    left: 28px;
   }
 
-  .overlay-close {
-    top: 18px;
-    right: 18px;
+  .timeline-node {
+    grid-column: 1;
+    width: 46px;
+    height: 46px;
   }
 
-  .drawer-media img {
-    max-height: 45svh;
+  .timeline-card-left,
+  .timeline-card-right {
+    grid-column: 2;
   }
 
   .site-footer {
