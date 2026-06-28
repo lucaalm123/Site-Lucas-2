@@ -1,0 +1,21 @@
+V27 — VISIBLE AURORA BOOST
+
+Correção principal:
+- A fumaça estava fraca porque ficava atrás de camadas pretas/opacas do layout.
+- Agora existe uma camada #v27-aurora-boost acima do fundo e abaixo do conteúdo.
+- O webgl-fluid do Nimo continua ativo, mas a aurora visual fica claramente visível.
+- Seções ficaram menos opacas para não esconder a fumaça.
+- Botões e palavras continuam com acentos ciano/magenta/violeta.
+- Pressione a tecla A no CHECK_V27 para alternar o modo ultra forte.
+
+Arquivos:
+assets/css/v27.css
+assets/js/v27.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V27.html
+
+Console esperado:
+[V27] Visible aurora boost OK
+[V27] Visible aurora boost + saturated fluid OK

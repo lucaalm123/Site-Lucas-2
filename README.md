@@ -191,3 +191,15 @@ Teste:
 
 Teste:
 `CHECK_V26.html`
+
+
+## V27 — Visible Aurora Boost
+
+Correção:
+- A fumaça estava fraca porque ficava atrás de fundos pretos/opacos.
+- `#v27-aurora-boost` cria uma camada colorida visível acima do fundo e abaixo do conteúdo.
+- O Nimo webgl-fluid continua ativo.
+- Pressione `A` no `CHECK_V27.html` para comparar o modo ultra forte.
+
+Teste:
+`CHECK_V27.html`

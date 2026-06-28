@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHECK V27.1</title>
+<link rel="stylesheet" href="assets/css/v27_1.css">
+<style>
+.check{position:relative;z-index:5;padding:110px var(--pad);min-height:140vh}
+.box{max-width:980px;padding:28px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(0,0,0,.52);backdrop-filter:blur(14px)}
+pre{white-space:pre-wrap}
+</style>
+</head>
+<body>
+<canvas id="nimo-native-fluid-canvas" class="nimo-native-fluid-canvas nimo-global-fluid-canvas" aria-hidden="true"></canvas>
+<div class="site">
+  <div class="check">
+    <div class="box">
+      <p class="kicker">CHECK V27.1</p>
+      <h1 class="h2">Faixa rodando colorida.</h1>
+      <p class="lead">A faixa abaixo deve mostrar Visual Law / Legal Design com gradiente colorido, sem usar verde/laranja como identidade.</p>
+    </div>
+    <section class="marquee" style="margin-top:40px">
+      <div class="marquee-track">
+        <b>Visual Law</b><b>Legal Design</b><b>Contratos Visuais</b><b>Políticas Internas</b><b>Apresentações Jurídicas</b><b>Comunicação Jurídica</b>
+        <b>Visual Law</b><b>Legal Design</b><b>Contratos Visuais</b><b>Políticas Internas</b><b>Apresentações Jurídicas</b><b>Comunicação Jurídica</b>
+      </div>
+    </section>
+    <pre id="status">verificando...</pre>
+  </div>
+</div>
+<script src="assets/js/nimo-native-fluid.js" defer></script>
+<script src="assets/js/v27.js" defer></script>
+<script>
+Promise.all([
+fetch("assets/css/v27_1.css",{cache:"no-store"}).then(r=>["v27_1.css",r.ok]),
+fetch("assets/js/v27.js",{cache:"no-store"}).then(r=>["v27.js",r.ok]),
+fetch("assets/js/nimo-native-fluid.js",{cache:"no-store"}).then(r=>["nimo-native-fluid.js",r.ok]),
+fetch("index.html",{cache:"no-store"}).then(r=>["index.html",r.ok])
+]).then(res=>status.textContent=res.map(([n,ok])=>`${ok?"OK":"ERRO"} — ${n}`).join("\n"));
+</script>
+</body>
+</html>

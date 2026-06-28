@@ -1,0 +1,16 @@
+V27.1 — COLORED MARQUEE
+
+Correção adicional antes do upload:
+- a faixa que fica rodando com Visual Law / Legal Design agora está colorida;
+- usa gradiente ciano / violeta / magenta / branco;
+- mantém a base preto e branco;
+- não usa verde/lime nem laranja como identidade;
+- mantém V27 com aurora forte.
+
+Arquivos:
+assets/css/v27_1.css
+assets/js/v27.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V27_1.html
