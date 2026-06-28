@@ -4074,7 +4074,7 @@ Here's the new load parameter for your <code>GUI</code>'s constructor:
       }
       function it() {
           let o = ct(Math.random(), 1, 1)
-          return (o.r *= 0.15), (o.g *= 0.15), (o.b *= 0.15), o
+          return (o.r *= 0.72), (o.g *= 0.72), (o.b *= 0.72), o
       }
       function ct(o, s, a) {
           let f, p, w, y, L, O, te, ye
@@ -4148,26 +4148,26 @@ window.addEventListener('load', () => {
       window['webgl-fluid'](canvas, {
           TRIGGER: 'hover',
           PRESSURE_ITERATIONS: 10,
-          DENSITY_DISSIPATION: 10,
-          CURL: 5,
-          SPLAT_RADIUS: 0.3,
-          COLOR_UPDATE_SPEED: 5,
+          DENSITY_DISSIPATION: 2.35,
+          CURL: 18,
+          SPLAT_RADIUS: 0.52,
+          COLOR_UPDATE_SPEED: 12,
           TRANSPARENT: true,
-          BLOOM: false,
-          SUNRAYS: false,
+          BLOOM: true,
+          SUNRAYS: true,
       });
   } else {
       window['webgl-fluid'](canvas, {
           TRIGGER: 'hover',
           PRESSURE_ITERATIONS: 10,
-          DENSITY_DISSIPATION: 10,
-          CURL: 5,
-          SPLAT_RADIUS: 0.9,
-          SPLAT_FORCE: 1000,
-          COLOR_UPDATE_SPEED: 5,
+          DENSITY_DISSIPATION: 2.35,
+          CURL: 18,
+          SPLAT_RADIUS: 0.78,
+          SPLAT_FORCE: 2800,
+          COLOR_UPDATE_SPEED: 12,
           TRANSPARENT: true,
-          BLOOM: false,
-          SUNRAYS: false,
+          BLOOM: true,
+          SUNRAYS: true,
       });
   }
 
@@ -4175,3 +4175,5 @@ window.addEventListener('load', () => {
 });
 
 }
+
+console.info('[V32] V20 Nimo fluid engine vivid patch loaded');
