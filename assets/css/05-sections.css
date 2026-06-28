@@ -2226,3 +2226,200 @@ body::before {
   .rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(87px) rotate(-180deg) !important; }
   .rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(87px) rotate(-270deg) !important; }
 }
+
+
+/* =========================================================
+   V20 — NIMO NATIVE FLUID CANVAS
+   Agora o efeito usa a própria lógica webgl-fluid analisada
+   no zip do Nimo, aplicada ao canvas do Hero.
+   ========================================================= */
+
+/* Desliga todos os canvases/fumaças anteriores para não competir. */
+#smoke-canvas,
+.mouse-smoke-field,
+#aurora-smoke-canvas,
+#nimo-fluid-aurora-canvas,
+#nimo-webgl-fluid-canvas,
+.nimo-fluid-aurora-canvas,
+.nimo-fluid-aurora-trail,
+.webgl-fluid-smoke,
+.nimo-webgl-fluid-smoke,
+.nimo-smoke-aurora-field {
+  display: none !important;
+}
+
+/* Hero precisa funcionar como o Hero do Nimo: canvas absoluto dentro da seção. */
+.hero {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  background-color: #000 !important;
+}
+
+.nimo-native-fluid-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: auto !important;
+  opacity: .92 !important;
+  mix-blend-mode: screen !important;
+  filter: saturate(1.18) contrast(.98) !important;
+}
+
+/* Conteúdo acima do canvas nativo. */
+.hero .animated-color-field,
+.hero .hero-neon-ring,
+.hero .hero-rainbow-arc,
+.hero .hero-orbit-line,
+.hero .hero-starburst,
+.hero .rotating-social-wheel,
+.hero .hero-rotating-wheel,
+.hero .hero-inner {
+  position: relative;
+  z-index: 2 !important;
+}
+
+/* A camada colorida antiga do Hero fica mais fraca, senão mascara o fluido real. */
+.hero .animated-color-field {
+  opacity: .24 !important;
+  z-index: 1 !important;
+}
+
+/* Site acima do canvas, mas sem esconder totalmente o efeito. */
+.site-shell {
+  position: relative !important;
+  z-index: 1 !important;
+  background:
+    radial-gradient(circle at 74% 18%, rgba(var(--lime-rgb), .012), transparent 30%),
+    linear-gradient(180deg, rgba(3,4,3,.80), rgba(3,4,3,.91)) !important;
+}
+
+/* Remove fundo chapado excessivo do Hero para o fluido aparecer. */
+.hero.section-flow {
+  background:
+    radial-gradient(circle at 70% 38%, rgba(var(--lime-rgb), .030), transparent 34%),
+    #000 !important;
+}
+
+/* Mantém compactação e evita buracos. */
+.section-flow {
+  padding-top: clamp(64px, 5.8vw, 98px) !important;
+  padding-bottom: clamp(64px, 5.8vw, 98px) !important;
+}
+
+.hero {
+  min-height: 100svh !important;
+  padding-top: clamp(118px, 9vw, 142px) !important;
+  padding-bottom: clamp(42px, 5vw, 72px) !important;
+}
+
+.section-flow + .section-flow {
+  margin-top: -1px !important;
+}
+
+.section-transition-glow {
+  height: 9% !important;
+  opacity: .16 !important;
+}
+
+/* Cards Missão / Visão / Método sem sobreposição feia. */
+.stacked-card-group {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 18px !important;
+  min-height: auto !important;
+  align-content: center !important;
+}
+
+.stacked-card {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  min-height: 152px !important;
+  padding: 24px !important;
+  transform: none !important;
+}
+
+/* Scroll stack mais compacto. */
+.scroll-stack-section {
+  height: 180vh !important;
+  min-height: 880px !important;
+}
+
+.scroll-stack-track {
+  padding-top: clamp(56px, 5vw, 86px) !important;
+  padding-bottom: clamp(38px, 4vw, 64px) !important;
+}
+
+.scroll-stack-inner,
+.scroll-stack-cards {
+  min-height: 430px !important;
+  height: 430px !important;
+}
+
+.scroll-stack-card {
+  min-height: 282px !important;
+  padding: 28px !important;
+}
+
+.scroll-stack-card h3 {
+  margin-top: 58px !important;
+}
+
+/* Proteção contra texto cortado. */
+.display,
+.h2,
+.h3,
+.scroll-fill-text,
+.scroll-fill-line,
+.scroll-fill-word,
+.case-caption h3,
+.timeline-card h3,
+.why-card h3,
+.scroll-stack-card h3 {
+  overflow: visible !important;
+  text-wrap: balance;
+}
+
+.hero-copy .display {
+  max-width: 760px !important;
+  font-size: clamp(45px, 6.28vw, 96px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.058em !important;
+}
+
+@media (max-width: 1180px) {
+  .scroll-stack-section {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .scroll-stack-track,
+  .scroll-stack-inner,
+  .scroll-stack-cards,
+  .scroll-stack-card {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .nimo-native-fluid-canvas {
+    opacity: .72 !important;
+  }
+
+  .hero-copy .display {
+    font-size: clamp(39px, 10.3vw, 60px) !important;
+    line-height: 1.05 !important;
+  }
+
+  .section-flow {
+    padding-top: 58px !important;
+    padding-bottom: 58px !important;
+  }
+}
