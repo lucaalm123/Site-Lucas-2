@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CHECK V19 — WebGL Fluid Smoke</title>
+<link rel="stylesheet" href="assets/css/01-tokens.css">
+<link rel="stylesheet" href="assets/css/02-base.css">
+<link rel="stylesheet" href="assets/css/03-layout.css">
+<link rel="stylesheet" href="assets/css/04-components.css">
+<link rel="stylesheet" href="assets/css/05-sections.css">
+<link rel="stylesheet" href="assets/css/06-effects.css">
+<link rel="stylesheet" href="assets/css/07-responsive.css">
+<style>
+body{min-height:220vh;background:#030403;font-family:var(--font-body)}
+.test{position:relative;z-index:1;padding:140px var(--pad) 80px}
+.card{max-width:860px;padding:30px;margin:34px 0}
+.status{position:fixed;right:18px;bottom:18px;z-index:999;border-radius:999px;padding:12px 16px;background:var(--lime);color:var(--ink);font-family:var(--font-mono);font-weight:900}
+pre{white-space:pre-wrap;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px}
+</style>
+</head>
+<body>
+<canvas id="nimo-webgl-fluid-canvas" class="webgl-fluid-smoke nimo-webgl-fluid-smoke nimo-smoke-aurora-field" aria-hidden="true"></canvas>
+<main class="test">
+  <p class="kicker">{{ V19 }} WebGL Fluid Smoke</p>
+  <h1 class="h2">Mova o mouse em curvas lentas. O fundo precisa gerar rastro fluido de fumaça/aurora, não bolha e não glow simples.</h1>
+  <div class="card glass">
+    <p class="lead">Esta página usa o mesmo arquivo <strong>assets/js/fluid-aurora-webgl.js</strong>. Abra o Console: precisa aparecer <strong>[V19] WebGL Fluid Smoke OK</strong>.</p>
+  </div>
+  <pre id="status">Verificando arquivos...</pre>
+</main>
+<div class="status">CHECK V19</div>
+<script src="assets/js/fluid-aurora-webgl.js" defer></script>
+<script>
+Promise.all([
+  fetch("assets/js/fluid-aurora-webgl.js",{cache:"no-store"}).then(r=>["fluid-aurora-webgl.js",r.ok]),
+  fetch("assets/css/05-sections.css",{cache:"no-store"}).then(r=>["05-sections.css",r.ok]),
+  fetch("index.html",{cache:"no-store"}).then(r=>["index.html",r.ok])
+]).then(results=>{
+  document.getElementById("status").textContent = results.map(([name,ok]) => `${ok ? "OK" : "ERRO"} — ${name}`).join("\n");
+});
+</script>
+</body>
+</html>

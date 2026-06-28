@@ -85,3 +85,16 @@ A V18 recria esse comportamento visual com Canvas 2D:
 
 Teste:
 `CHECK_V18_FLUID_AURORA.html`
+
+
+## V19 — WebGL Fluid Smoke Nimo
+
+Nova arquitetura do efeito:
+- `assets/js/fluid-aurora-webgl.js`
+- canvas `#nimo-webgl-fluid-canvas`
+- feedback texture em WebGL
+- splat + dissipação + noise/curl
+- rastro fluido estilo fumaça/aurora
+
+Teste:
+`CHECK_V19_WEBGL_FLUID.html`

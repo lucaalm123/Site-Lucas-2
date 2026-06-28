@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- V19-WEBGL-FLUID-SMOKE-NIMO -->
 <!-- V18-NIMO-FLUID-AURORA-TRAIL -->
 <!-- V17-AURORA-SMOKE-NIMO -->
 <!-- V16-BUGFIX-SMOKE-STACK-GAP -->
@@ -7,7 +8,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lucas Coimbra — Lucas Coimbra — Visual Law Motion Studio V18</title>
+    <title>Lucas Coimbra — Lucas Coimbra — Visual Law Motion Studio V19</title>
     <meta name="description" content="Visual Law, Legal Design e motion para clareza visual em decisões jurídicas complexas.">
     <meta name="theme-color" content="#030403">
 
@@ -42,6 +43,7 @@
   </head>
 
   <body>
+    <canvas id="nimo-webgl-fluid-canvas" class="webgl-fluid-smoke nimo-webgl-fluid-smoke nimo-smoke-aurora-field" aria-hidden="true"></canvas>
     <canvas id="nimo-fluid-aurora-canvas" class="nimo-fluid-aurora-canvas nimo-fluid-aurora-trail mouse-aurora-field aurora-smoke-layer" aria-hidden="true"></canvas>
     <canvas id="aurora-smoke-canvas" class="mouse-aurora-field aurora-smoke-layer" aria-hidden="true"></canvas>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -554,5 +556,6 @@
     <script src="assets/js/cases.js" defer></script>
     <script src="assets/js/effects.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/fluid-aurora-webgl.js" defer></script>
   </body>
 </html>

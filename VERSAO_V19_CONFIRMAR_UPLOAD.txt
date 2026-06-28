@@ -1,0 +1,16 @@
+V19 — WEBGL FLUID SMOKE NIMO
+
+Correção principal:
+- abandona as versões de canvas 2D/glow/aurora estática;
+- adiciona assets/js/fluid-aurora-webgl.js;
+- usa WebGL com feedback texture, dissipação, noise/curl e splat;
+- cria rastro fluido de fumaça/aurora que segue o mouse com inércia;
+- não usa branco puro;
+- não usa bolinha como base;
+- mantém rastro e dissolução.
+
+Teste:
+CHECK_V19_WEBGL_FLUID.html
+
+Console esperado:
+[V19] WebGL Fluid Smoke OK
