@@ -225,3 +225,16 @@ Teste:
 
 Teste:
 `CHECK_V31.html`
+
+
+## V32 — Vivid Global Nimo Smoke + DreamLab Projects
+
+- Motor real da V20, mas com cor corrigida no próprio JS.
+- Canvas global fixo no site inteiro.
+- Eventos iniciais enviados para `window`, que é onde a V20 escuta o mouse.
+- Fundo preto preservado.
+- Projetos com hover preview grande estilo DreamLab.
+- Cubo menor e sem buraco lateral.
+
+Teste:
+`CHECK_V32.html`

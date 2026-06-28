@@ -1,0 +1,31 @@
+V32 — VIVID GLOBAL NIMO SMOKE + DREAMLAB PROJECTS
+
+Correção principal da fumaça:
+- continua usando o motor real da V20;
+- agora o canvas é global/fixo no site inteiro;
+- fundo permanece preto;
+- sem overlay fake, sem aurora artificial, sem fundo roxo/azul;
+- corrigi o ponto técnico: o webgl-fluid da V20 escuta eventos em window, então os eventos iniciais agora são enviados para window;
+- aumentei a cor dentro do próprio motor do Nimo, trocando o multiplicador original 0.15 para 0.72;
+- ajustei dissipação, curl, splat e bloom dentro do motor real;
+- a fumaça aparece desde o carregamento por movimento inicial real no canvas;
+- há pulso discreto usando o próprio canvas para não morrer em páginas longas;
+- tecla S intensifica apenas o canvas real.
+
+Correção dos projetos:
+- removi miniatura presa na linha;
+- preview grande agora aparece flutuando no hover, estilo DreamLab;
+- preview acompanha o mouse;
+- cubo ficou menor e integrado, sem buraco enorme à esquerda.
+
+Arquivos:
+assets/css/v32.css
+assets/js/v32.js
+assets/js/nimo-native-fluid.js
+
+Teste:
+CHECK_V32.html
+
+Console esperado:
+[V32] V20 Nimo fluid engine vivid patch loaded
+[V32] Vivid global Nimo smoke + DreamLab project preview OK
