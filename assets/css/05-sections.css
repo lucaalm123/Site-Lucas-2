@@ -1520,3 +1520,226 @@ body::after {
     padding-bottom: 64px !important;
   }
 }
+
+
+/* =========================================================
+   V17 — AURORA SMOKE NIMO
+   A fumaça anterior era trail/partícula. Agora é camada
+   atmosférica: grandes gradientes borrados, baixa opacidade,
+   movimento lento e orgânico.
+   ========================================================= */
+
+.mouse-smoke-field {
+  display: none !important;
+}
+
+.aurora-smoke-layer,
+.mouse-aurora-field {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  opacity: .78 !important;
+  mix-blend-mode: screen !important;
+  filter: blur(18px) saturate(1.12) contrast(.96) !important;
+  transform: translateZ(0);
+}
+
+.aurora-smoke-blob,
+.premium-smoke-gradient {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 999px;
+  filter: blur(70px);
+  opacity: .16;
+  mix-blend-mode: screen;
+}
+
+.nimo-particle-canvas {
+  z-index: 0 !important;
+  opacity: .16 !important;
+}
+
+/* Seções transparentes o suficiente para a aurora aparecer,
+   sem virar blocos soltos nem cobrir texto. */
+.site-shell {
+  position: relative;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 72% 16%, rgba(var(--lime-rgb), .024), transparent 30%),
+    linear-gradient(180deg, rgba(3,4,3,.82), rgba(3,4,3,.92));
+}
+
+.section-flow,
+.hero,
+.why-nimo-section,
+.stacked-info-section {
+  background-color: rgba(3,4,3,.82) !important;
+}
+
+.section-flow {
+  padding-top: clamp(70px, 7vw, 112px) !important;
+  padding-bottom: clamp(70px, 7vw, 112px) !important;
+}
+
+.hero {
+  min-height: 100svh !important;
+  padding-top: clamp(122px, 11vw, 148px) !important;
+  padding-bottom: clamp(48px, 6vw, 80px) !important;
+}
+
+.section-transition-glow {
+  height: 16% !important;
+  opacity: .30 !important;
+}
+
+/* Evita faixa/buraco entre uma seção e outra. */
+.section-flow + .section-flow {
+  margin-top: -1px !important;
+}
+
+.scroll-stack-section {
+  height: 205vh !important;
+  min-height: 1040px !important;
+}
+
+.scroll-stack-track {
+  padding-top: clamp(66px, 6.5vw, 104px) !important;
+  padding-bottom: clamp(50px, 5vw, 78px) !important;
+}
+
+.scroll-stack-inner {
+  min-height: 500px !important;
+}
+
+.scroll-stack-cards {
+  height: 500px !important;
+}
+
+.scroll-stack-card {
+  min-height: 322px !important;
+}
+
+/* Missão / Visão / Método: stack legível, sem barra lime cobrindo outro card. */
+.stacked-card-group {
+  display: grid !important;
+  gap: 18px !important;
+  min-height: auto !important;
+  align-content: center !important;
+}
+
+.stacked-card {
+  position: relative !important;
+  inset: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  min-height: 164px !important;
+  padding: 26px !important;
+  transform: none !important;
+}
+
+.stacked-card-active {
+  transform: translateX(-8px) scale(1.01) !important;
+}
+
+/* Palavras sem corte. */
+.display,
+.h2,
+.h3,
+.scroll-fill-text,
+.scroll-fill-line,
+.scroll-fill-word,
+.case-caption h3,
+.timeline-card h3,
+.why-card h3,
+.scroll-stack-card h3 {
+  overflow: visible !important;
+  text-wrap: balance;
+}
+
+.hero-copy .display {
+  max-width: 760px !important;
+  font-size: clamp(46px, 6.55vw, 102px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.062em !important;
+}
+
+/* Roda lateral menos desalinhada e menos agressiva. */
+.rotating-social-wheel,
+.hero-rotating-wheel {
+  right: -11vw !important;
+  top: 31% !important;
+  width: min(340px, 22vw) !important;
+  border-width: 28px !important;
+}
+
+.rotating-wheel-item {
+  width: 40px !important;
+  height: 40px !important;
+  margin: -20px 0 0 -20px !important;
+  font-size: 14px !important;
+}
+
+.rotating-wheel-item:nth-child(1) { transform: rotate(0deg) translate(142px) rotate(0deg) !important; }
+.rotating-wheel-item:nth-child(2) { transform: rotate(90deg) translate(142px) rotate(-90deg) !important; }
+.rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(142px) rotate(-180deg) !important; }
+.rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(142px) rotate(-270deg) !important; }
+
+@media (max-width: 1180px) {
+  .scroll-stack-section {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .rotating-social-wheel,
+  .hero-rotating-wheel {
+    right: -22vw !important;
+    width: 290px !important;
+    border-width: 24px !important;
+  }
+
+  .rotating-wheel-item:nth-child(1) { transform: rotate(0deg) translate(122px) rotate(0deg) !important; }
+  .rotating-wheel-item:nth-child(2) { transform: rotate(90deg) translate(122px) rotate(-90deg) !important; }
+  .rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(122px) rotate(-180deg) !important; }
+  .rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(122px) rotate(-270deg) !important; }
+}
+
+@media (max-width: 720px) {
+  .aurora-smoke-layer,
+  .mouse-aurora-field {
+    opacity: .48 !important;
+    filter: blur(16px) saturate(1.08) !important;
+  }
+
+  .section-flow {
+    padding-top: 62px !important;
+    padding-bottom: 62px !important;
+  }
+
+  .hero-copy .display {
+    font-size: clamp(40px, 10.8vw, 62px) !important;
+    line-height: 1.04 !important;
+  }
+
+  .rotating-social-wheel,
+  .hero-rotating-wheel {
+    right: -48vw !important;
+    width: 220px !important;
+    border-width: 20px !important;
+  }
+
+  .rotating-wheel-item {
+    width: 34px !important;
+    height: 34px !important;
+    margin: -17px 0 0 -17px !important;
+    font-size: 12px !important;
+  }
+
+  .rotating-wheel-item:nth-child(1) { transform: rotate(0deg) translate(92px) rotate(0deg) !important; }
+  .rotating-wheel-item:nth-child(2) { transform: rotate(90deg) translate(92px) rotate(-90deg) !important; }
+  .rotating-wheel-item:nth-child(3) { transform: rotate(180deg) translate(92px) rotate(-180deg) !important; }
+  .rotating-wheel-item:nth-child(4) { transform: rotate(270deg) translate(92px) rotate(-270deg) !important; }
+}
